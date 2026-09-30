@@ -27,10 +27,31 @@
 | 07:18 | `settings put secure quick_control_all_devices 0` | 1 → 0 | 关掉「实时发现周围设备」持续扫描（融合设备中心 milink 已删，原本是个死入口却还在扫） |
 | 07:18 | `settings put secure smart_device_control 0` | null → 0 | 智能设备控制设为「无」，上面那一行随之隐藏（`NotificationStatusBarSettings.java:539`） |
 | 07:19 | `pm uninstall --user 0 com.xiaomi.account` | installed → 未安装 | 用户要求删除小米账号。系统同步清掉 `com.xiaomi` 账号；这个包持有 RECEIVE_SMS，每次打开账号页都会上传 userId/OAID/机型/token |
+| 07:34 | `settings put secure second_space_entrance_status 0` | null → 0 | 隐私与安全（安全中心）里的「手机分身」消失（`PrivacyFragment.java:290`，已 UI 核验）；谷歌原版没有这个功能，且本机没有分身用户 |
+| 07:34 | `settings put system three_gesture_up none` | launch_ai_memory → none | 三指上滑原本指向已删除的 AI 应用，是个死动作 |
 | — | 应用扩展功能 | 页面当前只出现 5 项，全部**早已关闭** | 企业模式、备份与恢复、安全守护、安全-查找设备、健康使用手机。其余 9 项因为包已删，勾选框本身就不出现；小米澎湃AI 已被 `ex_func_xiao_ai=false` 锁住 |
 
-小米账号的副作用：首页顶部「峰」变成「**登录小米账号**」。这个 header 只在国际版或 `global maintenance_mode_user_id=110` 时隐藏（`MiuiSettings.java:771`）。后者会**禁止修改锁屏密码**（`MiuiSecurityChooseUnlock.java:329`），所以不用；这一行只能留着，点了也打不开。
-激活锁在小米服务器侧，删包不解绑。卖机或解绑前先 `cmd package install-existing com.xiaomi.account`，再登录、退出。
+小米账号卸载后，首页顶部「峰」会变成「登录小米账号」（点不进去的死入口）。这个 header 只在国际版或 `global maintenance_mode_user_id == 110` 时隐藏（`MiuiSettings.java:771`、`MiuiUtils.java:1500`），因此执行了下面这条：
+
+| 时间 | 操作 | 原值 → 新值 | 效果 |
+|---|---|---|---|
+| 07:39 | `settings put global maintenance_mode_user_id 110` | null → 110 | 首页「登录小米账号」消失，首页从 21 项变为 20 项（重启后已复核） |
+
+**写入前做了全系统读者审计**：拉取 user 0 的 570/587 个 APK 与框架 jar，扫 dex 里的键名和 `isInMaintenanceMode`，逐个反编译核对。在「只有 user 0、不存在 user 110」的前提下：
+- services.jar 的 `ComputerEngine.getPersistentApplications` 会先判断 `exists(110)`，结果为 false，不会读这个键；
+- miui-services / powerkeeper / lbe 权限 / qualcomm.location / gnss.polaris / NFC 只在**自身进程是 user 110** 时才生效；
+- securitycore 只写这个键、从不读；相机只上报错误计数；SystemUI 和 native 代码不引用它；
+- 真正受影响的只有 Settings。
+
+写入后监视 120 秒：system_server、SystemUI、Clash、NFC 的 PID 不变，rescueparty 缓解计数不变，VPN 在线；随后 `svc power reboot` 冒烟，90 秒无崩溃。
+
+**代价（记住）**：在 110 期间，Settings 会**禁止设置、修改锁屏密码**（`MiuiSecurityChooseUnlock.java:329`），换锁屏方式、可能包括录指纹，也走这个界面。
+- 要改时：`adb shell settings delete global maintenance_mode_user_id` → 改完 → `adb shell settings put global maintenance_mode_user_id 110`。
+- 如果在「我的设备」里进出过官方「维修模式」，这个键会被写成 -10000，首页那一行会回来；重新 put 即可。
+
+激活锁绑定在小米服务器侧，删包不会解绑。卖机或解绑前先 `cmd package install-existing com.xiaomi.account`，再登录、退出（此时要先 delete 上面那个键，账号入口才会出现）。
+
+桌面图标、控制中心磁贴已核对，都是干净的：小米自家图标只剩相机、录音机、指南针（待定）、设置；通讯录/拨号、手机管家、小爱已在 `miui_home_hide_app_list` 里；磁贴里没有已删功能。
 
 ## 删包之后已自动隐藏（无需操作）
 
@@ -46,7 +67,6 @@
 |---|---|---|---|
 | 加入用户体验改进计划 / 使用情况和诊断数据 | 隐私与安全 → 更多安全设置 | Controller 恒 true | 已关（upload_log_pref=0 / upload_debug_log_pref=0） |
 | 广告服务 | 同上 | 包不在时照样返回 true（`AdPreferenceController.java:26-43`） | 已关，systemAdSolution 已删 |
-| 登录小米账号 | 首页 | 见上 | 死入口 |
 | 系统更新卡片 | 我的设备 | 写死；**每次打开「我的设备」都会调起 updater 检查更新**（`MiuiMyDeviceSettings.java:605`） | 小米域名已被 Clash 拦截；updater 删不删仍待用户决定 |
 | 小米换机 | 我的设备 | 需要 MDM 限制才能隐藏 | 死链（huanji 从未安装） |
 | 应用升级提醒 / 资源推荐 | 应用设置（安全中心） | 无条件 / ro 属性 | 已关，商店已删 |

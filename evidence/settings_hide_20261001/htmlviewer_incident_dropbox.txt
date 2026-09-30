@@ -1,0 +1,10 @@
+# 2026-10-01 07:23–07:26 SystemUI 崩溃循环（htmlviewer 被真正卸载后）
+## dumpsys dropbox --print system_app_crash | 异常计数
+  18 Caused by: java.lang.SecurityException: Failed to find provider com.android.settings.cloud.CloudSettings for user 0; expected to find a valid ContentProvider for this authority
+   5 java.lang.RuntimeException: Unable to create service com.android.systemui.keyguard.KeyguardService: java.lang.SecurityException: Failed to find provider com.android.settings.cloud.CloudSettings for user 0; expected to find a valid ContentProvider for this authority
+  13 java.lang.RuntimeException: Unable to create service com.android.systemui.SystemUIService: android.view.InflateException: Binary XML file line #80 in com.android.systemui:layout/super_notification_shade: Binary XML file line #19 in com.android.systemui:layout/notification_stack_scroll_layout: Error inflating class com.android.systemui.statusbar.notification.stack.NotificationStackScrollLayout
+## boot reason history（事故时）
+reboot,rescueparty,1790810658 / recovery,1790810751
+## recovery 命令行（dumpsys dropbox --print SYSTEM_RECOVERY_LOG）
+"/system/bin/recovery" "--prompt_and_wipe_data" "--reason=RescueParty,com.android.systemui" "--locale=zh_SG_#Hans"
+## 修复：07:26:39 cmd package install-existing --user 0 com.android.htmlviewer → SystemUI pid 14532 稳定

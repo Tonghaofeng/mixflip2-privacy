@@ -1,0 +1,39 @@
+# maintenance_mode_user_id 读者扫描：user0 已安装 APK + 框架 jar，dex 字符串
+targets=     587 pulled=     570
+## 键名命中
+com.android.nfc 2 /system/app/NQNfcNci/NQNfcNci.apk
+com.android.settings 2 /system_ext/priv-app/Settings/Settings.apk
+com.miui.securitycore 2 /product/app/SecurityCoreAdd/SecurityCoreAdd.apk
+FW:miui-framework.jar 2 /system_ext/framework/miui-framework.jar
+FW:miui-services.jar 2 /system_ext/framework/miui-services.jar
+## isInMaintenanceMode/isMaintenanceMode/MaintenanceMode 命中（次数 文件）
+2 com.android.camera
+10 com.android.nfc
+10 com.android.settings
+2 com.google.android.apps.chromecast.app
+2 com.lbe.security.miui
+4 com.miui.powerkeeper
+1 com.miui.rom
+8 com.miui.securitycore
+4 com.qualcomm.location
+2 FW:miui-framework.jar
+6 FW:miui-services.jar
+2 FW:services.jar
+## 未拉取（vendor/overlay）
+android.overlay.target
+com.android.se.overlay.target
+com.android.wifi.resources.overlay.spf
+com.android.wifi.resources.overlay.target
+com.goodix.gftest
+com.google.android.wifi.resources.overlay.spf
+com.google.android.wifi.resources.overlay.target
+com.qualcomm.qti.cne
+com.qualcomm.qti.gpudrivers.sun.api35
+com.qualcomm.qti.qms.service.connectionsecurity
+com.qualcomm.qti.qms.service.trustzoneaccess
+com.qualcomm.timeservice
+FW:MiuiBooster.jar
+vendor.qti.bluetooth.xpan.overlay.target
+vendor.qti.data.txpwradmin
+vendor.qti.hardware.cacert.server
+vendor.qti.iwlan

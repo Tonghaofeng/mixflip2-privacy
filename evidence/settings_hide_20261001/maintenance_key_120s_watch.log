@@ -1,0 +1,5 @@
+BASE 3467 14532 15207 13
+PUT 07:39:21 value=110
++10s 3467 14532 15207 13 | key=110 users=1 vpn=com.github.metacubex.clash.meta adb=1 tun=0
++60s 3467 14532 15207 13 | key=110 users=1 vpn=com.github.metacubex.clash.meta adb=1 tun=0
++120s 3467 14532 15207 13 | key=110 users=1 vpn=com.github.metacubex.clash.meta adb=1 tun=0

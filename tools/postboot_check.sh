@@ -61,6 +61,11 @@ secure miui_miprotect_risk_app_remind_warn 0
 global upload_apk_enable 0
 global passport_ad_status OFF
 global captive_portal_mode 0
+global maintenance_mode_user_id 110
+secure quick_control_all_devices 0
+secure smart_device_control 0
+secure second_space_entrance_status 0
+system three_gesture_up none
 EOF
 
 echo "== 常驻 VPN（Clash always-on + 锁定）"

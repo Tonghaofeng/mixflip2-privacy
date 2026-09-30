@@ -3,4 +3,7 @@
 # 小米账号装回后需在设置里重新登录。ex_func 开关没有改动，无需回滚。
 adb shell -n settings put secure quick_control_all_devices 1
 adb shell -n settings delete secure smart_device_control      # 原值为 null
+adb shell -n settings delete secure second_space_entrance_status  # 原值为 null
+adb shell -n settings put system three_gesture_up launch_ai_memory
+adb shell -n settings delete global maintenance_mode_user_id       # 原值为 null；删掉后首页账号入口恢复
 echo "com.xiaomi.account: $(adb shell -n cmd package install-existing com.xiaomi.account)"
