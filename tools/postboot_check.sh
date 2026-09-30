@@ -7,6 +7,8 @@ set -uo pipefail
 cd "$(dirname "$0")/.."
 S=${ADB_SERIAL:-7f37d4d8}
 A="adb -s $S"
+st=$($A get-state 2>/dev/null | tr -d '\r')
+[ "$st" = "device" ] || { echo "❌ adb 连不上 ${S}（state=${st:-none}）：插线/授权后再跑"; exit 2; }
 EXPECT_LOCALE=${EXPECT_LOCALE:-zh-Hans-SG}
 EXPECT_TZ=${EXPECT_TZ:-Asia/Singapore}
 WATCH=${WATCH:-30}   # 观察 SystemUI 是否崩溃重启的秒数（开机后立刻跑时建议 ≥60：07:23 那次崩溃循环在开机 15 秒后才开始）
@@ -21,6 +23,7 @@ inf "$($A shell 'uptime -s 2>/dev/null || uptime') / boot reason: $($A shell get
 echo "== 精简（debloat/removed.txt 与 user 0 已安装包的交集必须为空）"
 tmp=$(mktemp)
 $A shell pm list packages --user 0 | sed 's/^package://' | tr -d '\r' | sort > "$tmp"
+[ "$(wc -l < "$tmp")" -gt 100 ] || bad "pm list 只返回 $(wc -l < "$tmp") 个包（adb 异常？），以下包检查不可信"
 back=$(grep -xFf debloat/removed.txt "$tmp" || true)
 if [ -z "$back" ]; then ok "removed.txt $(wc -l < debloat/removed.txt | tr -d ' ') 个全部未安装"; else bad "回来了: $(echo $back)"; fi
 dis=$($A shell pm list packages -d | sed 's/^package://' | tr -d '\r')
