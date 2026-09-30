@@ -3,3 +3,7 @@ clash/
 # 安装包走 Release 附件
 *.apk
 .DS_Store
+# 体检原始 dump（通知正文、连接记录、使用记录、账号、Wi-Fi/基站）：只留本机，不入库
+raw_private/
+.last_sync_head
+__pycache__/

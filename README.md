@@ -42,6 +42,8 @@
 | `tools/publish_config.sh` | 生成并推到 Mac mini 分发点；手机在家点 Clash「更新」 |
 | `tools/uid_domain_audit.py` | 取证：手机 /proc/net「端口→UID」× Surge「来源端口→域名/字节」→ 每个 UID 连了哪些域名 |
 | `tools/accept.py` | 验收：Clash 连接日志里「小米/国内/裸 IP 却未拦截」+ Surge 侧绕过 VPN 的直连 |
+| `tools/postboot_check.sh` | **每次重启后的自检**（只读，未解锁也能跑）：removed.txt 与已装包交集为空、停用包仍停用、上报开关、常驻 VPN、地区时区；任一 FAIL 退出码 1 |
+| `tools/sysregion/` | 用 adb 把「系统地区」改成新加坡（zh-CN → zh-Hans-SG）+ 时区；原理与各层归属地见其 README |
 | `tools/ui-automation/` | 仅在无接口时用的 uiautomator 小工具（Play 安装、Clash 保存/更新） |
 | `evidence/` | 基线（精简后仍在上报的 UID→域名）、验收日志、证书/权限普查 |
 | `clash/`（不入库） | 生成的策略 YAML，含 WireGuard 私钥 |

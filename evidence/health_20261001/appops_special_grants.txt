@@ -1,0 +1,16 @@
+## GET_USAGE_STATS allow:
+
+## SYSTEM_ALERT_WINDOW allow:
+com.xiaomi.trustservice com.xiaomi.touchservice com.android.provision com.android.providers.settings com.android.inputdevices com.android.server.telecom com.android.keychain com.android.location.fused com.android.devicediagnostics com.miui.fliphome com.android.camera com.miui.accessibility com.miui.guardprovider com.xiaomi.account com.miui.core com.xiaomi.macro com.google.android.dialer 
+## REQUEST_INSTALL_PACKAGES allow:
+com.android.providers.downloads com.android.chrome 
+## MANAGE_EXTERNAL_STORAGE allow:
+
+## ACCESS_NOTIFICATIONS allow:
+No operations. 
+## WRITE_SETTINGS allow:
+com.android.provision com.miui.aod com.miui.audiomonitor com.android.providers.telephony com.android.bluetooth com.android.networkstack.tethering com.android.thememanager com.android.egg com.android.incallui com.android.contacts com.android.camera com.miui.screenshot com.android.intentresolver com.mfashiongallery.emag com.miui.cleanmaster com.miui.compass com.miui.gallery com.miui.screenrecorder com.android.soundrecorder com.miui.notes 
+## SCHEDULE_EXACT_ALARM allow:
+No operations. 
+## PICTURE_IN_PICTURE allow:
+No operations. 

@@ -1,0 +1,1 @@
+Error with service 'android.hardware.health.IHealth/default' while dumping: FAILED_TRANSACTION

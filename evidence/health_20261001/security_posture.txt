@@ -1,0 +1,18 @@
+Enforcing
+
+
+1
+adb
+
+
+enforcing
+encrypted
+file
+package_verifier_enable=null
+verifier_verify_adb_installs=null
+package_verifier_user_consent=1
+upload_apk_enable=0
+adb_allowed_connection_time=604800000
+null
+    Quality: 0
+    CredentialType: PIN

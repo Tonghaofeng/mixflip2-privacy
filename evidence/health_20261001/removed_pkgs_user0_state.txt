@@ -1,0 +1,90 @@
+com.miui.analytics installed=false stopped=true firstInstallTime=2026-09-30 20:23:10
+com.miui.systemAdSolution installed=false stopped=true firstInstallTime=2026-09-30 20:23:10
+com.xiaomi.security.onetrack installed=false stopped=true firstInstallTime=2026-09-30 20:23:09
+com.miui.uireporter installed=false stopped=true firstInstallTime=2026-09-30 20:23:09
+com.miui.bugreport installed=false stopped=true firstInstallTime=2026-09-30 20:23:10
+com.bsp.catchlog installed=false stopped=true firstInstallTime=2026-09-30 20:23:10
+com.miui.misightservice installed=false stopped=true firstInstallTime=2026-09-30 20:23:09
+com.miui.thirdappassistant installed=false stopped=true firstInstallTime=2026-09-30 20:23:09
+com.miui.daemon installed=false stopped=true firstInstallTime=2026-09-30 20:23:09
+com.miui.contentextension installed=false stopped=true firstInstallTime=2026-09-30 20:23:10
+com.xiaomi.aireco installed=false stopped=true firstInstallTime=2026-09-30 20:23:09
+com.miui.hybrid installed=false stopped=true firstInstallTime=2026-09-30 20:23:10
+com.xiaomi.minigame installed=false stopped=true firstInstallTime=2026-09-30 20:23:10
+com.xiaomi.gamecenter.sdk.service installed=false stopped=true firstInstallTime=2026-09-30 20:23:10
+com.miui.voiceassist installed=false stopped=true firstInstallTime=2026-09-30 20:23:09
+com.miui.voicetrigger installed=false stopped=true firstInstallTime=2026-09-30 20:23:09
+com.xiaomi.mibrain.speech   
+com.xiaomi.aiasst.service installed=false stopped=true firstInstallTime=2026-09-30 20:23:10
+com.xiaomi.aiasst.vision installed=false stopped=true firstInstallTime=2026-09-30 20:23:10
+com.android.browser installed=false stopped=true firstInstallTime=2026-09-30 20:23:10
+com.android.quicksearchbox installed=false stopped=true firstInstallTime=2026-09-30 20:23:10
+com.xiaomi.market installed=false stopped=true firstInstallTime=2026-09-30 20:23:10
+com.xiaomi.ab installed=false stopped=true firstInstallTime=2026-09-30 20:23:09
+com.miui.yellowpage installed=false stopped=true firstInstallTime=2026-09-30 20:23:09
+com.miui.newmidrive   
+com.baidu.carlife.xiaomi   
+cn.wps.moffice_eng.xiaomi.lite   
+com.miui.greenguard installed=false stopped=true firstInstallTime=2026-09-30 20:23:10
+com.xiaomi.simactivate.service installed=false stopped=true firstInstallTime=2026-09-30 20:23:10
+com.miui.tsmclient installed=false stopped=true firstInstallTime=2026-09-30 20:23:10
+com.miui.nextpay installed=false stopped=true firstInstallTime=2026-09-30 20:23:09
+com.unionpay.tsmservice.mi installed=false stopped=true firstInstallTime=2026-09-30 20:23:10
+com.xiaomi.payment installed=false stopped=true firstInstallTime=2026-09-30 20:23:10
+com.rongcard.eid installed=false stopped=true firstInstallTime=2026-09-30 20:23:09
+org.ifaa.aidl.manager installed=false stopped=true firstInstallTime=2026-09-30 20:23:09
+com.tencent.soter.soterserver installed=false stopped=true firstInstallTime=2026-09-30 20:23:09
+com.miui.carlink installed=false stopped=true firstInstallTime=2026-09-30 20:23:09
+com.xiaomi.mis installed=false stopped=true firstInstallTime=2026-09-30 20:23:10
+com.xiaomi.digitalkey installed=false stopped=true firstInstallTime=2026-09-30 20:23:10
+com.miui.autoui.ext installed=false stopped=true firstInstallTime=2026-09-30 20:23:09
+com.miui.personalassistant installed=false stopped=true firstInstallTime=2026-09-30 20:23:10
+com.xiaomi.joyose installed=false stopped=true firstInstallTime=2026-09-30 20:23:09
+com.miui.vsimcore installed=false stopped=true firstInstallTime=2026-09-30 20:23:09
+com.newcall installed=false stopped=true firstInstallTime=2026-09-30 20:23:09
+com.miui.dmregservice installed=false stopped=true firstInstallTime=2026-09-30 20:23:09
+com.miui.cloudservice installed=false stopped=true firstInstallTime=2026-09-30 20:23:10
+com.miui.cloudbackup installed=false stopped=true firstInstallTime=2026-09-30 20:23:09
+com.miui.micloudsync installed=false stopped=true firstInstallTime=2026-09-30 20:23:09
+com.xiaomi.micloud.sdk installed=false stopped=true firstInstallTime=2026-09-30 20:23:09
+com.xiaomi.xmsf installed=false stopped=true firstInstallTime=2026-09-30 20:23:10
+com.xiaomi.xmsfkeeper installed=false stopped=true firstInstallTime=2026-09-30 20:23:09
+com.miui.findmy   
+com.miui.passwords installed=false stopped=true firstInstallTime=2026-09-30 20:23:10
+com.xiaomi.app.toolbox installed=false stopped=true firstInstallTime=2026-09-30 20:23:09
+com.xiaomi.barrage installed=false stopped=true firstInstallTime=2026-09-30 20:23:09
+com.xiaomi.aicr installed=false stopped=true firstInstallTime=2026-09-30 20:23:10
+com.sohu.inputmethod.sogou.xiaomi installed=false stopped=true firstInstallTime=2026-09-30 21:48:54
+com.android.mms installed=false stopped=true firstInstallTime=2026-09-30 21:48:54
+com.mobiletools.systemhelper installed=false stopped=true firstInstallTime=2026-09-30 21:48:54
+com.miui.contentcatcher installed=false stopped=true firstInstallTime=2026-09-30 21:48:54
+com.miui.wmsvc installed=false stopped=true firstInstallTime=2026-09-30 21:48:54
+com.xiaomi.aiservice installed=false stopped=true firstInstallTime=2026-09-30 21:48:54
+com.xiaomi.metoknlp installed=false stopped=true firstInstallTime=2026-09-30 21:48:54
+com.qti.qcc installed=false stopped=true firstInstallTime=2026-09-30 21:48:54
+com.milink.service installed=false stopped=true firstInstallTime=2026-09-30 21:48:54
+com.miui.phrase installed=false stopped=true firstInstallTime=2026-09-30 21:48:54
+com.miui.mediaeditor   
+com.miui.mediaviewer installed=false stopped=true firstInstallTime=2026-09-30 21:48:54
+com.android.deskclock   
+com.android.calendar   
+com.android.fileexplorer installed=false stopped=true firstInstallTime=2026-09-30 21:48:54
+com.miui.mishare.connectivity installed=false stopped=true firstInstallTime=2026-09-30 21:48:54
+com.miui.powerinsight installed=true stopped=true firstInstallTime=1970-01-01 08:34:54
+com.xiaomi.mtb installed=true stopped=false firstInstallTime=1970-01-01 08:34:54
+com.miui.cit installed=true stopped=false firstInstallTime=1970-01-01 08:34:54
+com.fido.asm installed=true stopped=false firstInstallTime=1970-01-01 08:34:54
+com.xiaomi.macro installed=true stopped=true firstInstallTime=1970-01-01 08:34:54
+com.miui.accessibility installed=true stopped=false firstInstallTime=1970-01-01 08:34:54
+com.android.htmlviewer installed=true stopped=false firstInstallTime=1970-01-01 08:34:53
+com.xiaomi.finddevice installed=true stopped=false firstInstallTime=1970-01-01 08:34:53
+com.xiaomi.aon installed=true stopped=false firstInstallTime=1970-01-01 08:34:54
+com.xiaomi.mirror installed=true stopped=false firstInstallTime=1970-01-01 08:34:53
+com.xiaomi.mi_connect_service installed=true stopped=false firstInstallTime=1970-01-01 08:34:54
+com.xiaomi.continuity.sdkapp installed=true stopped=true firstInstallTime=1970-01-01 08:34:54
+com.miui.securityadd installed=true stopped=true firstInstallTime=1970-01-01 08:34:54
+com.miui.securityinputmethod installed=true stopped=false firstInstallTime=1970-01-01 08:34:54
+com.miui.touchassistant installed=true stopped=false firstInstallTime=1970-01-01 08:34:54
+com.miui.qr installed=true stopped=false firstInstallTime=1970-01-01 08:34:54
+com.miui.backup installed=true stopped=true firstInstallTime=1970-01-01 08:34:53
+com.miui.audiomonitor installed=true stopped=false firstInstallTime=1970-01-01 08:34:54

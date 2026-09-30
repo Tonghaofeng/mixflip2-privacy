@@ -1,0 +1,49 @@
+ACCESSIBILITY MANAGER (dumpsys accessibility)
+
+currentUserId=0
+hasMagnificationConnection=false
+Magnifier on display#0
+    MagnificationConfig[mode: 1, activated: false, scale: 1.0, centerX: 0.0, centerY: 0.0] 
+    Magnification region=SkRegion((0,0,1224,2831))
+    IdOfLastServiceToMagnify=-1
+    SupportWindowMagnification=true
+    WindowMagnificationConnectionState=DISCONNECTED
+User state[
+     attributes:{id=0, touchExplorationEnabled=false, serviceHandlesDoubleTap=false, requestMultiFingerGestures=false, requestTwoFingerPassthrough=false, sendMotionEventsEnabledfalse, displayMagnificationEnabled=false, autoclickEnabled=false, nonInteractiveUiTimeout=0, interactiveUiTimeout=0, installedServiceCount=12, magnificationModes={0=1, 1=1}, magnificationCapabilities=3, audioDescriptionByDefaultEnabled=false, magnificationFollowTypingEnabled=true, alwaysOnMagnificationEnabled=true}
+     button mode: 1
+     shortcut key:{}
+     button:{}
+     button target:{null}
+     gesture:{}
+     qs shortcut targets:{}
+     a11y tiles in QS panel:{}
+     Bound services:{}
+     Enabled services:{}
+     Binding services:{}
+     Crashed services:{}
+     Client list info:{
+          Client list callbacks: 5
+          Client list killed: false
+          Client list broadcasts count: -1
+          Registered clients:{
+[com.github.metacubex.clash.meta][com.android.chrome][com.google.android.inputmethod.latin][org.telegram.messenger][com.google.android.marvin.talkback]}]
+Global Info [ Top focused display Id = 0
+     Active Window Id = -1
+     Top Focused Window Id = -1
+     Accessibility Focused Window Id = -1 ]
+
+
+Window attributes:[{}]
+Global client list info:{
+    Client list callbacks: 12
+    Client list killed: false
+    Client list broadcasts count: -1
+    Registered clients:{
+[com.android.localtransport, com.xiaomi.mirror, com.miui.securitycenter, com.miui.touchassistant, com.xiaomi.mi_connect_service, com.xiaomi.location.fused, com.qualcomm.qti.xrvd.service, com.android.dynsystem, com.xiaomi.misettings, com.miui.qr, com.miui.powerkeeper, com.android.systemui, com.android.DeviceAsWebcam, com.miui.aod, com.xiaomi.trustservice, com.android.keychain, com.xiaomi.touchservice, miui.systemui.plugin, com.miui.audiomonitor, com.xiaomi.otrpbroker, com.wapi.wapicertmanage, com.android.providers.settings, com.xiaomi.aon, com.miui.notification, com.android.provision, com.xiaomi.mtb, com.miui.cit, com.qualcomm.qti.services.systemhelper, com.miui.securitycore, com.android.inputdevices, com.xiaomi.gnss.polaris, com.android.settings, com.android.server.telecom, vendor.qti.frameworks.utils, android, com.android.location.fused][vendor.qti.frameworks.utils, com.xiaomi.mi_connect_service, com.android.dynsystem, com.android.DeviceAsWebcam, com.miui.aod, com.qualcomm.qti.services.systemhelper, com.android.server.telecom, com.xiaomi.gnss.polaris, com.miui.securitycenter, com.android.settings, com.xiaomi.misettings, com.miui.audiomonitor, com.miui.qr, com.xiaomi.trustservice, com.miui.touchassistant, com.android.inputdevices, com.miui.cit, com.android.providers.settings, com.android.localtransport, com.miui.notification, com.xiaomi.aon, com.android.location.fused, android, com.android.provision, com.xiaomi.location.fused, com.xiaomi.mtb, com.xiaomi.mirror, com.xiaomi.touchservice, miui.systemui.plugin, com.android.keychain, com.miui.securitycore, com.xiaomi.otrpbroker, com.wapi.wapicertmanage, com.android.systemui, com.miui.powerkeeper, com.qualcomm.qti.xrvd.service][com.android.localtransport, com.xiaomi.mirror, com.miui.securitycenter, com.miui.touchassistant, com.xiaomi.mi_connect_service, com.xiaomi.location.fused, com.qualcomm.qti.xrvd.service, com.android.dynsystem, com.xiaomi.misettings, com.miui.qr, com.miui.powerkeeper, com.android.systemui, com.android.DeviceAsWebcam, com.miui.aod, com.xiaomi.trustservice, com.android.keychain, com.xiaomi.touchservice, miui.systemui.plugin, com.miui.audiomonitor, com.xiaomi.otrpbroker, com.wapi.wapicertmanage, com.android.providers.settings, com.xiaomi.aon, com.miui.notification, com.android.provision, com.xiaomi.mtb, com.miui.cit, com.qualcomm.qti.services.systemhelper, com.miui.securitycore, com.android.inputdevices, com.xiaomi.gnss.polaris, com.android.settings, com.android.server.telecom, vendor.qti.frameworks.utils, android, com.android.location.fused][com.miui.home][com.miui.fliphome][com.android.permissioncontroller][com.miui.screenshot][vendor.qti.frameworks.utils, com.xiaomi.mi_connect_service, com.android.dynsystem, com.android.DeviceAsWebcam, com.miui.aod, com.qualcomm.qti.services.systemhelper, com.android.server.telecom, com.xiaomi.gnss.polaris, com.miui.securitycenter, com.android.settings, com.xiaomi.misettings, com.miui.audiomonitor, com.miui.qr, com.xiaomi.trustservice, com.miui.touchassistant, com.android.inputdevices, com.miui.cit, com.android.providers.settings, com.android.localtransport, com.miui.notification, com.xiaomi.aon, com.android.location.fused, android, com.android.provision, com.xiaomi.location.fused, com.xiaomi.mtb, com.xiaomi.mirror, com.xiaomi.touchservice, miui.systemui.plugin, com.android.keychain, com.miui.securitycore, com.xiaomi.otrpbroker, com.wapi.wapicertmanage, com.android.systemui, com.miui.powerkeeper, com.qualcomm.qti.xrvd.service][com.google.android.gms][com.android.camera][com.android.vending][com.android.localtransport, com.xiaomi.mirror, com.miui.securitycenter, com.miui.touchassistant, com.xiaomi.mi_connect_service, com.xiaomi.location.fused, com.qualcomm.qti.xrvd.service, com.android.dynsystem, com.xiaomi.misettings, com.miui.qr, com.miui.powerkeeper, com.android.systemui, com.android.DeviceAsWebcam, com.miui.aod, com.xiaomi.trustservice, com.android.keychain, com.xiaomi.touchservice, miui.systemui.plugin, com.miui.audiomonitor, com.xiaomi.otrpbroker, com.wapi.wapicertmanage, com.android.providers.settings, com.xiaomi.aon, com.miui.notification, com.android.provision, com.xiaomi.mtb, com.miui.cit, com.qualcomm.qti.services.systemhelper, com.miui.securitycore, com.android.inputdevices, com.xiaomi.gnss.polaris, com.android.settings, com.android.server.telecom, vendor.qti.frameworks.utils, android, com.android.location.fused]
+
+Proxy manager state:
+    Number of proxy connections: 0
+    Registered proxy connections:
+Accessibility Display Listener:
+    SystemUI uid: 1000
+    1 valid display: 0

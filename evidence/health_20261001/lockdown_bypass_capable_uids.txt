@@ -1,0 +1,14 @@
+PermissionMonitor nPerm=2 (PERMISSION_SYSTEM) 的 user-0 UID —— 可通过显式绑定物理网络绕过 lockdown：
+    1000 system(1000) android, com.android.DeviceAsWebcam, com.android.dynsystem, com.android.inputdevices, com.android.keychain, com.android.localtransport +30
+    1001 phone(1001) com.android.cellbroadcastservice, com.android.mms.service, com.android.ons, com.android.phone, com.android.providers.telephony, com.android.stk +11
+    1073 networkstack com.android.networkstack, com.android.networkstack.tethering
+    2000 shell com.android.shell
+   10092  com.android.mtp, com.android.providers.downloads, com.android.providers.media, com.android.soundpicker
+   10107  com.android.carrierdefaultapp
+   10109  com.android.captiveportallogin
+   10116  com.qualcomm.qti.cne, vendor.qti.iwlan
+   10120  vendor.qti.data.txpwradmin
+   10134  com.google.android.gms
+   10221  com.miui.powerinsight
+   10229  com.qualcomm.location
+   10270  com.android.devicelockcontroller

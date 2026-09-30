@@ -1,0 +1,55 @@
+Totals since boot (00:26) by network type (bytes rx+tx): {'MOBILE': '0.02MB', 'WIFI': '5059.68MB', 'VPN(tun)': '12.96MB'}
+
+== WIFI: 23 UIDs
+  uid  10281 com.github.metacubex.clash.meta               rx  1269944.8KB tx 3664407.4KB
+  uid  10362 org.telegram.messenger                        rx     3480.4KB tx    1050.5KB
+  uid   1000 system(1000)                                  rx      414.7KB tx     670.6KB
+  uid  10134 com.google.android.gms                        rx      633.9KB tx     160.9KB
+  uid      0 root/kernel                                   rx        0.0KB tx      78.9KB
+  uid   6110 com.xiaomi.finddevice                         rx       17.1KB tx      48.0KB
+  uid  10363 com.whatsapp                                  rx       21.2KB tx      30.5KB
+  uid  10367 com.google.android.youtube                    rx        7.7KB tx      17.9KB
+  uid  10092 com.android.mtp,com.android.providers.downloa rx        4.8KB tx      13.8KB
+  uid  10127 com.miui.fliphome                             rx        4.1KB tx      12.6KB
+  uid  10126 com.android.vending                           rx        7.9KB tx       6.1KB
+  uid  10170 com.miui.guardprovider                        rx        3.4KB tx       9.2KB
+  uid   1002 bluetooth                                     rx        2.2KB tx       6.4KB
+  uid  10219 com.android.intentresolver                    rx        1.9KB tx       6.0KB
+  uid  10150 com.android.camera                            rx        2.4KB tx       4.2KB
+  uid   6101 com.android.thememanager                      rx        1.5KB tx       5.0KB
+  uid  10216 com.lbe.security.miui                         rx        1.8KB tx       4.3KB
+  uid  10176 com.xiaomi.account                            rx        1.4KB tx       3.5KB
+  uid  10096 com.android.htmlviewer                        rx        1.1KB tx       2.7KB
+  uid   6102 com.android.updater                           rx        0.4KB tx       1.6KB
+  uid   1073 networkstack                                  rx        0.6KB tx       0.7KB
+  uid   1021 gps                                           rx        0.3KB tx       0.3KB
+  uid  10359 com.android.chrome                            rx        0.1KB tx       0.1KB
+
+== MOBILE: 4 UIDs
+  uid  10134 com.google.android.gms                        rx        5.7KB tx       2.8KB
+  uid   1021 gps                                           rx        6.7KB tx       1.7KB
+  uid   1000 system(1000)                                  rx        3.4KB tx       0.0KB
+  uid      0 root/kernel                                   rx        0.0KB tx       3.1KB
+
+== VPN(tun): 21 UIDs
+  uid  10281 com.github.metacubex.clash.meta               rx     2195.4KB tx    4040.8KB
+  uid  10362 org.telegram.messenger                        rx     3480.5KB tx    1051.1KB
+  uid   1000 system(1000)                                  rx      359.0KB tx     887.9KB
+  uid  10134 com.google.android.gms                        rx      184.3KB tx     111.2KB
+  uid   6110 com.xiaomi.finddevice                         rx       20.0KB tx      65.0KB
+  uid  10363 com.whatsapp                                  rx       21.3KB tx      35.4KB
+  uid      0 root/kernel                                   rx        0.0KB tx      37.1KB
+  uid  10092 com.android.mtp,com.android.providers.downloa rx        6.4KB tx      20.7KB
+  uid  10127 com.miui.fliphome                             rx        5.5KB tx      17.9KB
+  uid  10170 com.miui.guardprovider                        rx        4.5KB tx      13.6KB
+  uid  10126 com.android.vending                           rx        7.9KB tx       6.2KB
+  uid  10150 com.android.camera                            rx        3.2KB tx      10.5KB
+  uid  10176 com.xiaomi.account                            rx        2.5KB tx       8.8KB
+  uid  10367 com.google.android.youtube                    rx        7.7KB tx       3.0KB
+  uid   6101 com.android.thememanager                      rx        2.5KB tx       8.1KB
+  uid  10219 com.android.intentresolver                    rx        2.3KB tx       7.5KB
+  uid   1002 bluetooth                                     rx        2.5KB tx       7.2KB
+  uid  10216 com.lbe.security.miui                         rx        1.8KB tx       4.7KB
+  uid  10096 com.android.htmlviewer                        rx        1.4KB tx       3.8KB
+  uid   6102 com.android.updater                           rx        0.8KB tx       3.0KB
+  uid  10359 com.android.chrome                            rx        0.1KB tx       0.1KB

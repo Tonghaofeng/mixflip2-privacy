@@ -1,0 +1,25 @@
+12 个仍安装的小米/国内包持有危险权限（* = 安装时授予/系统固定）
+  com.android.camera                         定位(精确) 读存储 定位(粗略) 图片 相机 视频 麦克风
+  com.android.contacts                       读通话记录 电话状态 拨号 写联系人 写通话记录 读联系人
+  com.android.htmlviewer                     读存储 电话状态
+  com.android.incallui                       读通话记录 电话状态
+  com.miui.extraphoto                        图片 视频
+  com.miui.fliphome                          读日历
+  com.miui.gallery                           读存储 图片 视频
+  com.miui.home                              读日历 读存储 电话状态 拨号 相机
+  com.miui.packageinstaller                  读存储 账号列表
+  com.miui.securityadd                       定位(精确) 收短信 读存储 定位(粗略) 电话状态 发短信 相机 账号列表 麦克风
+  com.qualcomm.location                      收短信 电话状态
+  com.xiaomi.account                         收短信
+
+共享 UID（权限挂在 SharedUser 上，* = 安装时/特权授予）
+  android.media                    uid=10092  读存储 账号列表
+  com.mobiletools.systemhelper.uid uid=10103  定位(精确) 读存储 定位(粗略) 电话状态
+  android.uid.finddevice           uid=6110   定位(精确) 定位(粗略) 电话状态 发短信 拨号 后台定位
+  android.uid.bluetooth            uid=1002   读短信 读通话记录 定位(精确) 本机号码 收短信 读存储 定位(粗略) 电话状态 发短信 写联系人 写通话记录 账号列表 读联系人 后台定位
+  android.uid.system               uid=1000   读短信 读通话记录 定位(精确) 本机号码 附近WiFi 读存储 定位(粗略) 电话状态 发短信 拨号 图片 相机 写通话记录 账号列表 活动识别 麦克风 读联系人 后台定位 蓝牙扫描
+  com.miui.cloudservice            uid=10167  读短信 读日历 读通话记录 读存储 电话状态 写联系人 写通话记录
+  android.uid.phone                uid=1001   读短信 读通话记录 定位(精确) 收短信 读存储 定位(粗略) 电话状态 发短信 拨号 写联系人 写通话记录 账号列表 麦克风 读联系人 后台定位 蓝牙扫描
+  android.uid.theme                uid=6101   
+  android.uid.updater              uid=6102   
+  android.uid.cameramind           uid=6120   

@@ -1,0 +1,4 @@
+battery
+ucsi-source-psy-soc:qcom,pmic_glink:qcom,ucsi1
+usb
+wireless

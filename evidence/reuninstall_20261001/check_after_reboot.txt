@@ -1,0 +1,31 @@
+check at 2026-10-01 07:23:21
+== 开机
+  ·  2026-10-01 07:22:53 / boot reason: reboot,shell,1790810580
+== 精简（debloat/removed.txt 与 user 0 已安装包的交集必须为空）
+  ✅ removed.txt 90 个全部未安装
+  ✅ disabled.txt 全部仍停用
+== 上报 / 探针开关
+  ✅ secure upload_log_pref=0
+  ✅ secure upload_debug_log_pref=0
+  ✅ secure operator_service_improve_plan=0
+  ✅ secure miui_miprotect_risk_app_download_warn=0
+  ✅ secure miui_miprotect_risk_app_remind_warn=0
+  ✅ global upload_apk_enable=0
+  ✅ global passport_ad_status=OFF
+  ✅ global captive_portal_mode=0
+== 常驻 VPN（Clash always-on + 锁定）
+  ✅ always_on_vpn_app=com.github.metacubex.clash.meta
+  ✅ always_on_vpn_lockdown=1
+  ✅ lockdown 规则: UIDs: 1-10280
+  ·  VPN 未连接（未解锁时正常；解锁后仍未连接则异常）
+== 地区 / 时区（tools/sysregion）
+  ✅ persist.sys.locale=zh-Hans-SG
+  ✅ persist.sys.timezone=Asia/Singapore
+  ✅ 自动时区=false
+
+结果：全部通过
+exit=0
+peer: xiaomi.account installed(user0)=0 quick_control_all_devices=0 smart_device_control=0
+Failed to write while dumping service window: Broken pipe
+unlocked? isKeyguardShowing=true user_unlocked=
+current=zh-Hans-SG

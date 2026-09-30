@@ -1,0 +1,67 @@
+window 10-01 06:58:54.140 .. 10-01 07:02:45.411; connection lines 297; dial errors 3
+verdicts: {'REJECT': 266, 'DIRECT': 1, 'wg-home': 14, 'PROXY[wg-home]': 16}
+
+== REJECTED (266) by process/dest/rule
+    40  com.xiaomi.account                   api.account.xiaomi.com                       DomainKeyword(xiaomi)
+    32  com.xiaomi.account                   tracking.miui.com                            DomainKeyword(miui)
+    32  com.android.systemui                 tracking.miui.com                            ProcessName(com.android.systemui)
+    16  com.android.systemui                 cn.register.xmpush.xiaomi.com                ProcessName(com.android.systemui)
+    16  com.android.thememanager             tracking.miui.com                            ProcessName(com.android.thememanager)
+    12  com.xiaomi.account                   sdkconfig.xiaomi.com                         DomainKeyword(xiaomi)
+    10  com.android.htmlviewer               port.sec.miui.com                            ProcessName(com.android.htmlviewer)
+     8  com.android.thememanager             sdkconfig.xiaomi.com                         ProcessName(com.android.thememanager)
+     8  com.xiaomi.finddevice                tracking.miui.com                            ProcessName(com.xiaomi.finddevice)
+     8  com.android.updater                  tracking.miui.com                            DomainKeyword(miui)
+     8  com.miui.guardprovider               tracking.miui.com                            ProcessName(com.miui.guardprovider)
+     8  android.media                        tracking.miui.com                            DomainKeyword(miui)
+     7  com.android.systemui                 111.13.141.211                               ProcessName(com.android.systemui)
+     6  com.android.systemui                 sdkconfig.xiaomi.com                         ProcessName(com.android.systemui)
+     6  com.xiaomi.account                   statusapi.micloud.xiaomi.net                 DomainKeyword(xiaomi)
+     4  com.android.systemui                 api.sec.miui.com                             ProcessName(com.android.systemui)
+     4  com.miui.guardprovider               rcpc-sdk-access.m.qq.com                     ProcessName(com.miui.guardprovider)
+     4  com.xiaomi.account                   api.developer.xiaomi.com                     DomainKeyword(xiaomi)
+     4  com.fido.asm                         api.account.xiaomi.com                       ProcessName(com.fido.asm)
+     4  com.android.thememanager             api.zhuti.xiaomi.com                         ProcessName(com.android.thememanager)
+     4  com.android.systemui                 resolver.msg.xiaomi.net                      ProcessName(com.android.systemui)
+     2  com.android.systemui                 sdkconfig.ad.xiaomi.com                      ProcessName(com.android.systemui)
+     2  com.xiaomi.finddevice                sdkconfig.ad.xiaomi.com                      ProcessName(com.xiaomi.finddevice)
+     2  com.miui.guardprovider               sdkconfig.xiaomi.com                         ProcessName(com.miui.guardprovider)
+     2  android.media                        sdkconfig.ad.xiaomi.com                      DomainKeyword(xiaomi)
+     2  com.miui.guardprovider               rcpc-sdk-access-v6.m.qq.com                  ProcessName(com.miui.guardprovider)
+     2  com.android.camera                   mcc.inf.miui.com                             ProcessName(com.android.camera)
+     2  com.android.htmlviewer               qsb.browser.miui.com                         ProcessName(com.android.htmlviewer)
+     2  com.android.htmlviewer               mcc.inf.miui.com                             ProcessName(com.android.htmlviewer)
+     2  com.android.htmlviewer               cn.register.xmpush.xiaomi.com                ProcessName(com.android.htmlviewer)
+     2  com.android.systemui                 ccc.sys.miui.com                             ProcessName(com.android.systemui)
+     2  com.android.systemui                 111.13.142.153                               ProcessName(com.android.systemui)
+     2  com.android.systemui                 111.202.1.252                                ProcessName(com.android.systemui)
+     1  com.android.thememanager             ai.service.platform.xiaomi.com               ProcessName(com.android.thememanager)
+
+== ALLOWED (31) by process/dest/outbound
+    14  ?                                    198.18.0.2                                   wg-home          None(None)
+     5  com.android.chrome                   accounts.google.com                          PROXY[wg-home]   Match(None)
+     2  ?                                    1.1.1.1                                      PROXY[wg-home]   None(None)
+     2  com.google.android.gms               mtalk.google.com                             PROXY[wg-home]   Match(None)
+     2  com.android.chrome                   www.google.com                               PROXY[wg-home]   Match(None)
+     1  ?                                    192.168.50.2                                 DIRECT           IPCIDR(192.168.0.0/16)
+     1  com.android.vending                  prod-lt-playstoregatewayadapter-pa.googleapi PROXY[wg-home]   Match(None)
+     1  com.android.chrome                   clients4.google.com                          PROXY[wg-home]   Match(None)
+     1  com.android.chrome                   update.googleapis.com                        PROXY[wg-home]   Match(None)
+     1  com.android.chrome                   optimizationguide-pa.googleapis.com          PROXY[wg-home]   Match(None)
+     1  com.google.android.gms               voilatile-pa.googleapis.com                  PROXY[wg-home]   Match(None)
+
+== SUSPICIOUS NOT REJECTED (accept.py criteria): 1
+     1  ?                                    192.168.50.2:18765                           -> DIRECT  [IPCIDR(192.168.0.0/16)]
+
+== bare-IP destinations allowed (for manual review): 17
+    14  ?                                    198.18.0.2:53                wg-home
+     2  ?                                    1.1.1.1:443                  PROXY[wg-home]
+     1  ?                                    192.168.50.2:18765           DIRECT
+
+== DIRECT (bypass tunnel) 1
+   ('10-01 07:00:27.081', 'TCP', '?', '192.168.50.2:18765', 'IPCIDR(192.168.0.0/16)', 'DIRECT')
+
+== dial errors 3 (sample)
+   10-01 07:01:24.412 TCP 127.0.0.1:35350 -> play.googleapis.com:443 dns resolve failed: all DNS requests failed, first error: i/o timeout
+   10-01 07:01:29.415 TCP 172.19.0.1:57194 -> play.googleapis.com:443 dns resolve failed: all DNS requests failed, first error: context deadline excee
+   10-01 07:01:29.447 TCP 172.19.0.1:57194 -> play.googleapis.com:443 dns resolve failed: context deadline exceeded

@@ -1,0 +1,17 @@
+== 2026-10-01 06:57:40 CST
+prop persist.sys.locale=zh-CN
+prop persist.sys.country=
+prop persist.sys.timezone=Asia/Shanghai
+prop ro.product.locale=zh-CN
+prop ro.miui.region=CN
+prop ro.miui.build.region=cn
+prop ro.boot.ptcountrycode=cn
+prop gsm.sim.operator.iso-country=,cn
+prop gsm.operator.iso-country=,cn
+system system_locales=zh-CN
+system resident_timezone=Asia/Shanghai
+global auto_time_zone=1
+global auto_time=1
+tzd auto=true
+tzd geo=false
+TimeZoneState{mZoneId=Asia/Shanghai, mUserShouldConfirmId=false}

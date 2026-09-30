@@ -15,6 +15,10 @@ for p in $(cat removed.txt); do adb shell -n pm uninstall --user 0 $p; done
 for p in $(cat disabled.txt); do adb shell -n pm disable-user --user 0 $p; done
 ./replace_with_google.sh          # 先在 Play 装好 Google 相册/Keep/计算器/时钟/日历/Files
 ```
+**★卸载/改设置后至少等 3 分钟再重启，或用 `adb shell svc power reboot`**：PMS 把「user 0 未安装」写进 package-restrictions.xml 是延迟的，
+`adb reboot` 走 init 直接重启、不经框架关机落盘——2026-10-01 就因卸载后几秒即 `adb reboot`，18 个包重启后原样回来
+（证据：回来的包 user-0 `firstInstallTime` 仍是出厂 1970，没有任何重装记录）。重启后跑 `tools/postboot_check.sh` 复核。
+
 **不能删的**：com.android.contacts + incallui（系统兜底拨号器 = 紧急呼叫）、securitycenter、lbe、xiaomi.location.fused、
 **guardprovider**（MIUI 侧载/adb 安装校验依赖它，删了报 `INSTALL_FAILED_USER_RESTRICTED: Invalid apk`）。恢复：`./restore.sh [包名]`。
 
@@ -50,6 +54,7 @@ adb reboot                                               # 必须重启：锁定
 
 ## 5. 验收（只认底层证据）
 ```bash
+./tools/postboot_check.sh               # 每次重启后：精简无回退、上报开关、常驻 VPN、地区时区；任一 FAIL 退出码 1（未解锁也能跑）
 cd evidence
 python3 ../tools/accept.py 300          # 手机侧「小米/国内未拦截」必须 0；Surge 侧只允许 WG/NTP/DoH 与 Clash 自身的 DIRECT 健康检查
 adb shell dumpsys connectivity | grep -A3 "Lockdown filtering rules"
@@ -57,3 +62,11 @@ adb shell dumpsys network_stack | grep -c " - PROBE_"   # 重连 Wi-Fi 前后不
 adb shell svc wifi disable   # 出门模拟：看 Mac mini 上 sudo wg show all 的 endpoint 变运营商 IP、transfer 在涨；完事 svc wifi enable
 ```
 取证（任意时刻看某 UID 连了哪些域名，需手机在家 Wi-Fi）：`python3 tools/uid_domain_audit.py 600`。
+
+## 6. 系统地区 → 新加坡（可选，2026-10-01）
+```bash
+cd tools/sysregion && ./build.sh              # 只在改了 SysLocale.java 时需要；syslocale.dex 已入库
+./set_region.sh SG Asia/Singapore             # 地区 zh-CN → zh-Hans-SG（界面仍简体中文），时区→新加坡并关自动时区
+./set_region.sh --revert                      # 回滚
+```
+原理与各层「归属地」（哪些改得了、哪些是只读 ro 属性/SIM 物理事实）见 `tools/sysregion/README.md`。

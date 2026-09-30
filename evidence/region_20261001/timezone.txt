@@ -1,0 +1,13 @@
+before 2026-10-01 06:58:02 CST +0800
+java.lang.SecurityException: suggest manual time and time zone: uid 2000 does not have android.permission.SUGGEST_MANUAL_TIME_AND_ZONE.
+tzd auto=false
+TimeZoneState{mZoneId=Asia/Shanghai, mUserShouldConfirmId=false}
+persist.sys.timezone=Asia/Shanghai
+global auto_time_zone=0
+global auto_time=1
+after  2026-10-01 06:58:04 CST +0800
+rc=0
+persist.sys.timezone=Asia/Singapore
+TimeZoneState{mZoneId=Asia/Singapore, mUserShouldConfirmId=false}
+tzd auto=false global auto_time_zone=0 auto_time=1
+phone 2026-10-01 06:58:12 +08 +0800

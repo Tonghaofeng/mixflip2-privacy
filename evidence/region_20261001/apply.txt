@@ -1,0 +1,7 @@
+current=zh-CN
+new=zh-Hans-SG
+persist.sys.locale=zh-Hans-SG
+system_locales=zh-Hans-SG
+Unknown command: configuration
+Bad activity command, or no activities match: configuration
+current=zh-Hans-SG
