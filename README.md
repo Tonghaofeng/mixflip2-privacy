@@ -17,6 +17,7 @@
   ├─ 系统 settings：体验计划/诊断上传/APK 云查杀/联网检测改 gstatic.cn …（持久）
   └─ Clash Meta for Android（mihomo）= 常驻 VPN，always-on + 锁定（非 VPN 连接一律禁止，含系统身份）
         策略 = tools/gen_clash_config.py 生成的 YAML：
+        ⓪ Mac mini 本机 192.168.50.2 → MACMINI 组：在家直连、出门自动走 WG（其余 192.168.x 直连）
         ① 整个身份禁网：PROCESS-NAME（+UID 冗余）— 查找设备/主题/权限管理/相机/安全中心所在的 system(1000)…
         ② 域名族 REJECT：xiaomi/miui/mi.com/xmpush/迅雷 sandai/高德/百度&腾讯地图定位/qualcomm.cn/联通自注册…
         ③ 兜底：直连国内裸 IP（HTTPDNS/写死 IP）一律 REJECT —— 不依赖进程识别
@@ -65,6 +66,7 @@
 4. 服务端回包走默认路由进 Surge，源端口被改（55616≠51820）→ 蜂窝不通 → endpoint 主机路由直走路由器（2 秒跟随）
 5. MIUI 的 adb/侧载安装依赖 `guardprovider`（删了就 `INSTALL_FAILED_USER_RESTRICTED: Invalid apk`）→ 保留、只断网
 6. `adb reverse` 在这台机器上 adb 服务重启后失效 → 改由 Mac mini 局域网分发点下发策略
+7. 锁定 VPN 下 CMFA「绕过私有网络」开着 → 私有网段不进 VPN、被系统拒绝，手机打不开任何局域网页面（Clash 自己不受影响，易误判）→ 关掉该开关；出门访问 Mac mini 靠 MACMINI 组（10-01）
 
 **验收** → 见 `evidence/accept_*.log`（结论写在文末「验收结果」）
 

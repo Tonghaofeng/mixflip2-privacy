@@ -40,6 +40,8 @@ cd tools && ./publish_config.sh                          # 生成策略 + 推到
 T=$(ssh macserver cat ~/phone-config/.token)
 adb shell am start -a android.intent.action.VIEW -d "clash://install-config?url=http%3A%2F%2F192.168.50.2%3A18765%2F$T%2Fmixflip2.yaml\&name=MixFlip2"
 #   手机上点「保存」→ 选中 MixFlip2 → 启动 → VPN 授权点「确定」
+#   Clash「设置 → 网络」**关闭「绕过私有网络」**：锁定模式下开着它，私有网段不进 VPN、被系统当成非 VPN 连接拒绝，
+#   浏览器等任何应用都打不开局域网（报「你被禁止访问互联网」）。这是应用设置，不在下发的 yaml 里（2026-10-01 实测）
 adb shell settings put secure always_on_vpn_app com.github.metacubex.clash.meta
 adb shell settings put secure always_on_vpn_lockdown 1
 adb reboot                                               # 必须重启：锁定才生效，且清掉 VPN 之前的旧连接
