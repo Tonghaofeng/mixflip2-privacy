@@ -101,9 +101,14 @@ def build():
     L += ["proxies:", f"  - {{name: wg-home, server: {HOME_WAN}, {wg}}}", "",
           "proxy-groups:",
           "  - {name: HOME, type: fallback, proxies: [wg-home], url: 'http://connectivitycheck.gstatic.com/generate_204', interval: 120, timeout: 3000}",
-          "  - {name: PROXY, type: fallback, proxies: [HOME, DIRECT], url: 'http://connectivitycheck.gstatic.com/generate_204', interval: 120, timeout: 3000}", "",
+          "  - {name: PROXY, type: fallback, proxies: [HOME, DIRECT], url: 'http://connectivitycheck.gstatic.com/generate_204', interval: 120, timeout: 3000}",
+          # Mac mini 本机：在家直连能通就直连；出门（蜂窝）直连不通 → 自动改走 WG（隧道进来的包目的地是 192.168.50.2，本机照收）。
+          # 健康检查用点检面板 /health（200、不记日志）。10-01 加：否则出门打不开 192.168.50.2 上的点检面板等服务，也拉不到本配置的更新。
+          "  # Mac mini 本机（192.168.50.2）：在家局域网直连能通就直连，出门直连不通自动改走 WG 隧道（隧道进来的包目的地是 192.168.50.2 本机照收）",
+          f"  - {{name: MACMINI, type: fallback, proxies: [DIRECT, HOME], url: 'http://{HOME_LAN}:8899/health', interval: 60, lazy: false, timeout: 3000}}", "",
           "rules:",
           "  # 0 局域网 / NTP",
+          f"  - IP-CIDR,{HOME_LAN}/32,MACMINI,no-resolve",
           "  - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve", "  - IP-CIDR,10.77.0.0/24,HOME,no-resolve",
           "  - DST-PORT,123,DIRECT",
           "  # 1 系统更新（安全补丁）放行"] + [f"  - {r},PROXY" for r in OTA_ALLOW]
