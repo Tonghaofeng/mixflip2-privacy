@@ -76,7 +76,6 @@ com.miui.cit
 com.fido.asm
 com.xiaomi.macro
 com.miui.accessibility
-com.android.htmlviewer
 com.xiaomi.finddevice
 com.xiaomi.aon
 com.xiaomi.mirror
@@ -88,3 +87,4 @@ com.miui.touchassistant
 com.miui.qr
 com.miui.backup
 com.miui.audiomonitor
+com.xiaomi.account

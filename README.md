@@ -35,6 +35,7 @@
 | 路径 | 内容 |
 |---|---|
 | `debloat/removed.txt` `disabled.txt` | 已 `pm uninstall --user 0` / `disable-user` 的包（逐条有证据理由，见下） |
+| `debloat/KEEP.txt` | **禁删清单**（htmlviewer=SystemUI 开机必需的 CloudSettings provider、系统拨号、guardprovider…），自检逐个核对在装 |
 | `debloat/restore.sh` | 恢复：`./restore.sh` 全部，`./restore.sh 包名…` 单个 |
 | `debloat/replace_with_google.sh` | 小米应用 → Google 原版替换（先确认 Google 版已装再卸） |
 | `debloat/bpf_block.sh` | 内核 BPF（OEM_DENY_3）按包禁网 —— **重启即失、UID<10000 内核豁免**，仅留作临时手段 |
@@ -42,7 +43,7 @@
 | `tools/publish_config.sh` | 生成并推到 Mac mini 分发点；手机在家点 Clash「更新」 |
 | `tools/uid_domain_audit.py` | 取证：手机 /proc/net「端口→UID」× Surge「来源端口→域名/字节」→ 每个 UID 连了哪些域名 |
 | `tools/accept.py` | 验收：Clash 连接日志里「小米/国内/裸 IP 却未拦截」+ Surge 侧绕过 VPN 的直连 |
-| `tools/postboot_check.sh` | **每次重启后的自检**（只读，未解锁也能跑）：removed.txt 与已装包交集为空、停用包仍停用、上报开关、常驻 VPN、地区时区；任一 FAIL 退出码 1 |
+| `tools/postboot_check.sh` | **每次重启后的自检**（只读，未解锁也能跑）：removed.txt 与已装包交集为空、停用包仍停用、禁删包在装、开机以来系统崩溃 / RescueParty / SystemUI 稳定（`WATCH=90`）、上报开关、常驻 VPN、地区时区；任一 FAIL 退出码 1 |
 | `tools/sysregion/` | 用 adb 把「系统地区」改成新加坡（zh-CN → zh-Hans-SG）+ 时区；原理与各层归属地见其 README |
 | `tools/ui-automation/` | 仅在无接口时用的 uiautomator 小工具（Play 安装、Clash 保存/更新） |
 | `evidence/` | 基线（精简后仍在上报的 UID→域名）、验收日志、证书/权限普查 |
@@ -69,6 +70,7 @@
 5. MIUI 的 adb/侧载安装依赖 `guardprovider`（删了就 `INSTALL_FAILED_USER_RESTRICTED: Invalid apk`）→ 保留、只断网
 6. `adb reverse` 在这台机器上 adb 服务重启后失效 → 改由 Mac mini 局域网分发点下发策略
 7. 锁定 VPN 下 CMFA「绕过私有网络」开着 → 私有网段不进 VPN、被系统拒绝，手机打不开任何局域网页面（Clash 自己不受影响，易误判）→ 关掉该开关；出门访问 Mac mini 靠 MACMINI 组（10-01）
+8. **禁删 `com.android.htmlviewer`**：它承载 SystemUI 开机必需的 CloudSettings provider；10-01 删掉后 SystemUI/锁屏崩溃循环 → RescueParty 进 recovery 提示清除数据（用户选重试未清机）→ 已装回、列入 `debloat/KEEP.txt`；卸载后几秒就 `adb reboot` 会让卸载不落盘（10-01 凌晨 18 个包因此原样回来）→ 卸完等 3 分钟，重启后跑 `WATCH=90 tools/postboot_check.sh`（含崩溃/SystemUI 稳定性）
 
 **验收** → 见 `evidence/accept_*.log`（结论写在文末「验收结果」）
 

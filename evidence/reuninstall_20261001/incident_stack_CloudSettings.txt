@@ -1,0 +1,16 @@
+Caused by: java.lang.SecurityException: Failed to find provider com.android.settings.cloud.CloudSettings for user 0; expected to find a valid ContentProvider for this authority
+	at android.os.Parcel.createExceptionOrNull(Parcel.java:3361)
+	at android.os.Parcel.createException(Parcel.java:3345)
+	at android.os.Parcel.readException(Parcel.java:3328)
+	at android.os.Parcel.readException(Parcel.java:3270)
+	at android.content.IContentService$Stub$Proxy.registerContentObserver(IContentService.java:1155)
+	at android.content.ContentResolver.registerContentObserver(ContentResolver.java:2745)
+	at android.content.ContentResolver.registerContentObserver(ContentResolver.java:2693)
+	at com.miui.systemui.CloudDataManager.<init>(go/retraceme 517ab4bb9ddba253d1b43e57286e9c4432b2e131392282f9817862fc72ce5979:32)
+	at com.android.systemui.dagger.DaggerReferenceGlobalRootComponent$ReferenceGlobalRootComponentImpl$SwitchingProvider.get0(go/retraceme 517ab4bb9ddba253d1b43e57286e9c4432b2e131392282f9817862fc72ce5979:161)
+	at com.android.systemui.dagger.DaggerReferenceGlobalRootComponent$ReferenceGlobalRootComponentImpl$SwitchingProvider.get(go/retraceme 517ab4bb9ddba253d1b43e57286e9c4432b2e131392282f9817862fc72ce5979:23)
+	at dagger.internal.DoubleCheck.get(go/retraceme 517ab4bb9ddba253d1b43e57286e9c4432b2e131392282f9817862fc72ce5979:14)
+	at com.android.systemui.dagger.DaggerReferenceGlobalRootComponent$ReferenceSysUIComponentImpl$SwitchingProvider.get4(go/retraceme 517ab4bb9ddba253d1b43e57286e9c4432b2e131392282f9817862fc72ce5979:1621)
+	at com.android.systemui.dagger.DaggerReferenceGlobalRootComponent$ReferenceSysUIComponentImpl$SwitchingProvider.get(go/retraceme 517ab4bb9ddba253d1b43e57286e9c4432b2e131392282f9817862fc72ce5979:106)
+	at dagger.internal.DoubleCheck.get(go/retraceme 517ab4bb9ddba253d1b43e57286e9c4432b2e131392282f9817862fc72ce5979:14)
+--

@@ -1,13 +1,15 @@
 #!/bin/bash
 # 开机后自检（只读）：精简 / 上报开关 / 常驻 VPN / 地区时区 有没有被悄悄改回。任一 FAIL → 退出码 1。
 # 手机开机后、解锁前即可跑（包状态与 settings 在 DE 存储）；VPN 是否已连上要解锁后才看得到。
-# 背景：2026-10-01 发现 18 个包重启后回来（卸载后几秒就 adb reboot，用户态没落盘）、passport_ad_status 被小米账号改回 ON。
+# 背景：2026-10-01 发现 18 个包重启后回来（卸载后几秒就 adb reboot，用户态没落盘）、passport_ad_status 被小米账号改回 ON；
+#       同日重做卸载后本脚本初版报「全部通过」，而 SystemUI 正因缺 htmlviewer 崩溃循环（初版不看崩溃）→ 加了禁删包与稳定性两节。
 set -uo pipefail
 cd "$(dirname "$0")/.."
 S=${ADB_SERIAL:-7f37d4d8}
 A="adb -s $S"
 EXPECT_LOCALE=${EXPECT_LOCALE:-zh-Hans-SG}
 EXPECT_TZ=${EXPECT_TZ:-Asia/Singapore}
+WATCH=${WATCH:-30}   # 观察 SystemUI 是否崩溃重启的秒数（开机后立刻跑时建议 ≥60：07:23 那次崩溃循环在开机 15 秒后才开始）
 fail=0
 ok()  { printf '  ✅ %s\n' "$1"; }
 bad() { printf '  ❌ %s\n' "$1"; fail=1; }
@@ -24,7 +26,27 @@ if [ -z "$back" ]; then ok "removed.txt $(wc -l < debloat/removed.txt | tr -d ' 
 dis=$($A shell pm list packages -d | sed 's/^package://' | tr -d '\r')
 notdis=$(grep -vxF -f <(echo "$dis") debloat/disabled.txt || true)
 if [ -z "$notdis" ]; then ok "disabled.txt 全部仍停用"; else bad "不再停用: $(echo $notdis)"; fi
+missing=""
+while read -r k _; do
+  case "$k" in ''|\#*) continue;; esac
+  grep -qx "$k" "$tmp" || missing="$missing $k"
+done < debloat/KEEP.txt
+if [ -z "$missing" ]; then ok "KEEP.txt 禁删包全部在装"; else bad "禁删包不在:${missing}（htmlviewer 缺失会让 SystemUI 崩溃循环 → cmd package install-existing --user 0 <包>）"; fi
 rm -f "$tmp"
+
+echo "== 稳定性（开机以来崩溃 / RescueParty；观察 ${WATCH}s）"
+boot=$($A shell uptime -s | tr -d '\r')
+hist=$($A shell getprop persist.sys.boot.reason.history | tr -d '\r' | head -3 | sed -E 's/,[0-9]+$//')
+cur=$(echo "$hist" | head -1); older=$(echo "$hist" | tail -n +2 | tr '\n' ' ')
+case "$cur" in *rescueparty*|*recovery*) bad "本次开机原因是 RescueParty/recovery: ${cur}";; *) ok "本次开机原因: ${cur}";; esac
+case "$older" in *rescueparty*|*recovery*) inf "更早的开机里有 RescueParty/recovery: ${older}（历史，核对是否已处理）";; esac
+pid0=$($A shell pidof com.android.systemui | tr -d '\r')
+[ "$WATCH" -gt 0 ] && sleep "$WATCH"
+pid1=$($A shell pidof com.android.systemui | tr -d '\r')
+crashes=$($A shell dumpsys dropbox 2>/dev/null | tr -d '\r' \
+  | awk -v b="$boot" '($1" "$2)>=b && $3 ~ /^(system_app_crash|system_server_crash|system_app_native_crash|SYSTEM_TOMBSTONE)$/ {print $3}' | sort | uniq -c | tr '\n' ' ')
+[ -z "$crashes" ] && ok "开机（${boot}）以来无系统级崩溃" || bad "开机以来系统级崩溃: ${crashes}（dumpsys dropbox --print system_app_crash 看堆栈）"
+[ -n "$pid0" ] && [ "$pid0" = "$pid1" ] && ok "SystemUI 进程稳定（pid ${pid1}）" || bad "SystemUI 进程变化/缺失: ${pid0:-无} → ${pid1:-无}"
 
 echo "== 上报 / 探针开关"
 while read -r ns key want; do

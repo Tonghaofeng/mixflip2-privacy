@@ -1,0 +1,13 @@
+# 禁删清单：这些包删了会软砖 / 崩溃循环 / 失去紧急呼叫或安装能力。tools/postboot_check.sh 逐个核对「必须在装」。
+# 格式：包名<空格># 理由。新增精简候选前先对照本表；★凡是提供 ContentProvider 的包，删前先查常驻进程有没有对它 registerContentObserver。
+com.android.htmlviewer # ★★2026-10-01 事故：它承载 CloudSettings provider（com.android.settings.cloud.CloudSettings），SystemUI 的 CloudDataManager 与 KeyguardService 开机即 registerContentObserver；Android 16 找不到 authority 直接抛 SecurityException → SystemUI 崩溃循环 → RescueParty 进 recovery 提示清除数据
+com.android.contacts # 系统兜底拨号器（telecom system dialer），紧急呼叫
+com.android.incallui # 通话界面
+com.miui.guardprovider # MIUI 侧载/adb 安装校验依赖，删了 INSTALL_FAILED_USER_RESTRICTED（只断网）
+com.miui.securitycenter # 安全中心 / 权限管理宿主（UID 1000，删不掉也不该删；只断网）
+com.lbe.security.miui # 权限管理后端
+com.xiaomi.location.fused # 融合定位 provider，删了定位坏
+com.miui.powerkeeper # 电量与性能调度
+com.miui.home # 桌面
+com.android.systemui # 系统界面
+com.github.metacubex.clash.meta # 常驻 VPN（always-on + 锁定），删了 = 全机断网

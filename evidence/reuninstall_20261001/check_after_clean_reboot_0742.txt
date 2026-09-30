@@ -1,0 +1,31 @@
+== 开机
+  ·  2026-10-01 07:42:20 / boot reason: reboot,2000,25,1790811747
+== 精简（debloat/removed.txt 与 user 0 已安装包的交集必须为空）
+  ✅ removed.txt 90 个全部未安装
+  ✅ disabled.txt 全部仍停用
+  ✅ KEEP.txt 禁删包全部在装
+== 稳定性（开机以来崩溃 / RescueParty；观察 5s）
+  ✅ 本次开机原因: reboot,2000,25
+  ·  更早的开机里有 RescueParty/recovery: recovery reboot,rescueparty （历史，核对是否已处理）
+  ✅ 开机（2026-10-01 07:42:21）以来无系统级崩溃
+  ✅ SystemUI 进程稳定（pid 5913）
+== 上报 / 探针开关
+  ✅ secure upload_log_pref=0
+  ✅ secure upload_debug_log_pref=0
+  ✅ secure operator_service_improve_plan=0
+  ✅ secure miui_miprotect_risk_app_download_warn=0
+  ✅ secure miui_miprotect_risk_app_remind_warn=0
+  ✅ global upload_apk_enable=0
+  ✅ global passport_ad_status=OFF
+  ✅ global captive_portal_mode=0
+== 常驻 VPN（Clash always-on + 锁定）
+  ✅ always_on_vpn_app=com.github.metacubex.clash.meta
+  ✅ always_on_vpn_lockdown=1
+  ✅ lockdown 规则: UIDs: 1-10280
+  ✅ tun0 VPN 已连接
+== 地区 / 时区（tools/sysregion）
+  ✅ persist.sys.locale=zh-Hans-SG
+  ✅ persist.sys.timezone=Asia/Singapore
+  ✅ 自动时区=false
+
+结果：全部通过

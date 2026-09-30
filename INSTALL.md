@@ -15,6 +15,9 @@ for p in $(cat removed.txt); do adb shell -n pm uninstall --user 0 $p; done
 for p in $(cat disabled.txt); do adb shell -n pm disable-user --user 0 $p; done
 ./replace_with_google.sh          # 先在 Play 装好 Google 相册/Keep/计算器/时钟/日历/Files
 ```
+**★★禁删 `com.android.htmlviewer`（及 `debloat/KEEP.txt` 全部）**：它承载 SystemUI 开机必需的 CloudSettings provider，删了 SystemUI/锁屏崩溃循环 →
+RescueParty 进 recovery 提示「清除数据」（2026-10-01 真实发生，用户选重试才没清机）。凡提供 ContentProvider 的包，删前先查常驻进程是否 registerContentObserver 它。
+
 **★卸载/改设置后至少等 3 分钟再重启，或用 `adb shell svc power reboot`**：PMS 把「user 0 未安装」写进 package-restrictions.xml 是延迟的，
 `adb reboot` 走 init 直接重启、不经框架关机落盘——2026-10-01 就因卸载后几秒即 `adb reboot`，18 个包重启后原样回来
 （证据：回来的包 user-0 `firstInstallTime` 仍是出厂 1970，没有任何重装记录）。重启后跑 `tools/postboot_check.sh` 复核。
@@ -54,7 +57,7 @@ adb reboot                                               # 必须重启：锁定
 
 ## 5. 验收（只认底层证据）
 ```bash
-./tools/postboot_check.sh               # 每次重启后：精简无回退、上报开关、常驻 VPN、地区时区；任一 FAIL 退出码 1（未解锁也能跑）
+WATCH=90 ./tools/postboot_check.sh      # 每次重启后：精简无回退、禁删包在装、崩溃/RescueParty/SystemUI 稳定、上报开关、常驻 VPN、地区时区；任一 FAIL 退出码 1（未解锁也能跑）
 cd evidence
 python3 ../tools/accept.py 300          # 手机侧「小米/国内未拦截」必须 0；Surge 侧只允许 WG/NTP/DoH 与 Clash 自身的 DIRECT 健康检查
 adb shell dumpsys connectivity | grep -A3 "Lockdown filtering rules"
