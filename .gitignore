@@ -1,0 +1,5 @@
+# 含 WireGuard 私钥与 API secret 的策略产物：只在本机与 Mac mini 分发点，不入库
+clash/
+# 安装包走 Release 附件
+*.apk
+.DS_Store

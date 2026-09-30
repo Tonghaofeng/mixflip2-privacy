@@ -1,0 +1,67 @@
+备份
+打印处理服务
+电话
+电话和短信存储
+工作设置
+广告隐私权
+截屏
+开关控制
+媒体查看器
+权限管理服务
+日历存储
+设备诊断
+通讯录与拨号
+外屏桌面
+文件管理
+系统打印服务
+系统服务组件
+系统更新
+系统桌面
+相机
+相机标定
+小米闻声
+小米账号
+音质音效
+应用包管理组件
+运营商通知
+照片和视频
+终端
+主题壁纸
+自动连招
+Android 无障碍套件
+Android 系统
+Android Services Library
+Android System WebView
+Bluetooth Extension
+Bokeh
+CameraMind
+com.android.federatedcompute.services
+com.android.imsserviceentitlement
+com.android.ondevicepersonalization.services.OnDev
+com.android.providers.media
+com.android.sdksandbox
+com.qualcomm.qti.qms.service.connectionsecurity
+ConfigUpdater
+EmergencyLocServices
+Google 服务框架
+Google Play 服务
+Google Play 商店
+HTML 查看器
+Intent Filter Verification Service
+IntentResolver
+Interactive Shell
+LTE Broadcast Manager
+MI FIDO
+OsuLogin
+PacProcessor
+powerinsight
+Print Service Recommendation Service
+ProxyHandler
+RemoteProvisioner
+RideMode Recording list
+ST Extension Service
+System SDK
+TxPwrAdmin
+vendor.qti.bluetooth.xpan.XpanApplication
+vendor.qti.iwlan
+Wfd Service

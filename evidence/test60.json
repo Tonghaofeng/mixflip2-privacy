@@ -1,0 +1,1113 @@
+[
+ {
+  "uid": null,
+  "pkg": null,
+  "host": "111.13.141.211",
+  "out": 594,
+  "in": 197,
+  "policy": "DIRECT",
+  "rule": "RULE-SET china_ip.conf",
+  "rejected": false,
+  "start": 1790774109.1286678,
+  "sport": 36802,
+  "method": "TCP"
+ },
+ {
+  "uid": 1000,
+  "pkg": [
+   "com.miui.powerkeeper",
+   "com.android.keychain",
+   "com.android.DeviceAsWebcam",
+   "com.miui.touchassistant",
+   "com.xiaomi.joyose",
+   "com.miui.audiomonitor",
+   "com.miui.aod",
+   "com.miui.uireporter",
+   "com.miui.contentcatcher",
+   "com.xiaomi.touchservice",
+   "com.miui.notification",
+   "com.xiaomi.location.fused",
+   "miui.systemui.plugin",
+   "com.miui.bugreport",
+   "com.xiaomi.otrpbroker",
+   "com.miui.securitycenter",
+   "com.miui.qr",
+   "com.qualcomm.qti.services.systemhelper",
+   "com.android.location.fused",
+   "vendor.qti.frameworks.utils",
+   "com.miui.wmsvc",
+   "com.xiaomi.aiasst.vision",
+   "com.xiaomi.mtb",
+   "com.android.server.telecom",
+   "com.miui.daemon",
+   "com.miui.securitycore",
+   "com.xiaomi.trustservice",
+   "com.android.inputdevices",
+   "com.xiaomi.gnss.polaris",
+   "com.miui.thirdappassistant",
+   "com.xiaomi.mi_connect_service",
+   "com.wapi.wapicertmanage",
+   "com.qualcomm.qti.xrvd.service",
+   "com.android.systemui",
+   "com.bsp.catchlog",
+   "com.android.localtransport",
+   "android",
+   "com.xiaomi.digitalkey",
+   "com.android.settings",
+   "com.xiaomi.aiasst.service",
+   "com.miui.cit",
+   "com.miui.misightservice",
+   "com.xiaomi.barrage",
+   "com.xiaomi.aon",
+   "com.android.providers.settings",
+   "com.xiaomi.mirror",
+   "com.xiaomi.misettings",
+   "com.android.provision",
+   "com.android.dynsystem"
+  ],
+  "host": "111.13.141.211",
+  "out": 546,
+  "in": 149,
+  "policy": "DIRECT",
+  "rule": "RULE-SET china_ip.conf",
+  "rejected": false,
+  "start": 1790776160.9570398,
+  "sport": 41154,
+  "method": "TCP"
+ },
+ {
+  "uid": null,
+  "pkg": null,
+  "host": "digitalassetlinks.googleapis.com",
+  "out": 73779,
+  "in": 135090,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776161.378798,
+  "sport": 41904,
+  "method": "HTTPS"
+ },
+ {
+  "uid": 10134,
+  "pkg": [
+   "com.google.android.gms"
+  ],
+  "host": "checkin.gstatic.com",
+  "out": 17079,
+  "in": 6113,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX gstatic.com",
+  "rejected": false,
+  "start": 1790776161.99798,
+  "sport": 54290,
+  "method": "HTTPS"
+ },
+ {
+  "uid": null,
+  "pkg": null,
+  "host": "footprints-pa.googleapis.com",
+  "out": 3699,
+  "in": 6755,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776162.7963119,
+  "sport": 59278,
+  "method": "HTTPS"
+ },
+ {
+  "uid": 10134,
+  "pkg": [
+   "com.google.android.gms"
+  ],
+  "host": "www.googleapis.com",
+  "out": 138901,
+  "in": 23437,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776163.715658,
+  "sport": 37342,
+  "method": "HTTPS"
+ },
+ {
+  "uid": 10134,
+  "pkg": [
+   "com.google.android.gms"
+  ],
+  "host": "android.googleapis.com",
+  "out": 49263,
+  "in": 41935,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776164.362646,
+  "sport": 46644,
+  "method": "HTTPS"
+ },
+ {
+  "uid": 1000,
+  "pkg": [
+   "com.miui.powerkeeper",
+   "com.android.keychain",
+   "com.android.DeviceAsWebcam",
+   "com.miui.touchassistant",
+   "com.xiaomi.joyose",
+   "com.miui.audiomonitor",
+   "com.miui.aod",
+   "com.miui.uireporter",
+   "com.miui.contentcatcher",
+   "com.xiaomi.touchservice",
+   "com.miui.notification",
+   "com.xiaomi.location.fused",
+   "miui.systemui.plugin",
+   "com.miui.bugreport",
+   "com.xiaomi.otrpbroker",
+   "com.miui.securitycenter",
+   "com.miui.qr",
+   "com.qualcomm.qti.services.systemhelper",
+   "com.android.location.fused",
+   "vendor.qti.frameworks.utils",
+   "com.miui.wmsvc",
+   "com.xiaomi.aiasst.vision",
+   "com.xiaomi.mtb",
+   "com.android.server.telecom",
+   "com.miui.daemon",
+   "com.miui.securitycore",
+   "com.xiaomi.trustservice",
+   "com.android.inputdevices",
+   "com.xiaomi.gnss.polaris",
+   "com.miui.thirdappassistant",
+   "com.xiaomi.mi_connect_service",
+   "com.wapi.wapicertmanage",
+   "com.qualcomm.qti.xrvd.service",
+   "com.android.systemui",
+   "com.bsp.catchlog",
+   "com.android.localtransport",
+   "android",
+   "com.xiaomi.digitalkey",
+   "com.android.settings",
+   "com.xiaomi.aiasst.service",
+   "com.miui.cit",
+   "com.miui.misightservice",
+   "com.xiaomi.barrage",
+   "com.xiaomi.aon",
+   "com.android.providers.settings",
+   "com.xiaomi.mirror",
+   "com.xiaomi.misettings",
+   "com.android.provision",
+   "com.android.dynsystem"
+  ],
+  "host": "clients3.google.com",
+  "out": 190,
+  "in": 127,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX google.com",
+  "rejected": false,
+  "start": 1790776173.749068,
+  "sport": 40464,
+  "method": "TCP"
+ },
+ {
+  "uid": 10134,
+  "pkg": [
+   "com.google.android.gms"
+  ],
+  "host": "android.apis.google.com",
+  "out": 10531,
+  "in": 9164,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX google.com",
+  "rejected": false,
+  "start": 1790776174.9320412,
+  "sport": 52070,
+  "method": "HTTPS"
+ },
+ {
+  "uid": 10134,
+  "pkg": [
+   "com.google.android.gms"
+  ],
+  "host": "mtalk.google.com",
+  "out": 2252,
+  "in": 2640,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX google.com",
+  "rejected": false,
+  "start": 1790776176.920078,
+  "sport": 35532,
+  "method": "TCP"
+ },
+ {
+  "uid": 10370,
+  "pkg": [
+   "com.google.android.apps.photos"
+  ],
+  "host": "photosdata-pa.googleapis.com",
+  "out": 153563,
+  "in": 8632550,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776178.049593,
+  "sport": 52956,
+  "method": "HTTPS"
+ },
+ {
+  "uid": 10370,
+  "pkg": [
+   "com.google.android.apps.photos"
+  ],
+  "host": "photos.googleapis.com",
+  "out": 166645001,
+  "in": 62493,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776178.8348,
+  "sport": 42342,
+  "method": "HTTPS"
+ },
+ {
+  "uid": 10370,
+  "pkg": [
+   "com.google.android.apps.photos"
+  ],
+  "host": "www.gstatic.com",
+  "out": 834,
+  "in": 2166907,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX gstatic.com",
+  "rejected": false,
+  "start": 1790776184.049644,
+  "sport": 50448,
+  "method": "HTTPS"
+ },
+ {
+  "uid": null,
+  "pkg": null,
+  "host": "lh3.googleusercontent.com",
+  "out": 4181,
+  "in": 633549,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleusercontent.com",
+  "rejected": false,
+  "start": 1790776186.766685,
+  "sport": 42712,
+  "method": "HTTPS"
+ },
+ {
+  "uid": null,
+  "pkg": null,
+  "host": "ap2.googleusercontent.com",
+  "out": 4358,
+  "in": 632740,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleusercontent.com",
+  "rejected": false,
+  "start": 1790776186.766792,
+  "sport": 52002,
+  "method": "HTTPS"
+ },
+ {
+  "uid": null,
+  "pkg": null,
+  "host": "notifications-pa.googleapis.com",
+  "out": 3790,
+  "in": 6161,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776191.7486382,
+  "sport": 43562,
+  "method": "HTTPS"
+ },
+ {
+  "uid": 10126,
+  "pkg": [
+   "com.android.vending"
+  ],
+  "host": "play-fe.googleapis.com",
+  "out": 13022,
+  "in": 11016,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776197.438078,
+  "sport": 53496,
+  "method": "HTTPS"
+ },
+ {
+  "uid": 10126,
+  "pkg": [
+   "com.android.vending"
+  ],
+  "host": "play-fe.googleapis.com",
+  "out": 6656,
+  "in": 6724,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776197.441433,
+  "sport": 53512,
+  "method": "HTTPS"
+ },
+ {
+  "uid": 10134,
+  "pkg": [
+   "com.google.android.gms"
+  ],
+  "host": "homeplatformmesh-pa.googleapis.com",
+  "out": 4884,
+  "in": 24687,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776197.870733,
+  "sport": 33946,
+  "method": "HTTPS"
+ },
+ {
+  "uid": 10134,
+  "pkg": [
+   "com.google.android.gms"
+  ],
+  "host": "play.googleapis.com",
+  "out": 104335,
+  "in": 14274,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776198.0846791,
+  "sport": 41294,
+  "method": "HTTPS"
+ },
+ {
+  "uid": null,
+  "pkg": null,
+  "host": "identitydevicegateway-pa.googleapis.com",
+  "out": 16925,
+  "in": 6210,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776199.205787,
+  "sport": 35014,
+  "method": "HTTPS"
+ },
+ {
+  "uid": null,
+  "pkg": null,
+  "host": "fonts.gstatic.com",
+  "out": 2531,
+  "in": 111173,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX gstatic.com",
+  "rejected": false,
+  "start": 1790776214.0630832,
+  "sport": 57338,
+  "method": "HTTPS"
+ },
+ {
+  "uid": null,
+  "pkg": null,
+  "host": "people-pa.googleapis.com",
+  "out": 4134,
+  "in": 5795,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776221.870881,
+  "sport": 37972,
+  "method": "HTTPS"
+ },
+ {
+  "uid": 10134,
+  "pkg": [
+   "com.google.android.gms"
+  ],
+  "host": "auditrecording-pa.googleapis.com",
+  "out": 5726,
+  "in": 6030,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776221.901194,
+  "sport": 56118,
+  "method": "HTTPS"
+ },
+ {
+  "uid": 10126,
+  "pkg": [
+   "com.android.vending"
+  ],
+  "host": "prod-lt-playstoregatewayadapter-pa.googleapis.com",
+  "out": 4810,
+  "in": 10674,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776221.968956,
+  "sport": 43106,
+  "method": "HTTPS"
+ },
+ {
+  "uid": null,
+  "pkg": null,
+  "host": "messages.google.com",
+  "out": 2129,
+  "in": 7447,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX google.com",
+  "rejected": false,
+  "start": 1790776221.9727,
+  "sport": 55144,
+  "method": "HTTPS"
+ },
+ {
+  "uid": 10134,
+  "pkg": [
+   "com.google.android.gms"
+  ],
+  "host": "phonedeviceverification-pa.googleapis.com",
+  "out": 33359,
+  "in": 6914,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776222.462275,
+  "sport": 57640,
+  "method": "HTTPS"
+ },
+ {
+  "uid": null,
+  "pkg": null,
+  "host": "instantmessaging-pa.googleapis.com",
+  "out": 9978,
+  "in": 6190,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776222.466487,
+  "sport": 38218,
+  "method": "HTTPS"
+ },
+ {
+  "uid": 10126,
+  "pkg": [
+   "com.android.vending"
+  ],
+  "host": "play-lh.googleusercontent.com",
+  "out": 2560,
+  "in": 63564,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleusercontent.com",
+  "rejected": false,
+  "start": 1790776238.603876,
+  "sport": 58774,
+  "method": "HTTPS"
+ },
+ {
+  "uid": 10134,
+  "pkg": [
+   "com.google.android.gms"
+  ],
+  "host": "androidplatformbackuprestore-pa.googleapis.com",
+  "out": 3060,
+  "in": 5893,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776262.4875069,
+  "sport": 39922,
+  "method": "HTTPS"
+ },
+ {
+  "uid": 10278,
+  "pkg": [
+   "com.google.android.gm"
+  ],
+  "host": "firebaseinstallations.googleapis.com",
+  "out": 1366,
+  "in": 4841,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776306.60303,
+  "sport": 40070,
+  "method": "HTTPS"
+ },
+ {
+  "uid": 10278,
+  "pkg": [
+   "com.google.android.gm"
+  ],
+  "host": "firebaseinstallations.googleapis.com",
+  "out": 1366,
+  "in": 4847,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776306.6370459,
+  "sport": 40086,
+  "method": "HTTPS"
+ },
+ {
+  "uid": 10134,
+  "pkg": [
+   "com.google.android.gms"
+  ],
+  "host": "people-pa.googleapis.com",
+  "out": 4120,
+  "in": 5958,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776306.721816,
+  "sport": 53696,
+  "method": "HTTPS"
+ },
+ {
+  "uid": 10278,
+  "pkg": [
+   "com.google.android.gm"
+  ],
+  "host": "notifications-pa.googleapis.com",
+  "out": 6755,
+  "in": 7066,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776307.1018229,
+  "sport": 38026,
+  "method": "HTTPS"
+ },
+ {
+  "uid": 10278,
+  "pkg": [
+   "com.google.android.gm"
+  ],
+  "host": "inbox.google.com",
+  "out": 37565,
+  "in": 2822213,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX google.com",
+  "rejected": false,
+  "start": 1790776307.2735162,
+  "sport": 37414,
+  "method": "HTTPS"
+ },
+ {
+  "uid": 10278,
+  "pkg": [
+   "com.google.android.gm"
+  ],
+  "host": "appsgrowthpromo-pa.googleapis.com",
+  "out": 2841,
+  "in": 6233,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776308.366562,
+  "sport": 38178,
+  "method": "HTTPS"
+ },
+ {
+  "uid": 10278,
+  "pkg": [
+   "com.google.android.gm"
+  ],
+  "host": "taskassist-pa.googleapis.com",
+  "out": 2896,
+  "in": 6462,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776308.366854,
+  "sport": 49716,
+  "method": "HTTPS"
+ },
+ {
+  "uid": 10278,
+  "pkg": [
+   "com.google.android.gm"
+  ],
+  "host": "appsgenaiserver-pa.googleapis.com",
+  "out": 2786,
+  "in": 6126,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776309.559897,
+  "sport": 49788,
+  "method": "HTTPS"
+ },
+ {
+  "uid": null,
+  "pkg": null,
+  "host": "workspacevideo-pa.googleapis.com",
+  "out": 1122,
+  "in": 3979,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776352.6443338,
+  "sport": 36988,
+  "method": "HTTPS"
+ },
+ {
+  "uid": 10284,
+  "pkg": [
+   "com.google.android.apps.docs"
+  ],
+  "host": "subscriptionsfirstparty-pa.googleapis.com",
+  "out": 1655,
+  "in": 6474,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776352.820698,
+  "sport": 40168,
+  "method": "HTTPS"
+ },
+ {
+  "uid": 10284,
+  "pkg": [
+   "com.google.android.apps.docs"
+  ],
+  "host": "firebaseinstallations.googleapis.com",
+  "out": 1377,
+  "in": 4902,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776352.864874,
+  "sport": 49798,
+  "method": "HTTPS"
+ },
+ {
+  "uid": null,
+  "pkg": null,
+  "host": "drivefrontend-pa.googleapis.com",
+  "out": 36574,
+  "in": 65670,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776352.89168,
+  "sport": 45742,
+  "method": "HTTPS"
+ },
+ {
+  "uid": 10284,
+  "pkg": [
+   "com.google.android.apps.docs"
+  ],
+  "host": "feedback-pa.googleapis.com",
+  "out": 3256,
+  "in": 6525,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776353.068119,
+  "sport": 58470,
+  "method": "HTTPS"
+ },
+ {
+  "uid": 10284,
+  "pkg": [
+   "com.google.android.apps.docs"
+  ],
+  "host": "peoplestack-pa.googleapis.com",
+  "out": 3367,
+  "in": 34515,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776353.0683231,
+  "sport": 34364,
+  "method": "HTTPS"
+ },
+ {
+  "uid": null,
+  "pkg": null,
+  "host": "feedback-pa.googleapis.com",
+  "out": 2500,
+  "in": 0,
+  "policy": "QUIC-BLOCK",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": true,
+  "start": 1790776353.49269,
+  "sport": 47225,
+  "method": "QUIC"
+ },
+ {
+  "uid": 10284,
+  "pkg": [
+   "com.google.android.apps.docs"
+  ],
+  "host": "subscriptionsmanagement-pa.googleapis.com",
+  "out": 1789,
+  "in": 4460,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776353.50029,
+  "sport": 53520,
+  "method": "HTTPS"
+ },
+ {
+  "uid": 10284,
+  "pkg": [
+   "com.google.android.apps.docs"
+  ],
+  "host": "appsgenaiserver-pa.googleapis.com",
+  "out": 2708,
+  "in": 6255,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776353.613713,
+  "sport": 48316,
+  "method": "HTTPS"
+ },
+ {
+  "uid": null,
+  "pkg": null,
+  "host": "voilatile-pa.googleapis.com",
+  "out": 2500,
+  "in": 0,
+  "policy": "QUIC-BLOCK",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": true,
+  "start": 1790776353.766796,
+  "sport": 38223,
+  "method": "QUIC"
+ },
+ {
+  "uid": 10134,
+  "pkg": [
+   "com.google.android.gms"
+  ],
+  "host": "voilatile-pa.googleapis.com",
+  "out": 3667,
+  "in": 6752,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776353.770145,
+  "sport": 54766,
+  "method": "HTTPS"
+ },
+ {
+  "uid": null,
+  "pkg": null,
+  "host": "peoplestack-pa.googleapis.com",
+  "out": 2500,
+  "in": 0,
+  "policy": "QUIC-BLOCK",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": true,
+  "start": 1790776353.836916,
+  "sport": 43855,
+  "method": "QUIC"
+ },
+ {
+  "uid": null,
+  "pkg": null,
+  "host": "www.googleapis.com",
+  "out": 1823,
+  "in": 5226,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776355.439143,
+  "sport": 54208,
+  "method": "HTTPS"
+ },
+ {
+  "uid": 10284,
+  "pkg": [
+   "com.google.android.apps.docs"
+  ],
+  "host": "notifications-pa.googleapis.com",
+  "out": 2430,
+  "in": 4425,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776355.562375,
+  "sport": 55554,
+  "method": "HTTPS"
+ },
+ {
+  "uid": null,
+  "pkg": null,
+  "host": "translate-pa.googleapis.com",
+  "out": 2500,
+  "in": 0,
+  "policy": "QUIC-BLOCK",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": true,
+  "start": 1790776358.4115949,
+  "sport": 36768,
+  "method": "QUIC"
+ },
+ {
+  "uid": null,
+  "pkg": null,
+  "host": "dl.google.com",
+  "out": 2500,
+  "in": 0,
+  "policy": "QUIC-BLOCK",
+  "rule": "DOMAIN-SUFFIX google.com",
+  "rejected": true,
+  "start": 1790776359.036227,
+  "sport": 45072,
+  "method": "QUIC"
+ },
+ {
+  "uid": null,
+  "pkg": null,
+  "host": "findmydevice-pa.googleapis.com",
+  "out": 2500,
+  "in": 0,
+  "policy": "QUIC-BLOCK",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": true,
+  "start": 1790776363.701621,
+  "sport": 46436,
+  "method": "QUIC"
+ },
+ {
+  "uid": 10278,
+  "pkg": [
+   "com.google.android.gm"
+  ],
+  "host": "peoplestack-pa.googleapis.com",
+  "out": 2876,
+  "in": 37151,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776366.023458,
+  "sport": 45944,
+  "method": "HTTPS"
+ },
+ {
+  "uid": 10278,
+  "pkg": [
+   "com.google.android.gm"
+  ],
+  "host": "mail.google.com",
+  "out": 7261,
+  "in": 5760,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX google.com",
+  "rejected": false,
+  "start": 1790776368.411485,
+  "sport": 34694,
+  "method": "HTTPS"
+ },
+ {
+  "uid": 1002,
+  "pkg": [
+   "com.xiaomi.bluetooth",
+   "com.android.bluetooth"
+  ],
+  "host": "hlth.io.mi.com",
+  "out": 1100,
+  "in": 5051,
+  "policy": "DIRECT",
+  "rule": "RULE-SET domestic.conf",
+  "rejected": false,
+  "start": 1790776375.450398,
+  "sport": 53488,
+  "method": "HTTPS"
+ },
+ {
+  "uid": 1002,
+  "pkg": [
+   "com.xiaomi.bluetooth",
+   "com.android.bluetooth"
+  ],
+  "host": "hlthopen.io.mi.com",
+  "out": 1120,
+  "in": 6163,
+  "policy": "DIRECT",
+  "rule": "RULE-SET domestic.conf",
+  "rejected": false,
+  "start": 1790776375.450577,
+  "sport": 57214,
+  "method": "HTTPS"
+ },
+ {
+  "uid": 10134,
+  "pkg": [
+   "com.google.android.gms"
+  ],
+  "host": "socialuserlocation.googleapis.com",
+  "out": 3170,
+  "in": 6304,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776382.144691,
+  "sport": 55390,
+  "method": "HTTPS"
+ },
+ {
+  "uid": null,
+  "pkg": null,
+  "host": "socialuserlocation.googleapis.com",
+  "out": 2500,
+  "in": 0,
+  "policy": "QUIC-BLOCK",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": true,
+  "start": 1790776383.2707338,
+  "sport": 38190,
+  "method": "QUIC"
+ },
+ {
+  "uid": null,
+  "pkg": null,
+  "host": "myphonenumbers-pa.googleapis.com",
+  "out": 2500,
+  "in": 0,
+  "policy": "QUIC-BLOCK",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": true,
+  "start": 1790776388.9147139,
+  "sport": 59613,
+  "method": "QUIC"
+ },
+ {
+  "uid": 10300,
+  "pkg": [
+   "com.google.android.apps.tachyon"
+  ],
+  "host": "myphonenumbers-pa.googleapis.com",
+  "out": 3097,
+  "in": 6235,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776388.914531,
+  "sport": 55164,
+  "method": "HTTPS"
+ },
+ {
+  "uid": 10300,
+  "pkg": [
+   "com.google.android.apps.tachyon"
+  ],
+  "host": "meetings.googleapis.com",
+  "out": 10160,
+  "in": 6295,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776389.833211,
+  "sport": 52332,
+  "method": "HTTPS"
+ },
+ {
+  "uid": 10278,
+  "pkg": [
+   "com.google.android.gm"
+  ],
+  "host": "mail.google.com",
+  "out": 2760,
+  "in": 10351,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX google.com",
+  "rejected": false,
+  "start": 1790776398.444409,
+  "sport": 50554,
+  "method": "HTTPS"
+ },
+ {
+  "uid": null,
+  "pkg": null,
+  "host": "mail-attachment.googleusercontent.com",
+  "out": 2500,
+  "in": 0,
+  "policy": "QUIC-BLOCK",
+  "rule": "DOMAIN-SUFFIX googleusercontent.com",
+  "rejected": true,
+  "start": 1790776399.4781199,
+  "sport": 35929,
+  "method": "QUIC"
+ },
+ {
+  "uid": 10278,
+  "pkg": [
+   "com.google.android.gm"
+  ],
+  "host": "mail-attachment.googleusercontent.com",
+  "out": 3796,
+  "in": 16631,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleusercontent.com",
+  "rejected": false,
+  "start": 1790776399.481909,
+  "sport": 38978,
+  "method": "HTTPS"
+ },
+ {
+  "uid": null,
+  "pkg": null,
+  "host": "ccc.sys.miui.com",
+  "out": 0,
+  "in": 0,
+  "policy": "REJECT",
+  "rule": "DOMAIN-SET reject.conf",
+  "rejected": true,
+  "start": 1790776387.526349,
+  "sport": 58624,
+  "method": "HTTPS"
+ },
+ {
+  "uid": null,
+  "pkg": null,
+  "host": "finderlocationsharing-pa.googleapis.com",
+  "out": 2922,
+  "in": 5768,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776381.9969358,
+  "sport": 38080,
+  "method": "HTTPS"
+ },
+ {
+  "uid": null,
+  "pkg": null,
+  "host": "idm.api.io.mi.com",
+  "out": 0,
+  "in": 0,
+  "policy": "REJECT",
+  "rule": "DOMAIN-SET reject.conf",
+  "rejected": true,
+  "start": 1790776434.063051,
+  "sport": 52964,
+  "method": "HTTPS"
+ },
+ {
+  "uid": 10284,
+  "pkg": [
+   "com.google.android.apps.docs"
+  ],
+  "host": "play.googleapis.com",
+  "out": 7621,
+  "in": 4253,
+  "policy": "AI proxy",
+  "rule": "DOMAIN-SUFFIX googleapis.com",
+  "rejected": false,
+  "start": 1790776442.700403,
+  "sport": 35796,
+  "method": "HTTPS"
+ }
+]

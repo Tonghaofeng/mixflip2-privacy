@@ -1,0 +1,21 @@
+观察 300s（手机保持空闲）… Wi-Fi IP=192.168.50.184
+
+== 1) 手机侧：179 条连接日志
+   被拦截 41 条，按进程/目标：
+      16  com.android.systemui               111.13.141.211:443
+       6  com.android.systemui               idm.api.io.mi.com:443
+       4  com.android.systemui               resolver.msg.xiaomi.net:443
+       4  com.android.systemui               tracking.miui.com:443
+       4  android.media                      tracking.miui.com:443
+       2  com.android.systemui               ccc.sys.miui.com:443
+       2  com.android.systemui               111.13.142.153:443
+       2  com.android.systemui               111.202.1.252:443
+       1  com.whatsapp                       sdkconfig.ad.xiaomi.com:80
+   ⚠ 小米/国内/裸 IP 却未被拦截：25 条
+      23  ?                                  198.18.0.2:53                                 → wg-home
+       1  ?                                  1.1.1.1:443                                   → PROXY[wg-home]
+       1  com.whatsapp                       157.240.0.60:443                              → PROXY[wg-home]
+
+== 2) Surge 侧：来自手机 Wi-Fi IP、且在观察期内新建的连接
+   新连接 1 条；其中不在白名单（WG/NTP/DoH）的：1 条
+       1  142.250.154.94:80

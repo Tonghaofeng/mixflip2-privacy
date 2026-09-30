@@ -1,0 +1,131 @@
+采集 900s：手机 192.168.50.184，Surge 连接按来源端口对齐 UID …
+  869s 剩余 | 网关连接 22 | 端口映射 37
+  839s 剩余 | 网关连接 22 | 端口映射 37
+  809s 剩余 | 网关连接 28 | 端口映射 41
+  779s 剩余 | 网关连接 33 | 端口映射 44
+  749s 剩余 | 网关连接 51 | 端口映射 47
+  719s 剩余 | 网关连接 51 | 端口映射 47
+  689s 剩余 | 网关连接 52 | 端口映射 48
+  659s 剩余 | 网关连接 70 | 端口映射 61
+  629s 剩余 | 网关连接 83 | 端口映射 67
+  599s 剩余 | 网关连接 84 | 端口映射 69
+  569s 剩余 | 网关连接 87 | 端口映射 69
+  539s 剩余 | 网关连接 93 | 端口映射 70
+  509s 剩余 | 网关连接 93 | 端口映射 70
+  479s 剩余 | 网关连接 93 | 端口映射 70
+  449s 剩余 | 网关连接 94 | 端口映射 71
+  419s 剩余 | 网关连接 94 | 端口映射 71
+  389s 剩余 | 网关连接 94 | 端口映射 71
+  359s 剩余 | 网关连接 94 | 端口映射 71
+  329s 剩余 | 网关连接 94 | 端口映射 71
+  299s 剩余 | 网关连接 94 | 端口映射 71
+  269s 剩余 | 网关连接 95 | 端口映射 71
+  239s 剩余 | 网关连接 152 | 端口映射 85
+  209s 剩余 | 网关连接 167 | 端口映射 88
+  179s 剩余 | 网关连接 167 | 端口映射 88
+  149s 剩余 | 网关连接 168 | 端口映射 90
+  119s 剩余 | 网关连接 178 | 端口映射 94
+  89s 剩余 | 网关连接 178 | 端口映射 94
+  59s 剩余 | 网关连接 182 | 端口映射 98
+  29s 剩余 | 网关连接 182 | 端口映射 98
+  0s 剩余 | 网关连接 182 | 端口映射 98
+
+==== 结果（182 条连接，原始数据 baseline_2157.json）====
+
+[10370 com.google.android.apps.photos]  上行 1165036.6 KB
+   photos.googleapis.com                            x1   ↑1164614.2KB ↓  439.1KB  AI proxy
+   photosdata-pa.googleapis.com                     x1   ↑  422.4KB ↓ 8786.6KB  AI proxy
+
+[?(未对上端口)]  上行 787.5 KB
+   www.googleapis.com                               x1   ↑  212.2KB ↓   27.3KB  AI proxy
+   play.googleapis.com                              x2   ↑  130.9KB ↓   14.8KB  AI proxy
+   pay-users-pa.googleapis.com                      x3   ↑  107.9KB ↓  276.0KB  AI proxy
+   android.googleapis.com                           x3   ↑   88.2KB ↓   70.2KB  AI proxy
+   androidpay-users-pa.googleapis.com               x2   ↑   67.2KB ↓   34.6KB  AI proxy
+   payments-pa.googleapis.com                       x2   ↑   46.8KB ↓   24.3KB  AI proxy/拦
+   phonedeviceverification-pa.googleapis.com        x1   ↑   42.1KB ↓    7.2KB  AI proxy
+   find.api.micloud.xiaomi.net                      x13  ↑   17.4KB ↓   85.3KB  DIRECT ⚠国内
+   android.apis.google.com                          x1   ↑   13.4KB ↓   10.5KB  AI proxy
+   api.account.xiaomi.com                           x1   ↑   11.7KB ↓   11.5KB  DIRECT ⚠国内
+   api.developer.xiaomi.com                         x1   ↑   10.6KB ↓    6.6KB  DIRECT ⚠国内
+   locationhistory-pa.googleapis.com                x2   ↑    5.4KB ↓    5.8KB  AI proxy/拦
+   lamssettings-pa.googleapis.com                   x2   ↑    5.4KB ↓    6.0KB  AI proxy/拦
+   statusapi.micloud.xiaomi.net                     x3   ↑    5.2KB ↓   14.6KB  DIRECT ⚠国内
+   auditrecording-pa.googleapis.com                 x1   ↑    5.1KB ↓    2.9KB  AI proxy
+   www.gstatic.com                                  x4   ↑    3.3KB ↓ 1066.8KB  AI proxy
+   voilatile-pa.googleapis.com                      x1   ↑    3.2KB ↓    4.2KB  AI proxy
+   chromesyncentities-pa.googleapis.com             x1   ↑    3.0KB ↓    6.0KB  AI proxy
+   photos.googleapis.com                            x1   ↑    2.4KB ↓    0.0KB  拦
+   api.device.xiaomi.net                            x1   ↑    1.9KB ↓    8.4KB  DIRECT ⚠国内
+   checkin.gstatic.com                              x1   ↑    1.5KB ↓    3.8KB  AI proxy
+   findapi.micloud.xiaomi.net                       x3   ↑    1.0KB ↓    1.0KB  DIRECT ⚠国内
+   connectivitycheck.gstatic.com                    x1   ↑    0.8KB ↓    3.5KB  AI proxy
+   111.13.141.211                                   x1   ↑    0.6KB ↓    0.2KB  DIRECT
+   111.13.142.153                                   x1   ↑    0.2KB ↓    0.0KB  DIRECT
+   googleads.g.doubleclick.net                      x4   ↑    0.0KB ↓    0.0KB  拦
+   resolver.msg.xiaomi.net                          x2   ↑    0.0KB ↓    0.0KB  拦 ⚠国内
+   port.sec.miui.com                                x12  ↑    0.0KB ↓    0.0KB  拦 ⚠国内
+   qsb.browser.miui.com                             x1   ↑    0.0KB ↓    0.0KB  拦 ⚠国内
+   sdkconfig.xiaomi.com                             x2   ↑    0.0KB ↓    0.0KB  拦 ⚠国内
+   tracking.miui.com                                x4   ↑    0.0KB ↓    0.0KB  拦 ⚠国内
+   idm.api.io.mi.com                                x2   ↑    0.0KB ↓    0.0KB  拦 ⚠国内
+   hub5idx.v6.shub.sandai.net                       x18  ↑    0.0KB ↓    0.0KB  拦
+   api.tw06.xlmc.sec.miui.com                       x5   ↑    0.0KB ↓    0.0KB  拦 ⚠国内
+   rp.m.v6.shub.sandai.net                          x34  ↑    0.0KB ↓    0.0KB  拦
+
+[10134 com.google.android.gms]  上行 26.0 KB
+   checkin.gstatic.com                              x1   ↑   16.0KB ↓    6.0KB  AI proxy
+   android.googleapis.com                           x1   ↑    4.6KB ↓    4.1KB  AI proxy
+   mtalk.google.com                                 x1   ↑    2.2KB ↓    3.6KB  AI proxy
+   www.gstatic.com                                  x1   ↑    1.2KB ↓   24.0KB  AI proxy
+   lh3.googleusercontent.com                        x1   ↑    1.1KB ↓   13.4KB  AI proxy
+   lh6.ggpht.com                                    x1   ↑    0.8KB ↓   30.7KB  AI proxy
+
+[10363 com.whatsapp]  上行 15.9 KB
+   api.whatsapp.net                                 x2   ↑   11.7KB ↓    1.3KB  AI proxy/拦
+   g.whatsapp.net                                   x1   ↑    2.1KB ↓    2.2KB  AI proxy
+   157.240.0.60                                     x1   ↑    2.1KB ↓    4.1KB  AI proxy
+
+[10176 com.xiaomi.account]  上行 11.3 KB
+   api.account.xiaomi.com                           x2   ↑    4.1KB ↓   16.7KB  DIRECT ⚠国内
+   account.xiaomi.com                               x1   ↑    3.2KB ↓   12.5KB  DIRECT ⚠国内
+   api.device.xiaomi.net                            x1   ↑    2.0KB ↓    7.8KB  DIRECT ⚠国内
+   cnbj1.fds.api.xiaomi.com                         x1   ↑    2.0KB ↓   28.7KB  DIRECT ⚠国内
+
+[10092 com.android.providers.downloads,com.android.providers.media +2]  上行 10.9 KB
+   etl-xlmc-ssl.sandai.net                          x1   ↑    8.2KB ↓    5.2KB  DIRECT
+   www.gstatic.com                                  x1   ↑    2.4KB ↓  242.0KB  AI proxy
+   153.3.232.175                                    x2   ↑    0.2KB ↓    0.1KB  DIRECT
+   hub5pn.wap.sandai.net                            x2   ↑    0.1KB ↓    0.1KB  DIRECT
+   api.tw06.xlmc.sec.miui.com                       x1   ↑    0.0KB ↓    0.0KB  拦 ⚠国内
+   rp.m.v6.shub.sandai.net                          x2   ↑    0.0KB ↓    0.0KB  拦
+
+[10297 com.google.android.keep]  上行 10.5 KB
+   notes-pa.googleapis.com                          x2   ↑    7.7KB ↓   12.2KB  AI proxy
+   tasks-pa.googleapis.com                          x1   ↑    2.8KB ↓    5.8KB  AI proxy
+
+[6110 com.xiaomi.finddevice]  上行 6.4 KB
+   find.api.micloud.xiaomi.net                      x6   ↑    6.4KB ↓   36.7KB  DIRECT ⚠国内
+
+[10126 com.android.vending]  上行 3.3 KB
+   play.googleapis.com                              x1   ↑    2.5KB ↓    1.7KB  AI proxy
+   connectivitycheck.gstatic.com                    x1   ↑    0.8KB ↓    3.5KB  AI proxy
+
+[6102 com.android.updater]  上行 2.6 KB
+   update.miui.com                                  x1   ↑    2.6KB ↓   13.0KB  DIRECT ⚠国内
+
+[6101 com.android.thememanager]  上行 2.5 KB
+   api.account.xiaomi.com                           x1   ↑    2.5KB ↓   10.1KB  DIRECT ⚠国内
+
+[10293 com.google.android.apps.walletnfcrel]  上行 2.5 KB
+   pay-users-pa.googleapis.com                      x1   ↑    2.5KB ↓    7.4KB  AI proxy
+
+[10162 com.fido.asm]  上行 1.4 KB
+   api.account.xiaomi.com                           x1   ↑    1.4KB ↓    7.5KB  DIRECT ⚠国内
+
+[1000 com.miui.powerkeeper,com.android.keychain +47]  上行 1.1 KB
+   111.13.141.211                                   x2   ↑    1.1KB ↓    0.3KB  DIRECT
+   111.202.1.252                                    x1   ↑    0.0KB ↓    0.0KB  DIRECT
+
+[10096 com.android.htmlviewer]  上行 0.0 KB
+   port.sec.miui.com                                x1   ↑    0.0KB ↓    0.0KB  拦 ⚠国内

@@ -1,0 +1,5 @@
+com.mfashiongallery.emag
+com.miui.cleanmaster
+com.miui.gallery
+com.miui.notes
+com.miui.calculator
