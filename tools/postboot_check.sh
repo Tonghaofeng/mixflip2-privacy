@@ -81,6 +81,8 @@ system cloud_antispam 0
 system key_yellowpage_main_switch 0
 global package_verifier_user_consent -1
 global package_verifier_enable 0
+global wifi_scan_always_enabled 0
+global need_receive_offline_find_broadcast 0
 EOF
 
 echo "== 常驻 VPN（Clash always-on + 锁定）"

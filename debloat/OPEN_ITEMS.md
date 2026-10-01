@@ -6,13 +6,13 @@
 | # | 项 | 来源 | 状态 |
 |---|---|---|---|
 | 1 | AdGuard 遗留用户 CA | 体检 10-01 §5 | ✅ 10-01 23:2x 设置「信任的凭据→用户」为空 |
-| 2 | Clash `store-fake-ip` | 体检 §3 建议 a | ✅ 10-01 晚已写入并发布；**手机端需点「更新」** |
+| 2 | Clash `store-fake-ip` | 体检 §3 建议 a | ✅ 10-01 晚发布，用户已点更新；nc 探测 zzhc.vnet.cn / tydevice / rcpc 均命中 REJECT（新规则在跑） |
 | 3 | 拒 `rcpc-sdk-access(-v6).m.qq.com` | 体检 §3 建议 b | ✅ 同上 |
 | 4 | `com.xiaomi.registration` 运营商自注册（短信 10659401 + zzhc.vnet.cn/tydevice.com，读精确定位、MAC） | 体检 §4/建议 5 | 🟡 网络端点已拒；appops 改不动（SYSTEM_FIXED 权限会被同步回 allow）；**删包待定**：常驻进程 com.android.phone 绑着它的 RegistrationService，静态分析没找到绑定代码，无法证明删后开机不崩 → 需要带回滚预案的实测 |
 | 5 | accept.py 的 `logcat -c` | 体检建议 13 | ✅ 10-01 晚改为 `logcat -T` |
 | 6 | 安全补丁 / OTA 窗口（vendor 补丁 240+ 天） | 体检 §9/建议 8 | 🔴 update.miui.com 已放行，需要用户定一个查更新的窗口 |
 | 7 | 系统身份可绕过 VPN 锁定（1000/1001/10134/10229…） | 体检 §3c | 🔴 无 root 无解；在家靠 Surge 兜底，走蜂窝时没有观测手段；对策 = 能删的风险包尽量删 |
-| 8 | 谷歌侧：Wi-Fi 常扫描 `wifi_scan_always_enabled=1`、Chrome 遥测（beacons.gvt2.com）、`OFFLINE_FIND_SCAN=1` | feature_audit 10-01 | 🔴 用户决定（谷歌生态是自选的） |
+| 8 | 谷歌侧：Wi-Fi 常扫描、Chrome 遥测（beacons.gvt2.com）；~~OFFLINE_FIND_SCAN~~ 实为**小米离线查找**（`dumpsys settings` 写入方 com.xiaomi.bluetooth，含断网/关机蓝牙信标广播） | feature_audit 10-01 | ✅ 10-01 晚用户同意：`wifi_scan_always_enabled=0`；小米离线查找：`OFFLINE_FIND_*` 是蓝牙插件云控每次开机重写的「支持位」（shell 改了重启即回 1，已实测），真正的开关是 `need_receive_offline_find_broadcast`（写入方 finddevice 已删）→ 置 0；蓝牙信标广播日志显示本就关着（`broadcast switch is closed`）；快连本地 BLE 扫描仍在跑（无用户开关、网络已封）；Chrome「帮助改进 Chrome 的功能和性能」界面关闭并读回。同页「改善搜索和浏览体验」（发送访问网址）、「改进搜索建议」仍开，待用户定 |
 | 9 | 小米 BLE 扫描类开关（`is_fastconnect_scan_enable`、`mishare_auto_start_scan`、`bluetooth_support_xiao_ai_scan`） | feature_audit 10-01 | 🔴 低价值（相关包网络已封），可顺手关 |
 
 ## 保留但只断网的包（每个都要写特权与理由；能删就删）
