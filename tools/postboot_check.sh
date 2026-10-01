@@ -79,6 +79,12 @@ lock=$($A shell settings get secure always_on_vpn_lockdown | tr -d '\r')
 rules=$($A shell dumpsys connectivity | grep -A1 "Lockdown filtering rules" | tail -1 | tr -d '\r' | sed 's/^ *//')
 [ -n "$rules" ] && ok "lockdown 规则: $rules" || inf "lockdown 规则未出现（未解锁时 Clash 还没起来，属正常）"
 if $A shell dumpsys connectivity | grep -q "VPN CONNECTED.*clash.meta"; then ok "tun0 VPN 已连接"; else inf "VPN 未连接（未解锁时正常；解锁后仍未连接则异常）"; fi
+# 防 HyperOS 杀 Clash（2026-10-01：exit-info 7 次退出全是多任务「一键清理」强停，锁定模式下即整机断网）
+CP=com.github.metacubex.clash.meta
+as=$($A shell cmd appops get $CP 10008 | tr -d '\r')
+case "$as" in *allow*) ok "Clash 自启动(10008)=allow" ;; *) bad "Clash 自启动(10008): ${as}（应为 allow）" ;; esac
+$A shell dumpsys deviceidle whitelist | grep -q "$CP" && ok "Clash 在省电白名单" || bad "Clash 不在 deviceidle 白名单"
+$A shell settings get system locked_apps | grep -q "$CP" && ok "Clash 在多任务锁定名单" || bad "Clash 不在多任务锁定名单（多任务界面长按卡片→锁定）"
 
 echo "== 地区 / 时区（tools/sysregion）"
 loc=$($A shell getprop persist.sys.locale | tr -d '\r')
