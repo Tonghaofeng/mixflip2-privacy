@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 探针：验证自签 RRO 能否覆盖安全中心资源（安全中心未声明 overlayable → 预期 idmap 策略拒绝）。只改一个无害字符串。 -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.tony.rroprobe.securitycenter" android:versionCode="1" android:versionName="probe">
+    <uses-sdk android:minSdkVersion="29" android:targetSdkVersion="36" />
+    <overlay android:targetPackage="com.miui.securitycenter" />
+    <application android:hasCode="false" />
+</manifest>

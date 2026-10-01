@@ -69,6 +69,16 @@ secure quick_control_all_devices 0
 secure smart_device_control 0
 secure second_space_entrance_status 0
 system three_gesture_up none
+secure key_latest_virus_scan_date 0
+secure settings_sms_risk_warn_enable 0
+secure settings_sms_code_clipboard_warn_enable 0
+secure screen_share_protection 0
+secure com.android.browser.web_page_warning_states 0
+secure ai_guard_function_switch 0
+secure com.miui.guardprovider.AI_GUARD_PRIVACY_AGREEMENT 0
+secure optimizer_scan_cloud 0
+system cloud_antispam 0
+system key_yellowpage_main_switch 0
 EOF
 
 echo "== 常驻 VPN（Clash always-on + 锁定）"

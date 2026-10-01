@@ -35,7 +35,7 @@
 | 路径 | 内容 |
 |---|---|
 | `debloat/removed.txt` `disabled.txt` | 已 `pm uninstall --user 0` / `disable-user` 的包（逐条有证据理由，见下） |
-| `debloat/KEEP.txt` | **禁删清单**（htmlviewer=SystemUI 开机必需的 CloudSettings provider、系统拨号、guardprovider…），自检逐个核对在装 |
+| `debloat/KEEP.txt` | **禁删清单**（htmlviewer=SystemUI 开机必需的 CloudSettings provider、系统拨号…；guardprovider 已于 10-01 晚移出并卸载），自检逐个核对在装 |
 | `debloat/restore.sh` | 恢复：`./restore.sh` 全部，`./restore.sh 包名…` 单个 |
 | `debloat/replace_with_google.sh` | 小米应用 → Google 原版替换（先确认 Google 版已装再卸） |
 | `debloat/bpf_block.sh` | 内核 BPF（OEM_DENY_3）按包禁网 —— **重启即失、UID<10000 内核豁免**，仅留作临时手段 |
@@ -67,7 +67,7 @@
 2. WG 端点域名：DoH 走 PROXY→要隧道→要解析端点 = **死锁**；明文 DNS 在家被 Surge 劫持成 fake-ip，**出门不可达** → 端点用按 IP 的 DoH 解析
 3. 同一把 WG 密钥开两个出站（lan/wan）→ 服务端 endpoint 漂移、两边都判死 → 只留一个
 4. 服务端回包走默认路由进 Surge，源端口被改（55616≠51820）→ 蜂窝不通 → endpoint 主机路由直走路由器（2 秒跟随）
-5. MIUI 的 adb/侧载安装依赖 `guardprovider`（删了就 `INSTALL_FAILED_USER_RESTRICTED: Invalid apk`）→ 保留、只断网
+5. MIUI 的 adb 安装依赖 `guardprovider`（USB 安装确认页调 `content://guard` parseApk，缺了就 `Invalid apk`）→ ~~保留、只断网~~ **10-01 晚整包卸载**（它是病毒扫描/云扫描/电诈防护引擎，持截获通话音频、全盘文件等特权），adb 装包用 `tools/adb_install.sh` 临时装回；手机端经 Chrome 下载安装不受影响（实测）
 6. `adb reverse` 在这台机器上 adb 服务重启后失效 → 改由 Mac mini 局域网分发点下发策略
 7. 锁定 VPN 下 CMFA「绕过私有网络」开着 → 私有网段不进 VPN、被系统拒绝，手机打不开任何局域网页面（Clash 自己不受影响，易误判）→ 关掉该开关；出门访问 Mac mini 靠 MACMINI 组（10-01）
 8. **禁删 `com.android.htmlviewer`**：它承载 SystemUI 开机必需的 CloudSettings provider；10-01 删掉后 SystemUI/锁屏崩溃循环 → RescueParty 进 recovery 提示清除数据（用户选重试未清机）→ 已装回、列入 `debloat/KEEP.txt`；卸载后几秒就 `adb reboot` 会让卸载不落盘（10-01 凌晨 18 个包因此原样回来）→ 卸完等 3 分钟，重启后跑 `WATCH=90 tools/postboot_check.sh`（含崩溃/SystemUI 稳定性）

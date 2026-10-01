@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 空壳「手机管家」：安全中心 SecurityFragment 在 com.miui.securitymanager 已安装时隐藏「设置→隐私与安全→安全→手机管家」入口
+     （判据 s0.a = getPackageInfo(pkg,0)!=null）。无代码、无组件、无权限。真 securitymanager 是商店下发的 UI 包，本机从未安装。 -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.miui.securitymanager" android:versionCode="1" android:versionName="stub-20261001">
+    <uses-sdk android:minSdkVersion="29" android:targetSdkVersion="36" />
+    <application android:hasCode="false" android:allowBackup="false" android:label="securitymanager-stub" />
+</manifest>

@@ -23,7 +23,7 @@ RescueParty 进 recovery 提示「清除数据」（2026-10-01 真实发生，�
 （证据：回来的包 user-0 `firstInstallTime` 仍是出厂 1970，没有任何重装记录）。重启后跑 `tools/postboot_check.sh` 复核。
 
 **不能删的**：com.android.contacts + incallui（系统兜底拨号器 = 紧急呼叫）、securitycenter、lbe、xiaomi.location.fused、
-**guardprovider**（MIUI 侧载/adb 安装校验依赖它，删了报 `INSTALL_FAILED_USER_RESTRICTED: Invalid apk`）。恢复：`./restore.sh [包名]`。
+~~guardprovider~~（**2026-10-01 晚已删**：它是病毒扫描/云扫描/电诈防护引擎；adb 装包改用 `tools/adb_install.sh` 临时装回，见 `debloat/antivirus_antifraud.md`）。恢复：`./restore.sh [包名]`。
 
 ## 2. 系统设置（持久）
 ```bash
@@ -42,7 +42,7 @@ adb shell settings put global captive_portal_mode 0     # 关联网检测探针�
 
 ## 4. 手机：Clash Meta for Android（常驻 VPN）
 ```bash
-adb install cmfa-2.11.34-meta-arm64-v8a-release.apk     # 核对 sha256 见 _checksums.txt；需 guardprovider 在
+adb install cmfa-2.11.34-meta-arm64-v8a-release.apk     # 核对 sha256 见 _checksums.txt；guardprovider 已删 → 改用 tools/adb_install.sh <apk>（且需「USB 安装」开着，国行要小米账号验证）
 cd tools && ./publish_config.sh                          # 生成策略 + 推到 Mac mini 分发点（会打印 URL，token 不回显）
 T=$(ssh macserver cat ~/phone-config/.token)
 adb shell am start -a android.intent.action.VIEW -d "clash://install-config?url=http%3A%2F%2F192.168.50.2%3A18765%2F$T%2Fmixflip2.yaml\&name=MixFlip2"

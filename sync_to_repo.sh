@@ -13,6 +13,6 @@ if [ -f .last_sync_head ] && [ "$(cat .last_sync_head)" != "$head" ]; then
   echo "先合入（ssh macserver 'git -C $R format-patch --stdout <旧>..HEAD' | git apply），再 echo $head > .last_sync_head 后重跑。"
   exit 1
 fi
-rsync -a --delete --exclude .git --exclude clash/ --exclude '*.apk' --exclude .DS_Store --exclude raw_private/ --exclude .last_sync_head --exclude __pycache__/ ./ macserver:CodeVault/git/mixflip2-privacy/
+rsync -a --delete --exclude .git --exclude clash/ --exclude '*.apk' --exclude .DS_Store --exclude raw_private/ --exclude .last_sync_head --exclude __pycache__/ --exclude stubs/stub.keystore --exclude stubs/out/ ./ macserver:CodeVault/git/mixflip2-privacy/
 ssh macserver "cd $R && git add -A && (git diff --cached --quiet || git commit -q -m \"$1\") && git log --oneline -1"
 ssh macserver "git -C $R rev-parse HEAD" > .last_sync_head
