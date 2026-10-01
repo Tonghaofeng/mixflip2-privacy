@@ -51,8 +51,14 @@ adb shell am start -a android.intent.action.VIEW -d "clash://install-config?url=
 #   浏览器等任何应用都打不开局域网（报「你被禁止访问互联网」）。这是应用设置，不在下发的 yaml 里（2026-10-01 实测）
 adb shell settings put secure always_on_vpn_app com.github.metacubex.clash.meta
 adb shell settings put secure always_on_vpn_lockdown 1
+# 防 HyperOS 杀 Clash（2026-10-01 实测：exit-info 7 次退出全是「stop ... due to OneKeyClean」= 多任务一键清理强停；
+#   锁定模式下 Clash 一停整机断网，表现为「某 App 打不开」）。旁载应用默认自启动=ignore、不在省电白名单：
+adb shell cmd appops set com.github.metacubex.clash.meta 10008 allow       # MIUI 自启动（回滚：ignore）
+adb shell dumpsys deviceidle whitelist +com.github.metacubex.clash.meta    # 省电白名单（回滚：-包名）
+#   手机上：多任务界面长按 Clash 卡片 → 锁定（一键清理会跳过）；读回 `settings get system locked_apps` 的 u:0 里要有它
 adb reboot                                               # 必须重启：锁定才生效，且清掉 VPN 之前的旧连接
 ```
+Clash 掉线排查：`adb shell dumpsys activity exit-info com.github.metacubex.clash.meta`（每次退出的系统原因与时间，跨重启保存）。
 以后改策略：改 `tools/gen_clash_config.py` → `./publish_config.sh` → 手机在家 Clash「配置 → ⋮ → 更新」。
 
 ## 5. 验收（只认底层证据）
