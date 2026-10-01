@@ -79,7 +79,7 @@
 - BL 锁：system_server 与 UID 1000 的代码删不掉，只能**断网**（Clash 锁定模式下所有身份都必须经 VPN，这一点已由 lockdown 规则 `UIDs: 1-10280,10282-99999` 证实）
 - 进程识别失败的连接（日志 `could not get uid`）不受身份规则约束 → 由域名族与「国内裸 IP」兜底规则 + 家里 Surge 双层把关
 - IMS/VoLTE、彩信等运营商流量按 Android 设计绑定运营商网络，不经 VPN（属正常通话/短信）
-- 小米账号保持登录但无法联网（退出需联网，被拦；用户确认保持）；激活锁仍在，重置后需小米密码
+- 小米账号：**10-01 起已卸载** `com.xiaomi.account`，首页账号栏用 `global maintenance_mode_user_id=110` 隐藏（代价：改锁屏密码前要先 delete 这个键，详见 `debloat/settings_hide.md`）；激活锁在服务器侧仍在，重置后需小米密码
 - 家里断网/Mac mini 宕机时，手机回退为直连（本机拦截规则仍生效，但无法翻墙）
 
 ## 验收结果（2026-09-30 23:10，重启后，always-on + 锁定生效）

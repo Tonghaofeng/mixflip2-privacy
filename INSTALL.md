@@ -1,6 +1,6 @@
 # INSTALL — 从零复现（小米 MIX Flip 2 国行，BL 锁，不 root）
 
-> 全程在 Mac 上用 adb/ssh 脚本完成；只有 4 处必须在手机上点：USB 调试授权、Clash 的 VPN 授权与「保存/更新」、（可选）退出小米账号。
+> 全程在 Mac 上用 adb/ssh 脚本完成；只有 4 处必须在手机上点：USB 调试授权、Clash 的 VPN 授权与「保存/更新」、（可选）退出小米账号——10-01 起本项目直接卸载 `com.xiaomi.account` 并用 `maintenance_mode_user_id=110` 隐藏首页账号栏，见 `debloat/settings_hide.md`。
 
 ## 0. 前提
 - Mac：`brew install --cask android-platform-tools`；`brew install mihomo`（策略本机校验）；Python 3
