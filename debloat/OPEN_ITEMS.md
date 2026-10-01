@@ -16,7 +16,7 @@
 | 9 | 小米 BLE 扫描类开关（`is_fastconnect_scan_enable` 等） | feature_audit 10-01 | ✅ 10-01 结论：`is_fastconnect_scan_enable` 是快连服务自写的状态位，不是开关；快连无用户开关可关，网络已封 |
 | 10 | Google 定位准确性（`network_location_opt_in`，GMS 被动旁听定位 + 上传 Wi-Fi/基站扫描） | 后台排查 10-02 | ✅ 10-02 00:0x 经 GMS 设置页关闭，partner 表读回 `value=0`；已入开机体检（shell 不能写，需 WRITE_GSETTINGS） |
 | 11 | 公开可读设置里的标识符残留（小米广告 ID、小米账号 ID、骚扰拦截同步令牌） | 后台排查 10-02 | ✅ 4 个键已删（写入方 analytics / micloudsync 均已删，不会再生）；原值在 raw_private（不入库） |
-| 12 | 谷歌后台遥测端点（doubleclick、Firebase 分析/崩溃、footprints、Chrome 信标…） | 后台排查 10-02 | 🟡 已写入策略并发布；**10-02 00:05 探测手机端未更新**（仍命中 Match）→ 需在 Clash 点「更新」后再探测 |
+| 12 | 谷歌后台遥测端点（doubleclick、Firebase 分析/崩溃、footprints、Chrome 信标…） | 后台排查 10-02 | ✅ 10-02 00:1x 用户点更新后 nc 探测：doubleclick / footprints-pa / app-measurement / firebaselogging-pa / gvt2 全部命中 REJECT；play.googleapis.com、www.google.com 照常放行 |
 | 13 | 谷歌备份：短信 / 彩信 / 通话记录上传云端（Backup Manager 开、传输 GMS） | 后台排查 10-02 | 🔴 用户决定：整体关（`bmgr enable false`，丢换机恢复）或保留 |
 | 14 | 相机 / htmlviewer 自带推送进程后台反复尝试连接 | 后台排查 10-02 | 🔴 被拒；相机可做后台限制，htmlviewer 不动（SystemUI 开机必需） |
 | 15 | 配对蓝牙设备 MAC 明文在 `global miui_bonded_device_account_key`（任何 App 可读） | 后台排查 10-02 | 🔴 写入方 com.android.bluetooth 在用，删了配对时写回；无根治 |
