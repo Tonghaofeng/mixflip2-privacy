@@ -48,7 +48,9 @@ OTA_ALLOW = ["DOMAIN,update.miui.com", "DOMAIN-SUFFIX,d.miui.com"]
 REJECT_KEYWORD = ["xiaomi", "miui", "xmpush", "sandai", "xunlei"]
 REJECT_SUFFIX = ["mi.com", "mi-img.com", "mi-fds.com", "mifile.cn", "mipay.com", "micloud.com",
                  "amap.com", "autonavi.com", "map.baidu.com", "map.qq.com", "sparta.html5.qq.com",
-                 "qualcomm.cn", "dm.wo.com.cn", "umeng.com", "umengcloud.com", "getui.com", "jpush.cn"]
+                 "qualcomm.cn", "dm.wo.com.cn", "umeng.com", "umengcloud.com", "getui.com", "jpush.cn",
+                 # 10-01 晚补：腾讯 SDK（原 guardprovider 云查杀在连）；电信终端自注册/管理（com.xiaomi.registration，带 IMEI/定位，UID 1001 不在整身份封禁里）
+                 "rcpc-sdk-access.m.qq.com", "rcpc-sdk-access-v6.m.qq.com", "zzhc.vnet.cn", "tydevice.com"]
 
 
 def sh(cmd, **kw):
@@ -85,7 +87,7 @@ def build():
           "mode: rule", "log-level: info", "ipv6: false", "unified-delay: true",
           "find-process-mode: always",
           "external-controller: 127.0.0.1:9090", f"secret: {secrets.token_hex(12)}",
-          "profile: {store-selected: true}",
+          "profile: {store-selected: true, store-fake-ip: true}",   # store-fake-ip：重启后不复用 fake-ip，防串域名（10-01 体检 WhatsApp→rcpc 那条）
           "sniffer: {enable: true, sniff: {TLS: {ports: [443]}, HTTP: {ports: [80]}, QUIC: {ports: [443]}}}",
           "dns:", "  enable: true", "  ipv6: false", "  enhanced-mode: fake-ip", "  fake-ip-range: 28.0.0.1/8",
           "  fake-ip-filter: ['+.lan', '+.local', 'connectivitycheck.gstatic.cn', '+.pool.ntp.org']",

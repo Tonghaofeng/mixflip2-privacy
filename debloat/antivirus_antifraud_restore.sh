@@ -8,4 +8,6 @@ adb shell -n settings delete secure com.miui.guardprovider.AI_GUARD_PRIVACY_AGRE
 adb shell -n settings delete secure optimizer_scan_cloud
 adb shell -n settings delete system cloud_antispam
 adb shell -n settings delete system key_yellowpage_main_switch
+adb shell -n settings put global package_verifier_user_consent 1   # Play 保护机制扫描（10-01 晚关，原值 1）
+adb shell -n settings delete global package_verifier_enable          # 原值 null
 echo "com.miui.guardprovider: $(adb shell -n cmd package install-existing com.miui.guardprovider)"

@@ -1,0 +1,1292 @@
+{
+ "time": "2026-10-01 23:03:02",
+ "vendor_pkgs": {
+  "com.android.bluetooth": {
+   "uid": 1002,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.android.bluetooth.overlay": {
+   "uid": 10001,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.android.bluetoothmidiservice": {
+   "uid": 10106,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.android.camera": {
+   "uid": 10150,
+   "sensitive_perms": [
+    "ACCESS_FINE_LOCATION",
+    "CAMERA",
+    "DUMP",
+    "INTERACT_ACROSS_USERS_FULL",
+    "MANAGE_EXTERNAL_STORAGE",
+    "READ_EXTERNAL_STORAGE",
+    "READ_MEDIA_IMAGES",
+    "RECORD_AUDIO",
+    "SYSTEM_ALERT_WINDOW",
+    "WRITE_SECURE_SETTINGS"
+   ],
+   "jobs": [
+    ".statistic.SettingUploadJobService"
+   ],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.android.cameraextensions": {
+   "uid": 10105,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.android.cellbroadcastreceiver": {
+   "uid": 10213,
+   "sensitive_perms": [
+    "READ_PRIVILEGED_PHONE_STATE",
+    "READ_SMS",
+    "RECEIVE_SMS"
+   ],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.android.cellbroadcastreceiver.overlay.common": {
+   "uid": 10006,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.android.contacts": {
+   "uid": 10137,
+   "sensitive_perms": [
+    "MANAGE_EXTERNAL_STORAGE",
+    "QUERY_ALL_PACKAGES",
+    "READ_CALL_LOG",
+    "READ_CONTACTS",
+    "READ_PHONE_STATE",
+    "READ_PRIVILEGED_PHONE_STATE",
+    "WRITE_SECURE_SETTINGS"
+   ],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.android.incallui": {
+   "uid": 10129,
+   "sensitive_perms": [
+    "CAPTURE_AUDIO_OUTPUT",
+    "MANAGE_EXTERNAL_STORAGE",
+    "QUERY_ALL_PACKAGES",
+    "READ_CALL_LOG",
+    "READ_CONTACTS",
+    "READ_PHONE_STATE",
+    "READ_PRIVILEGED_PHONE_STATE"
+   ],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.android.mms.service": {
+   "uid": 1001,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.android.nfc": {
+   "uid": 1027,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.android.nfc.resources.overlay.common": {
+   "uid": 10056,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.android.phone": {
+   "uid": 1001,
+   "sensitive_perms": [],
+   "jobs": [
+    ".FiveGCloudSyncJobService",
+    ".TelephonyJobService"
+   ],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.android.phone.auto_generated_characteristics_rro": {
+   "uid": 10064,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.android.phone.overlay.common": {
+   "uid": 10074,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.android.phone.overlay.miui": {
+   "uid": 10044,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.android.se": {
+   "uid": 1068,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.android.se.overlay.target": {
+   "uid": 10079,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.android.server.deviceconfig.resources": {
+   "uid": 10266,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.android.server.telecom": {
+   "uid": 1000,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.android.server.telecom.overlay.common": {
+   "uid": 10061,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.android.server.telecom.overlay.miui": {
+   "uid": 10053,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.android.settings": {
+   "uid": 1000,
+   "sensitive_perms": [],
+   "jobs": [
+    ".BiometricWeeklyReportService",
+    ".stat.StatRecordJobService"
+   ],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.android.settings.intelligence": {
+   "uid": 10149,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.android.settings.overlay.common": {
+   "uid": 10059,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.android.settings.overlay.miui": {
+   "uid": 10042,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.android.soundrecorder": {
+   "uid": 10294,
+   "sensitive_perms": [
+    "CAPTURE_AUDIO_OUTPUT",
+    "CAPTURE_VOICE_COMMUNICATION_OUTPUT",
+    "INTERACT_ACROSS_USERS_FULL",
+    "MANAGE_EXTERNAL_STORAGE",
+    "READ_EXTERNAL_STORAGE",
+    "RECORD_AUDIO"
+   ],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.android.stk": {
+   "uid": 1001,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.android.stk.overlay.miui": {
+   "uid": 10076,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.android.systemui": {
+   "uid": 1000,
+   "sensitive_perms": [],
+   "jobs": [
+    "com.miui.systemui.analytics.SettingsJobSchedulerService"
+   ],
+   "alarms": 0,
+   "notif_7d": {
+    "safemode_notification": 177
+   }
+  },
+  "com.android.systemui.accessibility.accessibilitymenu": {
+   "uid": 10236,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.android.systemui.gesture.line.overlay": {
+   "uid": 10017,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.android.systemui.navigation.bar.overlay": {
+   "uid": 10027,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.android.systemui.overlay.common": {
+   "uid": 10065,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.android.systemui.overlay.miui": {
+   "uid": 10047,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.android.thememanager": {
+   "uid": 6101,
+   "sensitive_perms": [],
+   "jobs": [
+    ".service.ThemeSchedulerService"
+   ],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.android.thememanager.customthemeconfig.config.overlay": {
+   "uid": 10045,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.android.updater": {
+   "uid": 6102,
+   "sensitive_perms": [],
+   "jobs": [
+    ".DailyCheckJobService"
+   ],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.android.wallpaper.livepicker": {
+   "uid": 10093,
+   "sensitive_perms": [
+    "QUERY_ALL_PACKAGES"
+   ],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.android.wallpaperbackup": {
+   "uid": 10113,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.android.wallpapercropper": {
+   "uid": 10226,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.lbe.security.miui": {
+   "uid": 10216,
+   "sensitive_perms": [
+    "INTERACT_ACROSS_USERS_FULL",
+    "PACKAGE_USAGE_STATS",
+    "QUERY_ALL_PACKAGES",
+    "READ_CLIPBOARD_IN_BACKGROUND",
+    "READ_PRIVILEGED_PHONE_STATE",
+    "SYSTEM_ALERT_WINDOW",
+    "WRITE_SECURE_SETTINGS"
+   ],
+   "jobs": [
+    "com.lbe.security.service.provider.internal.CloudSyncJobService",
+    "com.lbe.security.service.provider.internal.DataUploaderJobService",
+    "com.lbe.security.service.provider.internal.OnePushJobService",
+    "com.miui.privacy.autostart.AutoStartJobService"
+   ],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.mfashiongallery.emag": {
+   "uid": 10276,
+   "sensitive_perms": [
+    "DELETE_PACKAGES",
+    "QUERY_ALL_PACKAGES",
+    "SYSTEM_ALERT_WINDOW",
+    "WRITE_SECURE_SETTINGS"
+   ],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.miui.aod": {
+   "uid": 1000,
+   "sensitive_perms": [],
+   "jobs": [
+    ".theme.ThemeResourceClearJobService"
+   ],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.miui.calculator": {
+   "uid": 10280,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.miui.cleanmaster": {
+   "uid": 10282,
+   "sensitive_perms": [
+    "DELETE_PACKAGES",
+    "INTERACT_ACROSS_USERS_FULL",
+    "MANAGE_EXTERNAL_STORAGE",
+    "PACKAGE_USAGE_STATS",
+    "QUERY_ALL_PACKAGES",
+    "SYSTEM_ALERT_WINDOW",
+    "WRITE_SECURE_SETTINGS"
+   ],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.miui.compass": {
+   "uid": 10283,
+   "sensitive_perms": [
+    "WRITE_SECURE_SETTINGS"
+   ],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.miui.core": {
+   "uid": 10202,
+   "sensitive_perms": [
+    "QUERY_ALL_PACKAGES"
+   ],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.miui.core.internal.services": {
+   "uid": 10041,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.miui.extraphoto": {
+   "uid": 10144,
+   "sensitive_perms": [
+    "MANAGE_EXTERNAL_STORAGE",
+    "READ_MEDIA_IMAGES"
+   ],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.miui.fliphome": {
+   "uid": 10127,
+   "sensitive_perms": [
+    "INTERACT_ACROSS_USERS_FULL",
+    "QUERY_ALL_PACKAGES",
+    "READ_FRAME_BUFFER",
+    "SYSTEM_ALERT_WINDOW",
+    "WRITE_SECURE_SETTINGS"
+   ],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.miui.gallery": {
+   "uid": 10289,
+   "sensitive_perms": [
+    "MANAGE_EXTERNAL_STORAGE",
+    "QUERY_ALL_PACKAGES",
+    "READ_EXTERNAL_STORAGE",
+    "READ_MEDIA_IMAGES",
+    "WRITE_SECURE_SETTINGS"
+   ],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.miui.home": {
+   "uid": 10146,
+   "sensitive_perms": [
+    "CAMERA",
+    "DELETE_PACKAGES",
+    "DUMP",
+    "INTERACT_ACROSS_USERS_FULL",
+    "MANAGE_EXTERNAL_STORAGE",
+    "PACKAGE_USAGE_STATS",
+    "QUERY_ALL_PACKAGES",
+    "READ_CONTACTS",
+    "READ_EXTERNAL_STORAGE",
+    "READ_FRAME_BUFFER",
+    "READ_PHONE_STATE",
+    "SYSTEM_ALERT_WINDOW",
+    "WRITE_SECURE_SETTINGS"
+   ],
+   "jobs": [
+    ".launcher.AnalyticalDataCollectorJobService"
+   ],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.miui.misound": {
+   "uid": 10179,
+   "sensitive_perms": [
+    "QUERY_ALL_PACKAGES",
+    "WRITE_SECURE_SETTINGS"
+   ],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {
+    "misound_protect": 6
+   }
+  },
+  "com.miui.miwallpaper": {
+   "uid": 10193,
+   "sensitive_perms": [
+    "INTERACT_ACROSS_USERS_FULL",
+    "QUERY_ALL_PACKAGES",
+    "READ_FRAME_BUFFER",
+    "WRITE_SECURE_SETTINGS"
+   ],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.miui.miwallpaper.config.overlay": {
+   "uid": 10025,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.miui.miwallpaper.overlay.customize": {
+   "uid": 10040,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.miui.notes": {
+   "uid": 10295,
+   "sensitive_perms": [
+    "MANAGE_EXTERNAL_STORAGE",
+    "READ_CLIPBOARD_IN_BACKGROUND",
+    "READ_FRAME_BUFFER",
+    "SYSTEM_ALERT_WINDOW",
+    "WRITE_SECURE_SETTINGS"
+   ],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.miui.notification": {
+   "uid": 1000,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.miui.packageinstaller": {
+   "uid": 10136,
+   "sensitive_perms": [
+    "DELETE_PACKAGES",
+    "INSTALL_PACKAGES",
+    "INTERACT_ACROSS_USERS_FULL",
+    "PACKAGE_USAGE_STATS",
+    "QUERY_ALL_PACKAGES",
+    "READ_EXTERNAL_STORAGE",
+    "WRITE_SECURE_SETTINGS"
+   ],
+   "jobs": [
+    "androidx.work.impl.background.systemjob.SystemJobService"
+   ],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.miui.powerkeeper": {
+   "uid": 1000,
+   "sensitive_perms": [],
+   "jobs": [
+    ".cloudcontrol.CloudUpdateJobService"
+   ],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.miui.rom": {
+   "uid": 10085,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.miui.screenrecorder": {
+   "uid": 10292,
+   "sensitive_perms": [
+    "CAPTURE_VIDEO_OUTPUT",
+    "CAPTURE_VOICE_COMMUNICATION_OUTPUT",
+    "MANAGE_MEDIA_PROJECTION",
+    "QUERY_ALL_PACKAGES",
+    "READ_PRIVILEGED_PHONE_STATE",
+    "SYSTEM_ALERT_WINDOW",
+    "WRITE_SECURE_SETTINGS"
+   ],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.miui.screenshot": {
+   "uid": 10172,
+   "sensitive_perms": [
+    "CAPTURE_VIDEO_OUTPUT",
+    "INTERACT_ACROSS_USERS_FULL",
+    "QUERY_ALL_PACKAGES",
+    "READ_FRAME_BUFFER",
+    "READ_PRIVILEGED_PHONE_STATE",
+    "WRITE_SECURE_SETTINGS"
+   ],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {
+    "SCN": 1
+   }
+  },
+  "com.miui.securitycenter": {
+   "uid": 1000,
+   "sensitive_perms": [],
+   "jobs": [
+    ".service.ConnectivityChangeJobService2",
+    "com.miui.antivirus.service.VirusAutoUpdateJobService",
+    "com.miui.antivirus.service.VirusScanJobService",
+    "com.miui.applicationmanagement.AppManagementService",
+    "com.miui.optimizecenter.storage.fbo.FboJobService"
+   ],
+   "alarms": 0,
+   "notif_7d": {
+    "securitycenter_resident_notification_hide": 5,
+    "networkassistant_notify_channel": 3,
+    "com.miui.securitycenter": 3
+   }
+  },
+  "com.miui.securitycenter.securitycenter_phone_overlay.config.overlay": {
+   "uid": 10077,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.miui.securitycore": {
+   "uid": 1000,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.miui.settings.rro.device.config.overlay": {
+   "uid": 10060,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.miui.settings.rro.device.hide.statusbar.overlay": {
+   "uid": 10057,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.miui.settings.rro.device.systemui.overlay": {
+   "uid": 10058,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.miui.settings.rro.device.type.overlay": {
+   "uid": 10063,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.miui.system": {
+   "uid": 10247,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.miui.system.overlay": {
+   "uid": 10043,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.miui.systemui.carriers.overlay": {
+   "uid": 10028,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.miui.systemui.devices.overlay": {
+   "uid": 10009,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.miui.systemui.overlay.devices.android": {
+   "uid": 10008,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.miui.voiceassistoverlay": {
+   "uid": 10068,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.miui.wallpaper.overlay.customize": {
+   "uid": 10034,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.miuix.editor": {
+   "uid": 10182,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qti.dcf": {
+   "uid": 10231,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qti.dpmserviceapp": {
+   "uid": 1001,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qti.ltebc": {
+   "uid": 10220,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qti.phone": {
+   "uid": 10154,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qti.qualcomm.datastatusnotification": {
+   "uid": 1001,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qti.qualcomm.deviceinfo": {
+   "uid": 1001,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qti.service.colorservice": {
+   "uid": 10245,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qualcomm.atfwd": {
+   "uid": 1001,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qualcomm.atfwd2": {
+   "uid": 10154,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qualcomm.location": {
+   "uid": 10229,
+   "sensitive_perms": [
+    "DUMP",
+    "INTERACT_ACROSS_USERS_FULL",
+    "PACKAGE_USAGE_STATS",
+    "QUERY_ALL_PACKAGES",
+    "READ_PHONE_STATE",
+    "READ_PRIVILEGED_PHONE_STATE",
+    "RECEIVE_SMS",
+    "WRITE_SECURE_SETTINGS"
+   ],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qualcomm.qcrilmsgtunnel": {
+   "uid": 10154,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qualcomm.qti.cne": {
+   "uid": 10116,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qualcomm.qti.confdialer": {
+   "uid": 10153,
+   "sensitive_perms": [
+    "READ_PRIVILEGED_PHONE_STATE"
+   ],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qualcomm.qti.devicestatisticsservice": {
+   "uid": 10154,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qualcomm.qti.dynamicddsservice": {
+   "uid": 1001,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qualcomm.qti.gpudrivers.sun.api35": {
+   "uid": 10119,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qualcomm.qti.ims": {
+   "uid": 10248,
+   "sensitive_perms": [
+    "READ_PRIVILEGED_PHONE_STATE",
+    "WRITE_SECURE_SETTINGS"
+   ],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qualcomm.qti.poweroffalarm": {
+   "uid": 10238,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qualcomm.qti.powersavemode": {
+   "uid": 10240,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qualcomm.qti.qcolor": {
+   "uid": 10244,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qualcomm.qti.qms.service.connectionsecurity": {
+   "uid": 10121,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qualcomm.qti.qms.service.trustzoneaccess": {
+   "uid": 10118,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qualcomm.qti.remoteSimlockAuth": {
+   "uid": 10201,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qualcomm.qti.ridemodeaudio": {
+   "uid": 10185,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qualcomm.qti.server.qtiwifi": {
+   "uid": 10222,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qualcomm.qti.server.wigig.tethering.rro": {
+   "uid": 10243,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qualcomm.qti.services.systemhelper": {
+   "uid": 1000,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qualcomm.qti.simcontacts": {
+   "uid": 10241,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qualcomm.qti.telephonyservice": {
+   "uid": 10154,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qualcomm.qti.uceShimService": {
+   "uid": 1001,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qualcomm.qti.uim": {
+   "uid": 10203,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qualcomm.qti.uimGbaApp": {
+   "uid": 10206,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qualcomm.qti.workloadclassifier": {
+   "uid": 10249,
+   "sensitive_perms": [
+    "PACKAGE_USAGE_STATS",
+    "QUERY_ALL_PACKAGES"
+   ],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qualcomm.qti.xrcb": {
+   "uid": 10233,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qualcomm.qti.xrvd.service": {
+   "uid": 1000,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qualcomm.qti.xrwifi": {
+   "uid": 10234,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qualcomm.qtil.aptxacu": {
+   "uid": 10246,
+   "sensitive_perms": [
+    "QUERY_ALL_PACKAGES"
+   ],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qualcomm.timeservice": {
+   "uid": 10117,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qualcomm.uimremoteclient": {
+   "uid": 10207,
+   "sensitive_perms": [
+    "READ_PRIVILEGED_PHONE_STATE"
+   ],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qualcomm.uimremoteserver": {
+   "uid": 10208,
+   "sensitive_perms": [
+    "READ_PRIVILEGED_PHONE_STATE"
+   ],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.qualcomm.wfd.service": {
+   "uid": 10227,
+   "sensitive_perms": [
+    "CAPTURE_VIDEO_OUTPUT"
+   ],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.xiaomi.bluetooth": {
+   "uid": 1002,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.xiaomi.bluetooth.rro.device.config.overlay": {
+   "uid": 10030,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.xiaomi.cameramind": {
+   "uid": 6120,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.xiaomi.cameratools": {
+   "uid": 10152,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.xiaomi.gnss.polaris": {
+   "uid": 1000,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.xiaomi.hypercomm": {
+   "uid": 1001,
+   "sensitive_perms": [],
+   "jobs": [
+    ".cdc.services.CdcJobService"
+   ],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.xiaomi.location.fused": {
+   "uid": 1000,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.xiaomi.misettings": {
+   "uid": 1000,
+   "sensitive_perms": [],
+   "jobs": [
+    "androidx.work.impl.background.systemjob.SystemJobService"
+   ],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.xiaomi.otrpbroker": {
+   "uid": 1000,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.xiaomi.phone": {
+   "uid": 1001,
+   "sensitive_perms": [],
+   "jobs": [
+    "com.xiaomi.services.telephony.TelephonyJobService"
+   ],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.xiaomi.phone.overlay": {
+   "uid": 10033,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.xiaomi.registration": {
+   "uid": 1001,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.xiaomi.touchservice": {
+   "uid": 1000,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.xiaomi.trustservice": {
+   "uid": 1000,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "com.xiaomi.ugd": {
+   "uid": 10199,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "miui.systemui.plugin": {
+   "uid": 1000,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "vendor.qti.bluetooth.xpan": {
+   "uid": 10228,
+   "sensitive_perms": [
+    "ACCESS_FINE_LOCATION",
+    "INTERACT_ACROSS_USERS_FULL"
+   ],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "vendor.qti.bluetooth.xpan.overlay.target": {
+   "uid": 10083,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "vendor.qti.data.ntnsatapp": {
+   "uid": 1001,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "vendor.qti.data.txpwradmin": {
+   "uid": 10120,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "vendor.qti.frameworks.utils": {
+   "uid": 1000,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "vendor.qti.hardware.cacert.server": {
+   "uid": 2918,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "vendor.qti.imsdatachannel": {
+   "uid": 1001,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  },
+  "vendor.qti.iwlan": {
+   "uid": 10116,
+   "sensitive_perms": [],
+   "jobs": [],
+   "alarms": 0,
+   "notif_7d": {}
+  }
+ },
+ "roles": {
+  "accessibility": "com.x8bit.bitwarden/.Accessibility.AccessibilityService",
+  "notification_listeners": "",
+  "device_admins": [],
+  "ASSISTANT": "com.google.android.googlequicksearchbox",
+  "SMS": "com.google.android.apps.messaging",
+  "DIALER": "com.google.android.dialer",
+  "BROWSER": "com.android.chrome",
+  "HOME": "com.miui.home",
+  "CALL_SCREENING": "",
+  "CALL_REDIRECTION": ""
+ },
+ "settings_on": [
+  "system android.settings.NOTIFICATION_SINGLE_CONTROL_STATE=1",
+  "system bluetooth_restrict_status_before_for_new_phone=1",
+  "system com.android.providers.downloads.enable_share_progress_status=true",
+  "system com.miui.home.enable_share_progress_status=true",
+  "system is_remove_scanner=1",
+  "system launcher_state=1",
+  "system sla_notification_state=1",
+  "system status_bar_show_network_assistant=1",
+  "secure FBO_STATE_OPEN=1",
+  "secure SUPPORT_REPORT_BATTERY_L2CAP_FOR_ROM=1",
+  "secure aod_style_state=1",
+  "secure com.google.android.gms.tapandpay.tokenization.CACHED_BACKUP_STATUS=1",
+  "secure com_miui_warningcenter_eps_status=1",
+  "secure com_miui_warningcenter_pa_status=1",
+  "secure hyper_cloud_e2ee_status_micloud=1",
+  "secure infinity_display_remove_from_other_personal_settings=1",
+  "secure isSupportSmartClipBoard=1",
+  "secure key_app_lock_state_data_migrated=1",
+  "secure lock_screen_magazine_status=1",
+  "secure mirror_input_state=1",
+  "secure mishare_auto_start_scan=1",
+  "secure miui_privacy_input_supported=1",
+  "secure old_download_state=1",
+  "secure old_update_state=1",
+  "secure opp_high_speed_enable_cloud=1",
+  "secure opp_high_speed_enable_empty_cloud=1",
+  "secure packageinstaller_guide_install_permisson_merge_status=1",
+  "secure pai_selection_page_complete=1",
+  "secure pc_security_center_first_charge_state=1",
+  "secure pref_key_connectivity_corp_network_state=1",
+  "secure pref_key_connectivity_service_state=1",
+  "secure pref_key_easy_tether_auto_connect_state=1",
+  "secure privacy_password_status_is_record=1",
+  "secure privacy_thumbnail_blur_history=1",
+  "secure settings_key_interconnection_privacy_state=1",
+  "secure upload_log_pref_last_status_for_passport=1",
+  "global 0#fastconnect_service_cloud=1",
+  "global OFFLINE_FIND_SCAN=1",
+  "global aicr.gallery.migrate.status=1",
+  "global bluetooth_airplane_toast_count=1",
+  "global bluetooth_support_xiao_ai_scan=1",
+  "global clause_agreed=1",
+  "global cloud_resource_exist=1",
+  "global constant_carrier_status=1",
+  "global device_provisioning_service_agreed=1",
+  "global enable_autoswitch_bluetooth_state=1",
+  "global fast_connect_ble_scan_mode=1",
+  "global halfclose_cloud_cali=1",
+  "global hfp_device_status=1",
+  "global is_fastconnect_scan_enable=1",
+  "global lea_device_status=1",
+  "global netstats_enabled=1",
+  "global smart_illuminate_enabled=1",
+  "global smart_replies_enabled=1",
+  "global support_status_bar_follow=1",
+  "global wifi_scan_always_enabled=1",
+  "global xiaoai_cta_change=1"
+ ]
+}

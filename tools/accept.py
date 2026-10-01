@@ -21,11 +21,12 @@ def sh(cmd):
 phone_ip = re.search(r"inet (\d+\.\d+\.\d+\.\d+)", sh(["adb", "shell", "-n", "ip", "-4", "addr", "show", "wlan0"]))
 phone_ip = phone_ip.group(1) if phone_ip else None
 t0 = time.time()
-sh(["adb", "logcat", "-c"])
+# 不清 logcat（会毁掉其他会话的取证日志，10-01 体检第 13 条）：记下手机时间，结束时只读这之后的
+start = sh(["adb", "shell", "-n", "date '+%m-%d %H:%M:%S.000'"]).strip()
 print(f"观察 {DUR}s（手机保持空闲）… Wi-Fi IP={phone_ip}", flush=True)
 time.sleep(DUR)
 
-log = sh(["adb", "logcat", "-d"])
+log = sh(["adb", "logcat", "-d", "-T", start])
 agg = collections.Counter()
 leaks = collections.Counter()
 for l in log.splitlines():
