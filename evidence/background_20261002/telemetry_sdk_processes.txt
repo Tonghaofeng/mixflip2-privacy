@@ -1,0 +1,15 @@
+# 遥测 SDK 落点：开机日志中按关键词出现次数最多的进程（次数× pid 用户 进程名，ps 取于 23:5x）
+== xmpush
+   41× pid 10069 system com.miui.securitycenter.remote
+   39× pid 9686 u0_a96 com.android.htmlviewer:pushservice
+   27× pid 11726 u0_a150 com.android.camera:pushservice
+   13× pid 5038 u0_a96 com.android.htmlviewer:remote
+== OneTrack
+   83× pid 3660 system system_server
+   71× pid 12193 
+   71× pid 10069 system com.miui.securitycenter.remote
+   38× pid 5362 bluetooth com.android.bluetooth
+== system_server OneTrack 投递失败（总收集器 com.miui.analytics 已删）
+10-01 23:48:56.454 Unable to start service Intent { xflg=0x4 cmp=com.miui.analytics/.onetrack.TrackService } U=0: not found
+10-01 23:48:56.459 Unable to start service Intent { xflg=0x4 cmp=com.miui.analytics/.onetrack.TrackService } U=0: not found
+10-01 23:48:56.713 Unable to start service Intent { xflg=0x4 cmp=com.miui.analytics/.onetrack.TrackService } U=0: not found

@@ -85,6 +85,10 @@ global wifi_scan_always_enabled 0
 global need_receive_offline_find_broadcast 0
 EOF
 
+# 谷歌定位准确性（GMS 后台上传 Wi-Fi/基站扫描）：存在 GMS 的 partner 表，shell 可读不可写（要 WRITE_GSETTINGS），只能在 GMS 设置页关
+gla=$($A shell "content query --uri content://com.google.settings/partner --where \"name='network_location_opt_in'\"" | grep -oE 'value=[0-9]+' | tr -d '\r')
+[ "$gla" = "value=0" ] && ok "Google 定位准确性 network_location_opt_in=0" || bad "Google 定位准确性 ${gla:-?}（应为 0；adb shell am start -a com.google.android.gms.location.settings.LOCATION_ACCURACY 后手动关）"
+
 echo "== 常驻 VPN（Clash always-on + 锁定）"
 app=$($A shell settings get secure always_on_vpn_app | tr -d '\r')
 lock=$($A shell settings get secure always_on_vpn_lockdown | tr -d '\r')

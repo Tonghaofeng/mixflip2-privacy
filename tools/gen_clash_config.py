@@ -53,6 +53,14 @@ REJECT_SUFFIX = ["mi.com", "mi-img.com", "mi-fds.com", "mifile.cn", "mipay.com",
                  "rcpc-sdk-access.m.qq.com", "rcpc-sdk-access-v6.m.qq.com", "zzhc.vnet.cn", "tydevice.com"]
 
 
+# 谷歌后台遥测（10-02 用户：重点是背后的隐私与遥测）：广告/分析/崩溃上报/活动足迹/Chrome 信标。
+# 不拦 play.googleapis.com（Clearcut 日志与 Play 下载同域，拦了装不了 App）、checkin、mtalk（推送）。
+GOOGLE_TELEMETRY = ["doubleclick.net", "googlesyndication.com", "googleadservices.com", "adservice.google.com",
+                    "app-measurement.com", "google-analytics.com", "firebaselogging-pa.googleapis.com",
+                    "crashlyticsreports-pa.googleapis.com", "firebase-settings.crashlytics.com",
+                    "footprints-pa.googleapis.com", "gvt2.com", "gvt3.com"]
+
+
 def sh(cmd, **kw):
     return subprocess.run(cmd, capture_output=True, text=True, **kw).stdout
 
@@ -134,7 +142,8 @@ def build():
     L.append(f"  - AND,((UID,1000),(OR,({allow}))),PROXY")
     L.append("  - UID,1000,REJECT")
     L += ["  # 4 域名族（任何 UID）"] + [f"  - DOMAIN-KEYWORD,{k},REJECT" for k in REJECT_KEYWORD] \
-         + [f"  - DOMAIN-SUFFIX,{s},REJECT" for s in REJECT_SUFFIX]
+         + [f"  - DOMAIN-SUFFIX,{s},REJECT" for s in REJECT_SUFFIX] \
+         + ["  # 4b 谷歌后台遥测"] + [f"  - DOMAIN-SUFFIX,{s},REJECT" for s in GOOGLE_TELEMETRY]
     L += ["  # 5 兜底（不依赖 UID 识别，UID 查不到时也生效）：直连国内裸 IP 的连接 = HTTPDNS/写死 IP 上报",
           "  - GEOIP,CN,REJECT,no-resolve"]
     L += ["  # 6 其余回家（家里不通则直连，上面的拦截照样生效）", "  - MATCH,PROXY", ""]

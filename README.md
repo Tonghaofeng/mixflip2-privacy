@@ -42,11 +42,16 @@
 | `tools/gen_clash_config.py` | 生成手机策略（包名→UID/共享身份名实时从手机取，WG 密钥从 Mac mini 取，本机 mihomo 校验） |
 | `tools/publish_config.sh` | 生成并推到 Mac mini 分发点；手机在家点 Clash「更新」 |
 | `tools/uid_domain_audit.py` | 取证：手机 /proc/net「端口→UID」× Surge「来源端口→域名/字节」→ 每个 UID 连了哪些域名 |
-| `tools/accept.py` | 验收：Clash 连接日志里「小米/国内/裸 IP 却未拦截」+ Surge 侧绕过 VPN 的直连 |
+| `tools/accept.py` | 验收：Clash 连接日志里「小米/国内/裸 IP 却未拦截」+ Surge 侧绕过 VPN 的直连（10-01 起不再清 logcat） |
+| `tools/feature_audit.py` | **功能面审计**（只读）：厂商包的敏感/特权权限、任务、闹钟、近 7 天通知、高权位、开着的同意/云/上报类键——补网络审计的盲区 |
+| `tools/adb_install.sh` | guardprovider 已删后的 adb 装包：临时装回 → 装 → 无论成败再卸 |
 | `tools/postboot_check.sh` | **每次重启后的自检**（只读，未解锁也能跑）：removed.txt 与已装包交集为空、停用包仍停用、禁删包在装、开机以来系统崩溃 / RescueParty / SystemUI 稳定（`WATCH=90`）、上报开关、常驻 VPN、地区时区；任一 FAIL 退出码 1 |
 | `tools/sysregion/` | 用 adb 把「系统地区」改成新加坡（zh-CN → zh-Hans-SG）+ 时区；原理与各层归属地见其 README |
 | `tools/ui-automation/` | 仅在无接口时用的 uiautomator 小工具（Play 安装、Clash 保存/更新） |
-| `evidence/` | 基线（精简后仍在上报的 UID→域名）、验收日志、证书/权限普查 |
+| `debloat/OPEN_ITEMS.md` | **待办与「保留只断网」清单**：体检/审计建议逐条跟踪到关闭——每次会话先看、结束更新 |
+| `debloat/antivirus_antifraud.md` `复盘_20261001_病毒扫描漏网.md` `background_telemetry_20261002.md` | 病毒扫描/电诈引擎删除、漏网复盘、后台遥测与标识符排查的证据文档 |
+| `stubs/` | 自写空壳 / 覆盖包构建工具与无 root 边界（小米保留包名签名强校验、shell 禁造 overlay） |
+| `evidence/` | 基线（精简后仍在上报的 UID→域名）、验收日志、证书/权限普查、功能面审计、开机外联聚合 |
 | `clash/`（不入库） | 生成的策略 YAML，含 WireGuard 私钥 |
 
 ## 关键证据与结论（2026-09-30）
@@ -76,7 +81,7 @@
 
 ## 已知限制
 
-- BL 锁：system_server 与 UID 1000 的代码删不掉，只能**断网**（Clash 锁定模式下所有身份都必须经 VPN，这一点已由 lockdown 规则 `UIDs: 1-10280,10282-99999` 证实）
+- BL 锁：system_server 与 UID 1000 的代码删不掉，只能**断网**。lockdown 规则 `UIDs: 1-10280,10282-99999` 对普通 socket 生效；**但持系统网络权限的身份（1000/1001/10092/10134/10229…）显式绑定物理网卡可绕过锁定**（体检 10-01 §3c）——在家有 Surge 兜底，走蜂窝时没有观测手段。所以「能删就删」优先于「保留只断网」（10-01 复盘）
 - 进程识别失败的连接（日志 `could not get uid`）不受身份规则约束 → 由域名族与「国内裸 IP」兜底规则 + 家里 Surge 双层把关
 - IMS/VoLTE、彩信等运营商流量按 Android 设计绑定运营商网络，不经 VPN（属正常通话/短信）
 - 小米账号：**10-01 起已卸载** `com.xiaomi.account`，首页账号栏用 `global maintenance_mode_user_id=110` 隐藏（代价：改锁屏密码前要先 delete 这个键，详见 `debloat/settings_hide.md`）；激活锁在服务器侧仍在，重置后需小米密码
