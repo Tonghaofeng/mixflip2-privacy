@@ -20,6 +20,10 @@
 | 13 | 谷歌备份：短信 / 彩信 / 通话记录上传云端（Backup Manager 开、传输 GMS） | 后台排查 10-02 | 🔴 用户决定：整体关（`bmgr enable false`，丢换机恢复）或保留 |
 | 14 | 相机 / htmlviewer 自带推送进程后台反复尝试连接 | 后台排查 10-02 | 🔴 被拒；相机可做后台限制，htmlviewer 不动（SystemUI 开机必需） |
 | 15 | 配对蓝牙设备 MAC 明文在 `global miui_bonded_device_account_key`（任何 App 可读） | 后台排查 10-02 | 🔴 写入方 com.android.bluetooth 在用，删了配对时写回；无根治 |
+| 16 | **permguard 手机端定时执行**（隐私权限定时收回，`permguard/README.md`） | permguard 10-03 | 🟡 规则已在手机 apply（49 项 / 25 个 App，回读全部确认，证据 `evidence/permguard_20261003.md`）。shell 身份的守护循环已由 adb 拉起，每 6 小时 + 新装 App 时执行，**重启即失**。Shizuku 与 PermGuard **未装上**：MIUI USB 安装要在手机上点确认，当时已锁屏 → `INSTALL_FAILED_USER_RESTRICTED`。**Tony 在手机上要做的**：① 文件 →「下载/permguard」装 `shizuku-v13.6.0…apk` 和 `permguard-v2026.10.03.apk`（或 Mac 在旁时跑 `permguard/adb/setup_phone.sh`，手机上点两次「继续安装」）② Shizuku → 无线调试配对（一次性）→ 启动；设置里打开「开机启动」③ 打开 PermGuard → 「授权 Shizuku」→ 允许。之后待验：`dumpsys jobscheduler` 里有 PermGuard 的 6 小时任务；`svc power reboot` 后在受信任 Wi-Fi 下 Shizuku 自启、App 补跑、守护重新拉起；dropbox 无崩溃 |
+| 17 | **permguard 白名单待定项**（标「待 Tony 定」，目前都保留不收） | permguard 10-03 | 🔴 WhatsApp / Telegram：相机、麦克风、通讯录、媒体；Meet：相机、麦克风、通讯录、电话、通话记录；小米录音机：麦克风、媒体、蓝牙（含通话录音）；Bose：附近设备；eSIM 管理器 me.estk.lpa：附近设备、电话；Find Hub：定位；Android Auto：全套（目前一项未授予）。删掉对应行，下一轮就收 |
+| 18 | permguard：默认角色自动带来的权限 | permguard 10-03 | 🔴 默认助理 = Google App，角色授予**读短信、读通话记录、发短信**（`GRANTED_BY_ROLE`，引擎按规则保留）。要收只能把默认助理改成「无」或换一个；地图的 `CAR_SPEED` 只报告 |
+| 19 | permguard「关不掉」清单的处置 | permguard 10-03 | 🔴 已停用的小米锁屏画报、垃圾清理、相册仍有 QUERY_ALL_PACKAGES → 建议按 debloat 流程卸载（先查依赖，等 3 分钟再 `svc power reboot`）；小米屏幕录制同样建议卸载；Gboard（输入法）、Bitwarden（无障碍）特殊权限只报告 |
 
 ## 保留但只断网的包（每个都要写特权与理由；能删就删）
 | 包 | 敏感/特权能力（feature_audit） | 为什么还留着 | 复审 |

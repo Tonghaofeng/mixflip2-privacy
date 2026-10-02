@@ -1,0 +1,141 @@
+pkg	kind	name	group	current	action	target	reason	result
+com.android.chrome	op	READ_CLIPBOARD	CLIPBOARD	allow (最近使用 1d18h17m13s402ms 前)	REPORT		该组只报告	
+com.android.soundrecorder	perm	android.permission.BLUETOOTH_CONNECT	NEARBY	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+com.android.soundrecorder	perm	android.permission.READ_EXTERNAL_STORAGE	MEDIA	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|RESTRICTION_INSTALLER_EXEMPT]	KEEP		白名单	
+com.android.soundrecorder	perm	android.permission.WRITE_EXTERNAL_STORAGE	MEDIA	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|RESTRICTION_INSTALLER_EXEMPT]	KEEP		白名单	
+com.android.soundrecorder	perm	android.permission.RECORD_AUDIO	MICROPHONE	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+com.android.soundrecorder	op	10039	PHONE	allow	REVOKE	ignore	默认拒绝	
+com.anthropic.claude	op	10037	AD_ID	allow (最近使用 1d7h59m33s696ms 前)	REVOKE	ignore	默认拒绝	
+com.azure.authenticator	perm	android.permission.CAMERA	CAMERA	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	REVOKE	revoke	默认拒绝	
+com.azure.authenticator	op	10037	AD_ID	allow (最近使用 2d5h27m16s664ms 前)	REVOKE	ignore	默认拒绝	
+com.bose.bosemusic	perm	android.permission.NEARBY_WIFI_DEVICES	NEARBY	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+com.bose.bosemusic	perm	android.permission.BLUETOOTH_CONNECT	NEARBY	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+com.bose.bosemusic	perm	android.permission.BLUETOOTH_SCAN	NEARBY	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+com.bose.bosemusic	op	10037	AD_ID	allow (最近使用 23m58s76ms 前)	REVOKE	ignore	默认拒绝	
+com.github.metacubex.clash.meta	op	10008	AUTOSTART	allow	KEEP		豁免	
+com.github.metacubex.clash.meta	op	10022	INSTALLED_APPS	foreground (最近使用 8h37m55s378ms 前)	KEEP		豁免	
+com.google.android.apps.adm	perm	android.permission.ACCESS_FINE_LOCATION	LOCATION	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|524288]	KEEP		白名单	
+com.google.android.apps.adm	perm	android.permission.ACCESS_COARSE_LOCATION	LOCATION	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+com.google.android.apps.chromecast.app	op	10022	INSTALLED_APPS	allow	REVOKE	ignore	默认拒绝	
+com.google.android.apps.maps	perm	android.permission.ACCESS_FINE_LOCATION	LOCATION	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|524288]	KEEP		白名单	
+com.google.android.apps.maps	perm	com.google.android.gms.permission.CAR_SPEED	OTHER	granted [USER_SET]	REPORT		该组只报告	
+com.google.android.apps.maps	perm	android.permission.ACCESS_COARSE_LOCATION	LOCATION	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+com.google.android.apps.maps	op	10037	AD_ID	allow (最近使用 13h3m24s405ms 前)	REVOKE	ignore	默认拒绝	
+com.google.android.apps.messaging	perm	android.permission.READ_SMS	SMS	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|RESTRICTION_INSTALLER_EXEMPT|RESTRICTION_SYSTEM_EXEMPT|GRANTED_BY_ROLE]	KEEP		默认角色 [SMS]	
+com.google.android.apps.messaging	perm	android.permission.RECEIVE_WAP_PUSH	SMS	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|RESTRICTION_INSTALLER_EXEMPT|RESTRICTION_SYSTEM_EXEMPT|GRANTED_BY_ROLE]	KEEP		默认角色 [SMS]	
+com.google.android.apps.messaging	perm	android.permission.READ_MEDIA_VISUAL_USER_SELECTED	MEDIA	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|GRANTED_BY_ROLE]	KEEP		默认角色 [SMS]	
+com.google.android.apps.messaging	perm	android.permission.RECEIVE_MMS	SMS	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|RESTRICTION_INSTALLER_EXEMPT|RESTRICTION_SYSTEM_EXEMPT|GRANTED_BY_ROLE]	KEEP		默认角色 [SMS]	
+com.google.android.apps.messaging	perm	android.permission.RECEIVE_SMS	SMS	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|RESTRICTION_INSTALLER_EXEMPT|RESTRICTION_SYSTEM_EXEMPT|GRANTED_BY_ROLE]	KEEP		默认角色 [SMS]	
+com.google.android.apps.messaging	perm	android.permission.READ_EXTERNAL_STORAGE	MEDIA	granted [REVOKE_WHEN_REQUESTED|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|RESTRICTION_INSTALLER_EXEMPT|RESTRICTION_SYSTEM_EXEMPT|GRANTED_BY_ROLE]	KEEP		默认角色 [SMS]	
+com.google.android.apps.messaging	perm	android.permission.READ_PHONE_STATE	PHONE	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|GRANTED_BY_ROLE]	KEEP		默认角色 [SMS]	
+com.google.android.apps.messaging	perm	android.permission.SEND_SMS	SMS	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|RESTRICTION_INSTALLER_EXEMPT|RESTRICTION_SYSTEM_EXEMPT|GRANTED_BY_ROLE]	KEEP		默认角色 [SMS]	
+com.google.android.apps.messaging	perm	android.permission.CALL_PHONE	PHONE	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|GRANTED_BY_ROLE]	KEEP		默认角色 [SMS]	
+com.google.android.apps.messaging	perm	android.permission.READ_MEDIA_IMAGES	MEDIA	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|GRANTED_BY_ROLE]	KEEP		默认角色 [SMS]	
+com.google.android.apps.messaging	perm	android.permission.WRITE_CONTACTS	CONTACTS	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|GRANTED_BY_ROLE]	KEEP		默认角色 [SMS]	
+com.google.android.apps.messaging	perm	android.permission.CAMERA	CAMERA	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|GRANTED_BY_ROLE]	KEEP		默认角色 [SMS]	
+com.google.android.apps.messaging	perm	android.permission.READ_MEDIA_AUDIO	MEDIA	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|GRANTED_BY_ROLE]	KEEP		默认角色 [SMS]	
+com.google.android.apps.messaging	perm	android.permission.READ_MEDIA_VIDEO	MEDIA	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|GRANTED_BY_ROLE]	KEEP		默认角色 [SMS]	
+com.google.android.apps.messaging	perm	android.permission.READ_CELL_BROADCASTS	SMS	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|RESTRICTION_INSTALLER_EXEMPT|RESTRICTION_SYSTEM_EXEMPT|GRANTED_BY_ROLE]	KEEP		默认角色 [SMS]	
+com.google.android.apps.messaging	perm	android.permission.WRITE_EXTERNAL_STORAGE	MEDIA	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|RESTRICTION_INSTALLER_EXEMPT|RESTRICTION_SYSTEM_EXEMPT|GRANTED_BY_ROLE]	KEEP		默认角色 [SMS]	
+com.google.android.apps.messaging	perm	android.permission.RECORD_AUDIO	MICROPHONE	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|GRANTED_BY_ROLE]	KEEP		默认角色 [SMS]	
+com.google.android.apps.messaging	perm	android.permission.READ_CONTACTS	CONTACTS	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|GRANTED_BY_ROLE]	KEEP		默认角色 [SMS]	
+com.google.android.apps.nbu.files	uidop	MANAGE_EXTERNAL_STORAGE	ALL_FILES	allow (最近使用 1d2h3m22s833ms 前)	KEEP		白名单	
+com.google.android.apps.nbu.files	op	10022	INSTALLED_APPS	allow (最近使用 1d2h11m45s140ms 前)	REVOKE	ignore	默认拒绝	
+com.google.android.apps.photos	perm	android.permission.READ_MEDIA_VISUAL_USER_SELECTED	MEDIA	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+com.google.android.apps.photos	perm	android.permission.READ_MEDIA_IMAGES	MEDIA	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+com.google.android.apps.photos	perm	android.permission.READ_MEDIA_VIDEO	MEDIA	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+com.google.android.apps.photos	perm	android.permission.ACCESS_MEDIA_LOCATION	MEDIA_LOCATION	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+com.google.android.apps.photos	op	10037	AD_ID	allow (最近使用 2d5h39m44s693ms 前)	REVOKE	ignore	默认拒绝	
+com.google.android.apps.tachyon	perm	android.permission.READ_PHONE_STATE	PHONE	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+com.google.android.apps.tachyon	perm	android.permission.WRITE_CONTACTS	CONTACTS	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+com.google.android.apps.tachyon	perm	android.permission.CAMERA	CAMERA	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+com.google.android.apps.tachyon	perm	android.permission.WRITE_CALL_LOG	CALL_LOG	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|RESTRICTION_INSTALLER_EXEMPT]	KEEP		白名单	
+com.google.android.apps.tachyon	perm	android.permission.RECORD_AUDIO	MICROPHONE	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+com.google.android.apps.tachyon	perm	android.permission.READ_CONTACTS	CONTACTS	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+com.google.android.calendar	perm	android.permission.READ_CALENDAR	CALENDAR	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+com.google.android.calendar	perm	android.permission.WRITE_CALENDAR	CALENDAR	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+com.google.android.calendar	op	10037	AD_ID	allow (最近使用 2d4h11m12s461ms 前)	REVOKE	ignore	默认拒绝	
+com.google.android.contacts	perm	android.permission.READ_PHONE_NUMBERS	PHONE	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+com.google.android.contacts	perm	android.permission.READ_PHONE_STATE	PHONE	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+com.google.android.contacts	perm	android.permission.CALL_PHONE	PHONE	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+com.google.android.contacts	perm	android.permission.WRITE_CONTACTS	CONTACTS	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+com.google.android.contacts	perm	android.permission.GET_ACCOUNTS	CONTACTS	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+com.google.android.contacts	perm	android.permission.READ_CONTACTS	CONTACTS	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+com.google.android.contacts	op	10032	PHONE	allow (最近使用 12h31m28s6ms 前)	KEEP		白名单	
+com.google.android.dialer	perm	android.permission.READ_CALL_LOG	CALL_LOG	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|RESTRICTION_INSTALLER_EXEMPT|RESTRICTION_SYSTEM_EXEMPT|GRANTED_BY_ROLE]	KEEP		默认角色 [DIALER]	
+com.google.android.dialer	perm	android.permission.READ_PHONE_NUMBERS	PHONE	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+com.google.android.dialer	perm	android.permission.RECEIVE_SMS	SMS	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|RESTRICTION_INSTALLER_EXEMPT|RESTRICTION_SYSTEM_EXEMPT|GRANTED_BY_ROLE]	KEEP		默认角色 [DIALER]	
+com.google.android.dialer	perm	android.permission.READ_PHONE_STATE	PHONE	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|GRANTED_BY_ROLE]	KEEP		默认角色 [DIALER]	
+com.google.android.dialer	perm	android.permission.SEND_SMS	SMS	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|RESTRICTION_INSTALLER_EXEMPT|RESTRICTION_SYSTEM_EXEMPT|GRANTED_BY_ROLE]	KEEP		默认角色 [DIALER]	
+com.google.android.dialer	perm	android.permission.CALL_PHONE	PHONE	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|GRANTED_BY_ROLE]	KEEP		默认角色 [DIALER]	
+com.google.android.dialer	perm	android.permission.WRITE_CONTACTS	CONTACTS	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|GRANTED_BY_ROLE]	KEEP		默认角色 [DIALER]	
+com.google.android.dialer	perm	android.permission.CAMERA	CAMERA	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|GRANTED_BY_ROLE]	KEEP		默认角色 [DIALER]	
+com.google.android.dialer	perm	android.permission.WRITE_CALL_LOG	CALL_LOG	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|RESTRICTION_INSTALLER_EXEMPT|RESTRICTION_SYSTEM_EXEMPT|GRANTED_BY_ROLE]	KEEP		默认角色 [DIALER]	
+com.google.android.dialer	perm	android.permission.GET_ACCOUNTS	CONTACTS	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|GRANTED_BY_ROLE]	KEEP		默认角色 [DIALER]	
+com.google.android.dialer	perm	android.permission.RECORD_AUDIO	MICROPHONE	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|GRANTED_BY_ROLE]	KEEP		默认角色 [DIALER]	
+com.google.android.dialer	perm	android.permission.READ_CONTACTS	CONTACTS	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|GRANTED_BY_ROLE]	KEEP		默认角色 [DIALER]	
+com.google.android.dialer	perm	com.android.voicemail.permission.ADD_VOICEMAIL	PHONE	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|GRANTED_BY_ROLE]	KEEP		默认角色 [DIALER]	
+com.google.android.dialer	op	10032	PHONE	allow (最近使用 1d1h10m34s656ms 前)	KEEP		白名单	
+com.google.android.gm	op	10037	AD_ID	allow (最近使用 4h17m36s673ms 前)	REVOKE	ignore	默认拒绝	
+com.google.android.googlequicksearchbox	perm	android.permission.READ_SMS	SMS	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|RESTRICTION_INSTALLER_EXEMPT|RESTRICTION_SYSTEM_EXEMPT|GRANTED_BY_ROLE]	KEEP		默认角色 [ASSISTANT]	
+com.google.android.googlequicksearchbox	perm	android.permission.READ_CALL_LOG	CALL_LOG	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|RESTRICTION_INSTALLER_EXEMPT|RESTRICTION_SYSTEM_EXEMPT|GRANTED_BY_ROLE]	KEEP		默认角色 [ASSISTANT]	
+com.google.android.googlequicksearchbox	perm	android.permission.SEND_SMS	SMS	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|RESTRICTION_INSTALLER_EXEMPT|RESTRICTION_SYSTEM_EXEMPT|GRANTED_BY_ROLE]	KEEP		默认角色 [ASSISTANT]	
+com.google.android.googlequicksearchbox	perm	android.permission.CAMERA	CAMERA	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	REVOKE	revoke	默认拒绝	
+com.google.android.googlequicksearchbox	op	10037	AD_ID	allow (最近使用 2d5h42m47s366ms 前)	REVOKE	ignore	默认拒绝	
+com.google.android.inputmethod.latin	op	READ_CLIPBOARD	CLIPBOARD	allow (最近使用 1d18h17m15s196ms 前)	REPORT		该组只报告	
+com.google.android.videos	op	10037	AD_ID	allow (最近使用 13h3m22s481ms 前)	REVOKE	ignore	默认拒绝	
+com.google.android.youtube	perm	android.permission.CAMERA	CAMERA	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	REVOKE	revoke	默认拒绝	
+com.google.android.youtube	perm	android.permission.RECORD_AUDIO	MICROPHONE	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	REVOKE	revoke	默认拒绝	
+com.mfashiongallery.emag	op	10019	USAGE_STATS	allow	REVOKE	ignore	默认拒绝	
+com.mfashiongallery.emag	op	10022	INSTALLED_APPS	allow	REVOKE	ignore	默认拒绝	
+com.mfashiongallery.emag	op	10037	AD_ID	allow (最近使用 2d5h45m33s263ms 前)	REVOKE	ignore	默认拒绝	
+com.mfashiongallery.emag	op	10039	PHONE	allow	REVOKE	ignore	默认拒绝	
+com.miui.calculator	op	10019	USAGE_STATS	allow	REVOKE	ignore	默认拒绝	
+com.miui.calculator	op	10039	PHONE	allow	REVOKE	ignore	默认拒绝	
+com.miui.cleanmaster	op	10022	INSTALLED_APPS	allow (最近使用 3d2h16m3s575ms 前)	REVOKE	ignore	默认拒绝	
+com.miui.cleanmaster	op	10037	AD_ID	allow (最近使用 15d12h32m59s159ms 前)	REVOKE	ignore	默认拒绝	
+com.miui.cleanmaster	op	10039	PHONE	allow	REVOKE	ignore	默认拒绝	
+com.miui.compass	op	10039	PHONE	allow	REVOKE	ignore	默认拒绝	
+com.miui.gallery	perm	android.permission.READ_EXTERNAL_STORAGE	MEDIA	granted [GRANTED_BY_DEFAULT|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|RESTRICTION_INSTALLER_EXEMPT|RESTRICTION_SYSTEM_EXEMPT]	REVOKE	revoke	默认拒绝	
+com.miui.gallery	perm	android.permission.READ_MEDIA_IMAGES	MEDIA	granted [GRANTED_BY_DEFAULT|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	REVOKE	revoke	默认拒绝	
+com.miui.gallery	perm	android.permission.READ_MEDIA_VIDEO	MEDIA	granted [GRANTED_BY_DEFAULT|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	REVOKE	revoke	默认拒绝	
+com.miui.gallery	perm	android.permission.WRITE_EXTERNAL_STORAGE	MEDIA	granted [GRANTED_BY_DEFAULT|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|RESTRICTION_INSTALLER_EXEMPT|RESTRICTION_SYSTEM_EXEMPT]	REVOKE	revoke	默认拒绝	
+com.miui.gallery	op	10019	USAGE_STATS	allow	REVOKE	ignore	默认拒绝	
+com.miui.gallery	op	10037	AD_ID	allow (最近使用 2d5h6m58s88ms 前)	REVOKE	ignore	默认拒绝	
+com.miui.gallery	op	10039	PHONE	allow	REVOKE	ignore	默认拒绝	
+com.miui.notes	op	READ_CLIPBOARD	CLIPBOARD	allow	REPORT		该组只报告	
+com.miui.notes	op	10037	AD_ID	allow (最近使用 2d4h36m24s153ms 前)	REVOKE	ignore	默认拒绝	
+com.miui.notes	op	10039	PHONE	allow	REVOKE	ignore	默认拒绝	
+com.miui.screenrecorder	op	10039	PHONE	allow	REVOKE	ignore	默认拒绝	
+com.okinc.okex.gp	op	10037	AD_ID	allow (最近使用 4h13m33s493ms 前)	REVOKE	ignore	默认拒绝	
+com.openai.chatgpt	op	10037	AD_ID	allow (最近使用 2d5h46m40s750ms 前)	REVOKE	ignore	默认拒绝	
+com.plexapp.android	op	10037	AD_ID	allow (最近使用 1d5h26m31s857ms 前)	REVOKE	ignore	默认拒绝	
+com.whatsapp	perm	android.permission.READ_MEDIA_VISUAL_USER_SELECTED	MEDIA	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+com.whatsapp	perm	android.permission.READ_MEDIA_IMAGES	MEDIA	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+com.whatsapp	perm	android.permission.WRITE_CONTACTS	CONTACTS	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+com.whatsapp	perm	android.permission.CAMERA	CAMERA	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+com.whatsapp	perm	android.permission.READ_MEDIA_VIDEO	MEDIA	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+com.whatsapp	perm	android.permission.GET_ACCOUNTS	CONTACTS	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+com.whatsapp	perm	android.permission.READ_CONTACTS	CONTACTS	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+com.whatsapp	op	10022	INSTALLED_APPS	allow (最近使用 2d5h33m10s287ms 前)	REVOKE	ignore	默认拒绝	
+com.whatsapp	op	10037	AD_ID	allow (最近使用 4h1m48s252ms 前)	REVOKE	ignore	默认拒绝	
+me.estk.lpa	perm	android.permission.BLUETOOTH_CONNECT	NEARBY	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+me.estk.lpa	perm	android.permission.READ_PHONE_STATE	PHONE	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+me.estk.lpa	perm	android.permission.BLUETOOTH_SCAN	NEARBY	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+org.telegram.messenger	perm	android.permission.READ_CALL_LOG	CALL_LOG	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|RESTRICTION_INSTALLER_EXEMPT]	REVOKE	revoke	默认拒绝	
+org.telegram.messenger	perm	android.permission.READ_PHONE_NUMBERS	PHONE	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	REVOKE	revoke	默认拒绝	
+org.telegram.messenger	perm	android.permission.READ_MEDIA_VISUAL_USER_SELECTED	MEDIA	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+org.telegram.messenger	perm	android.permission.READ_PHONE_STATE	PHONE	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	REVOKE	revoke	默认拒绝	
+org.telegram.messenger	perm	android.permission.CALL_PHONE	PHONE	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	REVOKE	revoke	默认拒绝	
+org.telegram.messenger	perm	android.permission.READ_MEDIA_IMAGES	MEDIA	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+org.telegram.messenger	perm	android.permission.WRITE_CONTACTS	CONTACTS	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+org.telegram.messenger	perm	android.permission.CAMERA	CAMERA	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+org.telegram.messenger	perm	android.permission.READ_MEDIA_AUDIO	MEDIA	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+org.telegram.messenger	perm	android.permission.READ_MEDIA_VIDEO	MEDIA	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+org.telegram.messenger	perm	android.permission.GET_ACCOUNTS	CONTACTS	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+org.telegram.messenger	perm	android.permission.RECORD_AUDIO	MICROPHONE	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+org.telegram.messenger	perm	android.permission.READ_CONTACTS	CONTACTS	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	KEEP		白名单	
+org.telegram.messenger	perm	android.permission.ACCESS_MEDIA_LOCATION	MEDIA_LOCATION	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	REVOKE	revoke	默认拒绝	
+org.telegram.messenger	op	10004	SMS	allow	REVOKE	ignore	默认拒绝	
+org.telegram.messenger	op	10022	INSTALLED_APPS	allow	REVOKE	ignore	默认拒绝	
+org.telegram.messenger	op	10032	PHONE	allow (最近使用 2d5h37m0s835ms 前)	REVOKE	ignore	默认拒绝	

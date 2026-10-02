@@ -1,0 +1,10 @@
+permguard 2026.10.03 apply @ 20261003-011522 uid=2000
+采集: 第三方 51 / 系统 285 / 已读 51 个包；角色持有者 [com.android.bluetooth, com.android.chrome, com.android.contacts, com.android.emergency, com.android.nfc, com.android.settings.intelligence, com.android.shell, com.android.systemui, com.google.android.apps.messaging, com.google.android.dialer, com.google.android.documentsui, com.google.android.gms, com.google.android.googlequicksearchbox, com.miui.home]；前台 []
+快照: /data/local/tmp/permguard/state/snapshot-20261003-011522.tsv
+SUMMARY revoke=5 apps=1 defer=0 keep=87 report=4 fixed=0
+  REVOKE	org.telegram.messenger	READ_CALL_LOG	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|RESTRICTION_INSTALLER_EXEMPT]	OK
+  REVOKE	org.telegram.messenger	READ_PHONE_NUMBERS	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	OK
+  REVOKE	org.telegram.messenger	READ_PHONE_STATE	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	OK
+  REVOKE	org.telegram.messenger	CALL_PHONE	granted [USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	OK
+  REVOKE	org.telegram.messenger	ACCESS_MEDIA_LOCATION	granted [USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]	OK
+执行: 成功 5（回读确认 5），失败 0；日志 /data/local/tmp/permguard/state/journal-20261003-011522.tsv

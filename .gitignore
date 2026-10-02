@@ -7,3 +7,7 @@ clash/
 raw_private/
 .last_sync_head
 __pycache__/
+# permguard：手机权限快照（含各 App 授权原值，restore 用；手机 /data/local/tmp/permguard/state 另有一份）、构建产物、APK 签名钥匙（丢了只能先卸再装）
+permguard/state/
+permguard/app/out/
+permguard/app/permguard.keystore

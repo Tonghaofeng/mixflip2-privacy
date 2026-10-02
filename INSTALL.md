@@ -79,3 +79,15 @@ cd tools/sysregion && ./build.sh              # 只在改了 SysLocale.java 时�
 ./set_region.sh --revert                      # 回滚
 ```
 原理与各层「归属地」（哪些改得了、哪些是只读 ro 属性/SIM 物理事实）见 `tools/sysregion/README.md`。
+
+## 7. 隐私权限定时收回 permguard（2026-10-03）
+默认拒绝 + 白名单：第三方 App 的隐私类运行时权限，加上 MIUI 的广告标识 / 获取应用列表 / 运营商取号等 appop，只要不在 `permguard/whitelist.conf` 里，每轮都收回。设计取舍和限制见 `permguard/README.md`。
+```bash
+permguard/adb/permguard.sh --dry-run      # 先看清单（evidence/permguard_<日期>/plan.md）
+permguard/adb/permguard.sh --apply        # 先写快照（permguard/state/）再收回，回读核对；App 在前台的项推迟
+permguard/adb/permguard.sh --verify       # 实际状态表 + 「关不掉」清单
+permguard/adb/permguard.sh --restore      # 回滚到最近一次快照
+permguard/adb/permguard.sh --daemon-start # 没装 App 时用 adb 拉起手机端守护循环（每 6 小时 + 新装 App；重启即失）
+permguard/adb/setup_phone.sh              # 手机解锁时：装 Shizuku + PermGuard（手机上点两次「继续安装」）、授权、启动 Shizuku
+```
+手机上还要做：Shizuku 无线调试配对一次、打开「开机启动」；PermGuard 里点「授权 Shizuku」。之后开机连上受信任 Wi-Fi 时，Shizuku 自启，PermGuard 自动补跑一轮并拉起守护。**Clash 写死豁免**，不受白名单影响。

@@ -1,0 +1,53 @@
+== 开机
+  ·  2026-10-01 23:48:43 / boot reason: reboot,2000,14642,1790869729
+== 精简（debloat/removed.txt 与 user 0 已安装包的交集必须为空）
+  ✅ removed.txt 91 个全部未安装
+  ✅ disabled.txt 全部仍停用
+  ✅ KEEP.txt 禁删包全部在装
+== 稳定性（开机以来崩溃 / RescueParty；观察 20s）
+  ✅ 本次开机原因: reboot,2000,14642
+  ✅ 开机（2026-10-01 23:48:43）以来无系统级崩溃
+  ✅ SystemUI 进程稳定（pid 5767）
+== 上报 / 探针开关
+  ✅ secure upload_log_pref=0
+  ✅ secure upload_debug_log_pref=0
+  ✅ secure operator_service_improve_plan=0
+  ✅ secure miui_miprotect_risk_app_download_warn=0
+  ✅ secure miui_miprotect_risk_app_remind_warn=0
+  ✅ global upload_apk_enable=0
+  ✅ global passport_ad_status=OFF
+  ✅ global captive_portal_mode=0
+  ✅ global maintenance_mode_user_id=110
+  ✅ secure quick_control_all_devices=0
+  ✅ secure smart_device_control=0
+  ✅ secure second_space_entrance_status=0
+  ✅ system three_gesture_up=none
+  ✅ secure key_latest_virus_scan_date=0
+  ✅ secure settings_sms_risk_warn_enable=0
+  ✅ secure settings_sms_code_clipboard_warn_enable=0
+  ✅ secure screen_share_protection=0
+  ✅ secure com.android.browser.web_page_warning_states=0
+  ✅ secure ai_guard_function_switch=0
+  ✅ secure com.miui.guardprovider.AI_GUARD_PRIVACY_AGREEMENT=0
+  ✅ secure optimizer_scan_cloud=0
+  ✅ system cloud_antispam=0
+  ✅ system key_yellowpage_main_switch=0
+  ✅ global package_verifier_user_consent=-1
+  ✅ global package_verifier_enable=0
+  ✅ global wifi_scan_always_enabled=0
+  ✅ global need_receive_offline_find_broadcast=0
+  ✅ Google 定位准确性 network_location_opt_in=0
+== 常驻 VPN（Clash always-on + 锁定）
+  ✅ always_on_vpn_app=com.github.metacubex.clash.meta
+  ✅ always_on_vpn_lockdown=1
+  ✅ lockdown 规则: UIDs: 1-10280
+  ✅ tun0 VPN 已连接
+  ✅ Clash 自启动(10008)=allow
+  ✅ Clash 在省电白名单
+  ✅ Clash 在多任务锁定名单
+== 地区 / 时区（tools/sysregion）
+  ✅ persist.sys.locale=zh-Hans-SG
+  ✅ persist.sys.timezone=Asia/Singapore
+  ✅ 自动时区=false
+
+结果：全部通过

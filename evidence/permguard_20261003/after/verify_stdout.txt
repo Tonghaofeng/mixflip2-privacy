@@ -1,0 +1,4 @@
+permguard 2026.10.03 verify @ 20261003-011833 uid=2000
+采集: 第三方 51 / 系统 285 / 已读 336 个包；角色持有者 [com.android.bluetooth, com.android.chrome, com.android.contacts, com.android.emergency, com.android.nfc, com.android.settings.intelligence, com.android.shell, com.android.systemui, com.google.android.apps.messaging, com.google.android.dialer, com.google.android.documentsui, com.google.android.gms, com.google.android.googlequicksearchbox, com.miui.home]；前台 []
+SUMMARY revoke=0 apps=0 defer=0 keep=87 report=107 fixed=1498
+verify: 写出 out/verify.md、verify.csv、unfixable.md（关不掉 17 个）

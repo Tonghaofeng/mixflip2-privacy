@@ -48,6 +48,7 @@
 | `tools/postboot_check.sh` | **每次重启后的自检**（只读，未解锁也能跑）：removed.txt 与已装包交集为空、停用包仍停用、禁删包在装、开机以来系统崩溃 / RescueParty / SystemUI 稳定（`WATCH=90`）、上报开关、常驻 VPN、地区时区；任一 FAIL 退出码 1 |
 | `tools/sysregion/` | 用 adb 把「系统地区」改成新加坡（zh-CN → zh-Hans-SG）+ 时区；原理与各层归属地见其 README |
 | `tools/ui-automation/` | 仅在无接口时用的 uiautomator 小工具（Play 安装、Clash 保存/更新） |
+| `permguard/` | **隐私权限定时收回**（默认拒绝 + 白名单）：规则引擎 core（shell 身份，经 app_process 运行）、adb 版 `--dry-run/--apply/--verify/--restore`、手机端守护循环与 PermGuard App（Shizuku + JobScheduler）。见 `permguard/README.md`，证据见 `evidence/permguard_20261003.md` |
 | `debloat/OPEN_ITEMS.md` | **待办与「保留只断网」清单**：体检/审计建议逐条跟踪到关闭——每次会话先看、结束更新 |
 | `debloat/antivirus_antifraud.md` `复盘_20261001_病毒扫描漏网.md` `background_telemetry_20261002.md` | 病毒扫描/电诈引擎删除、漏网复盘、后台遥测与标识符排查的证据文档 |
 | `stubs/` | 自写空壳 / 覆盖包构建工具与无 root 边界（小米保留包名签名强校验、shell 禁造 overlay） |
