@@ -35,3 +35,8 @@
 | com.miui.home / fliphome | 相机、联系人、读帧缓冲 | 桌面 | — |
 | com.android.soundrecorder / com.miui.screenrecorder | 截获通话音频/视频 | 用户在用（待定） | 用户决定 |
 | com.android.updater (6102) | — | OTA（update.miui.com 放行） | 见 #6 |
+
+## #20 Shizuku 13.6 开机自启不稳（2026-10-03）
+- 21:28 重启：BootCompleteReceiver 21:28:15 被拉起，但无任何启动尝试日志，shizuku_server 没起来；20:49 那次重启则起来了。推测开机瞬间 Wi-Fi/Clash 未就绪即放弃、不重试。
+- 影响：PermGuard 定时/守护循环与远程维护隧道（permguard/remote）都等 Shizuku；手机上点一次 Shizuku「启动」即全链恢复（21:35 实测 1 分钟内隧道自动连回）。
+- 候选：PermGuard 开机发现 Shizuku 未运行时发通知一键跳 Shizuku；或研究 Shizuku 源码看能否等网络再启动。
