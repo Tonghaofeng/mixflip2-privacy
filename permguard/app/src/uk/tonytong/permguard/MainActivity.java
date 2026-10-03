@@ -18,6 +18,7 @@ import rikka.shizuku.Shizuku;
 
 /** 只做状态与手动操作；定时执行不依赖这个界面。 */
 public class MainActivity extends Activity {
+    static volatile boolean visible;   // 守门员换进程前看一眼：界面开着就不杀
     TextView status, log;
 
     @Override
@@ -77,8 +78,15 @@ public class MainActivity extends Activity {
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        visible = false;
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
+        visible = true;
         refresh();
         log.setText(Runner.latestLog(this));
     }
@@ -91,6 +99,7 @@ public class MainActivity extends Activity {
                 + "\n上次：" + (ts == 0 ? "从未" : new SimpleDateFormat("MM-dd HH:mm", Locale.US).format(new Date(ts)) + "（" + p.getString("last_reason", "") + "）")
                 + "\n" + p.getString("last_line", "")
                 + "\n白名单：" + Runner.confSource(this)
+                + "\n守门员（Shizuku 没起来时经无线调试拉起）：" + Watchdog.prefs(this).getString("last", "还没跑过")
                 + "\n定时：每 6 小时 + 开机 + Shizuku 就绪；守护循环每 5 分钟查新装 App");
     }
 }

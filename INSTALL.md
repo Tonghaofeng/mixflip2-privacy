@@ -90,4 +90,8 @@ permguard/adb/permguard.sh --restore      # 回滚到最近一次快照
 permguard/adb/permguard.sh --daemon-start # 没装 App 时用 adb 拉起手机端守护循环（每 6 小时 + 新装 App；重启即失）
 permguard/adb/setup_phone.sh              # 手机解锁时：装 Shizuku + PermGuard（手机上点两次「继续安装」）、授权、启动 Shizuku
 ```
-手机上还要做：Shizuku 无线调试配对一次、打开「开机启动」；PermGuard 里点「授权 Shizuku」。之后开机连上受信任 Wi-Fi 时，Shizuku 自启，PermGuard 自动补跑一轮并拉起守护。**Clash 写死豁免**，不受白名单影响。
+手机上还要做：Shizuku 无线调试配对一次、打开「开机启动」；PermGuard 里点「授权 Shizuku」。再在 Mac 上跑一次 `permguard/adb/pair_watchdog.sh`（给 PermGuard 的 Shizuku 守门员配 adb 钥匙，不用碰手机）。
+
+之后开机连上 Wi-Fi 时，守门员会自己打开无线调试、拉起 Shizuku（未解锁也会跑；Shizuku 自带的开机启动不可靠），PermGuard 自动补跑一轮并拉起守护。10-03 两次重启实测，Shizuku 分别在开机后 34 秒和 25 秒就绪。**Clash 写死豁免**，不受白名单影响。
+
+在外远程维护（反向隧道，Mac mini `adb connect 127.0.0.1:15556/15557/15558`）见 `permguard/remote/README.md`。

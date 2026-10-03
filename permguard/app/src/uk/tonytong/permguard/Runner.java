@@ -50,10 +50,9 @@ final class Runner {
     /** 定时任务入口。返回 true = 让 JobScheduler 退避重试。 */
     static boolean fromJob(Context c, String reason, boolean oneshot) {
         for (int i = 0; i < 15 && !shizukuReady(); i++) sleep(3000);
-        if (!shizukuReady()) {
-            status(c, reason, "Shizuku 未运行，本轮跳过", -1);
-            if (reason.equals("boot") || reason.equals("periodic")) notifyOnce(c, "shizuku-down",
-                    "permguard 暂停：Shizuku 未运行", "打开 Shizuku →「启动」（无线调试）；启动后会自动补跑一轮");
+        if (!shizukuReady()) {   // 拉起 Shizuku 与「起不来」的通知都归守门员
+            status(c, reason, "Shizuku 未运行，本轮跳过（已叫守门员）", -1);
+            Watchdog.kick(c, "guardjob", 0);
             return oneshot;
         }
         if (!shizukuGranted()) {
@@ -63,7 +62,7 @@ final class Runner {
         }
         long minAge;   // 距上次 apply（任何来源，含守护循环）不足这么久就只保活守护、不重跑
         switch (reason) {
-            case "boot": minAge = 0; break;
+            case "boot": case "watchdog": minAge = 0; break;
             case "periodic": minAge = 5 * 3600; break;
             default: minAge = 1800;
         }
@@ -88,8 +87,8 @@ final class Runner {
             sc.append("echo '").append(apk).append("' > $D/classpath\n");
             // HyperOS：自启动(10008) + 省电白名单，否则开机广播/定时任务可能被拦（同 Clash 的处理）
             sc.append("cmd appops set uk.tonytong.permguard 10008 allow; dumpsys deviceidle whitelist +uk.tonytong.permguard >/dev/null\n");
-            // Shizuku 13.6 无 root 开机自启（受信任 WLAN 下自动开无线调试）要 WRITE_SECURE_SETTINGS；本 App 的提醒通知要 POST_NOTIFICATIONS
-            sc.append("pm grant moe.shizuku.privileged.api android.permission.WRITE_SECURE_SETTINGS 2>/dev/null; pm grant uk.tonytong.permguard android.permission.POST_NOTIFICATIONS 2>/dev/null\n");
+            // Shizuku 自己的开机自启与本 App 的守门员（开无线调试）都要 WRITE_SECURE_SETTINGS；本 App 的提醒通知要 POST_NOTIFICATIONS
+            sc.append("pm grant moe.shizuku.privileged.api android.permission.WRITE_SECURE_SETTINGS 2>/dev/null; pm grant uk.tonytong.permguard android.permission.WRITE_SECURE_SETTINGS 2>/dev/null; pm grant uk.tonytong.permguard android.permission.POST_NOTIFICATIONS 2>/dev/null\n");
             if (mode.equals("apply") && minAge > 0) {
                 sc.append("last=$(cat $D/last_apply 2>/dev/null || echo 0); age=$(( $(date +%s) - last ))\n");
                 sc.append("if [ $age -ge ").append(minAge).append(" ]; then sh $D/pg.sh run apply; rc=$?; else echo \"SKIP 距上次 apply ${age}s\"; rc=0; fi\n");
@@ -170,6 +169,8 @@ final class Runner {
         Arrays.sort(fs);
         StringBuilder all = new StringBuilder();
         for (File f : fs) all.append(readAll(new FileInputStream(f))).append("\n\n");
+        File wl = Watchdog.logFile(c);
+        if (wl.isFile()) all.append("# 守门员 watchdog.log\n").append(readAll(new FileInputStream(wl)));
         String name = "permguard-logs-" + new SimpleDateFormat("yyyyMMdd-HHmmss", Locale.US).format(new Date()) + ".txt";
         ContentValues v = new ContentValues();
         v.put(MediaStore.MediaColumns.DISPLAY_NAME, name);

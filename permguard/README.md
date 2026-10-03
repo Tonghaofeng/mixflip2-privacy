@@ -18,7 +18,9 @@
 | `phone/pg.sh` | 手机端驱动，部署在 `/data/local/tmp/permguard/`。负责加锁运行、写日志，以及守护循环 |
 | `adb/permguard.sh` | adb 版：`--dry-run` / `--apply` / `--verify` / `--restore` / `--status` / `--daemon-start` |
 | `adb/setup_phone.sh` | 手机端一次性配置：装包、授权、启动 Shizuku、核对定时任务 |
-| `app/` | PermGuard App（Java，用 aapt2/d8/apksigner 手工构建，不用 Gradle）：JobScheduler、开机广播、Shizuku 执行、日志导出 |
+| `adb/pair_watchdog.sh` | 给守门员配 adb 钥匙（一次性，全程不碰手机），并自检 |
+| `app/` | PermGuard App（Java，用 aapt2/d8/apksigner 手工构建，不用 Gradle）：JobScheduler、开机广播、Shizuku 执行、**Shizuku 守门员**、日志导出 |
+| `remote/` | 远程维护反向隧道（手机 shell 身份 dbclient → Mac mini 127.0.0.1:15556–15558），见 `remote/README.md` |
 | `state/`（不入库） | apply 前的快照 `snapshot-*.tsv` 和执行记录 `journal-*.tsv`。手机 `/data/local/tmp/permguard/state/` 也存一份 |
 
 ## 管什么
@@ -90,9 +92,10 @@
    - 由 App（经 Shizuku）或 adb（`--daemon-start`）拉起。
 2. **PermGuard App**（JobScheduler）
    - 周期任务每 6 小时一次（flex 1 小时），`setPersisted` 跨重启。
-   - 一次性任务的触发：开机广播、Shizuku 服务端启动后把 binder 交给 App（经 ShizukuProvider，顺带拉起进程）、App 更新。等不到 Shizuku 就指数退避重试，从 1 分钟起。
+   - 一次性任务的触发：开机广播、Shizuku 服务端启动后把 binder 交给 App（经 ShizukuProvider，顺带拉起进程）、App 更新、守门员拉起 Shizuku 后。等不到 Shizuku 就叫守门员，并按指数退避重试（从 1 分钟起）。
    - 每轮都会重写 `pg.sh`、白名单和 classpath（指向 APK），并确保守护循环在跑。
-   - 运行时会给自己设 MIUI 自启动 10008=allow 加省电白名单（同 Clash 的处理），给 Shizuku 授 `WRITE_SECURE_SETTINGS`，给自己授通知权限。
+   - 运行时会给自己设 MIUI 自启动 10008=allow 加省电白名单（同 Clash 的处理），给 Shizuku 和自己授 `WRITE_SECURE_SETTINGS`，给自己授通知权限。
+   - **Shizuku 守门员**（`Watchdog`，v2026.10.03.2 起）：Shizuku 没在跑时，自己把它拉起来，见下节。
    - 日志写 App 私有目录 `files/logs/`（保留 60 份）；「导出日志」写到 `下载/permguard/`（MediaStore，不需要存储权限）。
    - 白名单优先读 `/sdcard/Android/data/uk.tonytong.permguard/files/whitelist.conf`，没有就用内置的。
 3. **adb 版**：Mac 在旁时手动跑，也可以用来拉起守护循环。
@@ -104,15 +107,44 @@
 - 重启后，Shizuku 启动时调 ShizukuProvider 会重新拉起 App 进程。
 - 想更稳可以在多任务里锁定 PermGuard 卡片，但不是必需的。
 
-**重启后的限制（如实）**：
+**重启后**：
 
 - 已收回的权限跨重启保持（`runtime-permissions.xml` 持久化），重启只影响「下一轮」能不能执行。
-- **Shizuku 不是 root**：无 root 时它靠无线调试启动，每次开机都要重新启动。13.6.0 起支持在 Android 13+ 连上**受信任的 WLAN** 时自动开机启动，前提是：
-  - Shizuku 自己做过一次无线调试配对；
-  - 它有 `WRITE_SECURE_SETTINGS`（shell 可以 `pm grant`，App 每轮会补授）；
-  - 设置里打开了开机启动。
-- 开机时不在受信任 Wi-Fi 上（比如在外面开机），Shizuku 就起不来。PermGuard 会发通知「permguard 暂停：Shizuku 未运行」。连上 Wi-Fi 后可以在 Shizuku 里手动启动（配对过就不需要电脑），启动后 App 自动补跑一轮并拉起守护。
-- 上述自启条件**本轮未实测**：Shizuku 尚未装上，见 OPEN_ITEMS #16。
+- **Shizuku 不是 root**：无 root 时它靠无线调试启动，每次开机都要重新启动。
+- Shizuku 13.6 自带开机启动（Android 13+、受信任 WLAN、有 `WRITE_SECURE_SETTINGS`），但**不可靠**：它只在开机广播那一刻试一次，那时 Wi-Fi 往往还没连上，它就放弃、不再重试（10-03 21:28 实测没起来，OPEN_ITEMS #20）。所以加了守门员。
+
+### Shizuku 守门员（`app/src/…/Watchdog.java`，`Adb.java`）
+
+Shizuku 没在跑时，PermGuard 自己用 ADB-over-TLS 连本机 adbd（身份 shell），跑 Shizuku 自带的 starter（`libshizuku.so`），再 `pg.sh daemon-start`。全程不用人点。
+
+- **触发**：
+  - `LOCKED_BOOT_COMPLETED`：未解锁就开始跑。服务、钥匙和状态都放在设备加密存储，`directBootAware`。
+  - `BOOT_COMPLETED`、本 App 更新、Wi-Fi 连上（ConnectivityManager 的 PendingIntent 回调）。
+  - Shizuku binder 断开、GuardJob 等不到 Shizuku、每 30 分钟兜底。
+- **一轮的步骤**：
+  1. 等 binder 5 秒。
+  2. 无线调试没开就打开它（要 `WRITE_SECURE_SETTINGS`，由 shell `pm grant`）。
+  3. 从 `/proc/net/tcp*` 找 adbd 的 TLS 端口，连上去执行脚本。
+  4. 拉起成功后排一轮 GuardJob。
+- **失败处理**：
+  - 重试间隔从 30 秒起翻倍，封顶 15 分钟。
+  - 连续两轮失败发通知「Shizuku 未运行」，点一下打开 Shizuku 手动启动。
+  - 不受信任的 Wi-Fi 上，系统会把无线调试开关拨回去，并弹「允许无线调试」。所以同一次连接（按「开机次数:网络句柄」认）最多试 3 次，开成功就清零。
+- **adb 钥匙**：
+  - 由 `adb/pair_watchdog.sh` 在 Mac 上一次性配好：用 `service call adb 9` 让手机开配对、口令由脚本定；临时 adb server 执行 `adb pair`；私钥推给 App，App 收进设备加密存储后删掉外部那份。
+  - 在「无线调试 → 已配对设备」里显示为 `permguard@bixi`。
+  - PermGuard 卸载、清数据，或「撤销 USB 调试授权」之后，要重跑这个脚本。
+- **日志**：logcat 标签 `PermGuardWD`；App 设备加密存储里有 `watchdog.log`，会随「导出日志」一起导出；App 界面显示最近一轮的结果。
+- **重启实测**（10-03，手机在外，经隧道 `adb reboot`，开机后只输一次 PIN；证据 `evidence/permguard_20261003/reboot_watchdog.md`）：
+
+  | | 解锁 | Shizuku 就绪 | 守护循环 + GuardJob 补跑 | 远程隧道恢复 |
+  |---|---|---|---|---|
+  | 第 1 次 | +22s | +34s（守门员拉起） | +35s，apply rc=0 | +6m00s（旧 rt.sh 的检测 bug，已修） |
+  | 第 2 次 | +22s | +25s（Shizuku 自启抢先，守门员开了无线调试） | +26s，apply rc=0 | +29s |
+
+  第 2 次重启时发现守门员的尝试计数跨重启累积（第 3 次开机会放弃开无线调试）。已修，versionCode 20261006，**修好后还没经过重启验证**。
+
+- 在外开机、没连 Wi-Fi 时，无线调试开不了，守门员发通知「没连 Wi-Fi」；连上 Wi-Fi 后会自动再试。
 
 **备选：Tasker / MacroDroid + Shizuku**
 
@@ -131,6 +163,7 @@ permguard/adb/permguard.sh --restore [permguard/state/snapshot-….tsv]   # 默�
 permguard/adb/permguard.sh --status | --logs | --daemon-start | --daemon-stop
 permguard/app/build.sh                  # → app/out/permguard.apk（签名钥匙 app/permguard.keystore 不入库，丢了只能先卸再装）
 permguard/adb/setup_phone.sh            # 手机解锁时跑：装包（手机上点两次「继续安装」）、授权、启动 Shizuku、核对
+permguard/adb/pair_watchdog.sh          # 守门员 adb 钥匙配对 + 自检（一次性；在外用 ADB_SERIAL=127.0.0.1:1555x）
 ```
 
 在手机上（不需要电脑）：

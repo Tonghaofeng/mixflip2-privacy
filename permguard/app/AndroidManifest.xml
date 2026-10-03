@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- permguard：经 Shizuku（shell 身份）定时跑 core 规则引擎。无界面依赖：定时任务 + 开机 + Shizuku 就绪时自动执行。 -->
+<!-- permguard：经 Shizuku（shell 身份）定时跑 core 规则引擎。无界面依赖：定时任务 + 开机 + Shizuku 就绪时自动执行。
+     Shizuku 没起来时守门员（Watchdog）经无线调试连本机 adbd 把它拉起来。 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="uk.tonytong.permguard"
-    android:versionCode="20261004"
-    android:versionName="2026.10.03.1">
+    android:versionCode="20261006"
+    android:versionName="2026.10.03.2">
 
     <uses-sdk android:minSdkVersion="30" android:targetSdkVersion="34" />
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="moe.shizuku.manager.permission.API_V23" />
+    <!-- 守门员：连本机 adbd（127.0.0.1）、看 Wi-Fi 在不在、开无线调试（development 权限，shell `pm grant`） -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
 
     <queries>
         <package android:name="moe.shizuku.privileged.api" />
@@ -35,9 +40,20 @@
             android:permission="android.permission.BIND_JOB_SERVICE"
             android:exported="false" />
 
+        <!-- directBootAware：开机未解锁也能跑（钥匙与状态在设备加密存储） -->
+        <service
+            android:name=".Watchdog"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:exported="false"
+            android:directBootAware="true" />
+
+        <!-- Wi-Fi 连上（ConnectivityManager PendingIntent 回调） -->
+        <receiver android:name=".Watchdog$Net" android:exported="false" android:directBootAware="true" />
+
         <!-- 受保护广播，只有系统发得出 -->
-        <receiver android:name=".BootReceiver" android:exported="true">
+        <receiver android:name=".BootReceiver" android:exported="true" android:directBootAware="true">
             <intent-filter>
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
             </intent-filter>
