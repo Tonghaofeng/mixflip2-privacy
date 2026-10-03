@@ -21,7 +21,7 @@ if [ $CHECK = 0 ]; then
 
 for pair in "$SZ:$SZ_APK" "$PG:$PG_APK"; do
   p=${pair%%:*}; f=${pair#*:}
-  if inst $p && [ "$p" = "$SZ" ]; then echo "已装 $p"; continue; fi
+  if inst $p && { [ "$p" = "$SZ" ] || [ -z "${PG_REINSTALL:-}" ]; }; then echo "已装 $p（PermGuard 升级用 PG_REINSTALL=1）"; continue; fi
   [ -f "$f" ] || { echo "❌ 缺 APK: $f"; exit 2; }
   echo "安装 $p ← $f（手机上点「继续安装」）"
   $REPO/tools/adb_install.sh -r "$f" || { echo "❌ 安装 $p 失败（锁屏/没点确认会报 INSTALL_FAILED_USER_RESTRICTED）"; exit 1; }

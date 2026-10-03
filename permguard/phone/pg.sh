@@ -70,6 +70,8 @@ case "$1" in
     lastpk=""; retry_at=0
     while :; do
       [ "$(cat "$D/pgd.pid" 2>/dev/null)" = "$$" ] || { log "daemon 被替换/停止，退出"; exit 0; }
+      # 可选钩子：$D/hooks.sh 不随 App 覆盖，每轮跑一次（如保活远程维护隧道 /data/local/tmp/rt/rt.sh）
+      [ -f "$D/hooks.sh" ] && sh "$D/hooks.sh" < /dev/null > /dev/null 2>&1
       now=$(date +%s)
       last=$(cat "$D/last_apply" 2>/dev/null || echo 0)
       pk=$(cmd package list packages -3 --user 0 | sort | md5sum | cut -c1-32)

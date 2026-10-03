@@ -2,8 +2,8 @@
 <!-- permguard：经 Shizuku（shell 身份）定时跑 core 规则引擎。无界面依赖：定时任务 + 开机 + Shizuku 就绪时自动执行。 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="uk.tonytong.permguard"
-    android:versionCode="20261003"
-    android:versionName="2026.10.03">
+    android:versionCode="20261004"
+    android:versionName="2026.10.03.1">
 
     <uses-sdk android:minSdkVersion="30" android:targetSdkVersion="34" />
 
