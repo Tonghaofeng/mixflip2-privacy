@@ -105,7 +105,7 @@ def build():
           "  proxy-server-nameserver: ['https://223.5.5.5/dns-query', 'https://1.12.12.12/dns-query']",
           "  nameserver: ['https://1.1.1.1/dns-query#PROXY']", ""]
     wg = (f"type: wireguard, port: 51820, ip: 10.77.0.2, private-key: '{phone_key}', "
-          f"public-key: '{server_pub}', udp: true, mtu: 1280, remote-dns-resolve: true, dns: [198.18.0.2]")
+          f"public-key: '{server_pub}', udp: true, mtu: 1280, persistent-keepalive: 25, remote-dns-resolve: true, dns: [198.18.0.2]")
     # 只能有一个 WireGuard 出站：同一把密钥开两个（lan/wan）会让服务端 peer 的 endpoint 来回漂移，两边健康检查都失败。
     # 在家也走 tonytong.uk（路由器 NAT 回环已验证）。
     L += ["proxies:", f"  - {{name: wg-home, server: {HOME_WAN}, {wg}}}", "",
