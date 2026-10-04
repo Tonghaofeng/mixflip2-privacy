@@ -74,3 +74,14 @@ zsh -lc 'for p in 15556 15557 15558; do adb connect 127.0.0.1:$p; done; adb devi
 体检（tools/postboot_check.sh）发现 com.android.vending 把 global upload_apk_enable / package_verifier_user_consent / package_verifier_enable
 改回开（dumpsys settings 的 pkg: 字段显示写入方），且 Clash 掉出 deviceidle 白名单。hooks.sh 现在每轮（5 分钟）把这 3 个键改回 0 / -1 / 0，
 并补回 Clash、Shizuku、PermGuard 的 deviceidle 白名单；改动记 /data/local/tmp/permguard/log/enforce.log。
+
+## rsh 通道 rs.sh：不依赖无线调试的远程 shell（2026-10-05）
+
+- **为什么**：无线调试只能在 Wi-Fi 下开；在「不受信任」的 Wi-Fi 上系统还会反复把它关掉（10-05 酒店 Wi-Fi，07:09 同一网络下被关）；
+  夜里断 Wi-Fi、早上走流量时 adb 通道必断。rt.sh 的「自动重开」只能在 Wi-Fi 下生效，治标。
+- **结构**：`rs.sh`（hooks.sh 保活）起 `toybox nc -L -s 127.0.0.1 -p 2222 sh rsh.sh`，每个连接由 `rsh.sh` 校验首行口令
+  （`/data/local/tmp/rt/token`，600，仅 shell 可读；本机副本 go2 `~/.config/aios/secrets/phone-rsh-token`），通过才 `exec sh`；
+  `dbclient -R 15559:127.0.0.1:2222`（被占换 15560）映射到 Mac mini 本机。Mac authorized_keys 的 phone-shell-tunnel 已加 permitlisten 15559/15560。
+- **能力**：与 adb shell 同为 uid 2000/u:r:shell，`input`、`screencap`、`uiautomator`、`dumpsys`、`settings` 都可用（10-05 实测）；蜂窝网络下也通。
+- **仍依赖**：Shizuku 拉起的守护循环活着（重启后首次拉起 Shizuku 仍要 Wi-Fi + 无线调试，见守门员）。
+- **用法**：AIOS `bin/phone.sh` 优先走 rsh，不通再退回 adb。手工：`{ cat token; echo 'id'; echo exit; } | ssh macmini 'nc 127.0.0.1 15559'`。
