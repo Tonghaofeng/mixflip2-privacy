@@ -68,3 +68,9 @@ zsh -lc 'for p in 15556 15557 15558; do adb connect 127.0.0.1:$p; done; adb devi
     4 秒后 START_CLASH；VPN 没起来再 START 一次。10-04 实测 STOP→START 后 13 秒 VPN 恢复，远程隧道约 55 秒恢复。
   - 重启后仍不通则退避 3、6、12…最长 30 分钟，避免 Wi-Fi 本身没网时反复重启。
   - 每次重启前把 ClashMeta/PermGuard 的 logcat 存到 `/data/local/tmp/cw/inc/`（留最近 20 份），日志 `cw.log`。
+
+## hooks.sh 自动纠正（2026-10-04）
+
+体检（tools/postboot_check.sh）发现 com.android.vending 把 global upload_apk_enable / package_verifier_user_consent / package_verifier_enable
+改回开（dumpsys settings 的 pkg: 字段显示写入方），且 Clash 掉出 deviceidle 白名单。hooks.sh 现在每轮（5 分钟）把这 3 个键改回 0 / -1 / 0，
+并补回 Clash、Shizuku、PermGuard 的 deviceidle 白名单；改动记 /data/local/tmp/permguard/log/enforce.log。
