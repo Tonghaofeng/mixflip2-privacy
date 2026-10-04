@@ -9,6 +9,22 @@ port() { awk '$4=="0A" && $8==2000 {split($2,a,":"); print a[2]; exit}' /proc/ne
 # 远端口被占时 dbclient 不退出，只打一行 "Remote TCP forward request failed"；连得慢时几秒后才出现，所以整个连接期间都要看。
 # toybox grep 的 BRE 不认 \|（10-03 实测），只用单一模式。
 fwdfail() { grep -q -i "forward request failed" cur.log; }
+# 无线调试被关掉（断 Wi-Fi/换网时系统会自动关）就没有端口可转发。守门员只在开机/Wi-Fi 刚连上时开它，
+# 而 Shizuku 一直活着时守门员 periodic 只看 binder（10-04 景区 Wi-Fi 上实测：隧道断了、没人去开）。
+# 所以这里兜底：连着 Wi-Fi 且没端口时自己（shell 有 WRITE_SECURE_SETTINGS）打开无线调试。
+# 不受信任的网络上系统会拨回去并弹确认框，所以同一网络（按 wlan0 地址认）最多试 3 次、每次间隔 ≥60 秒。
+wifi() { ip -4 addr show wlan0 2>/dev/null | awk '/inet /{print $2; exit}'; }
+wn=""; wt=0; wl=0
+openadb() {
+  w=$(wifi); [ -n "$w" ] || return
+  [ "$w" != "$wn" ] && { wn=$w; wt=0; wl=0; }
+  now=$(date +%s)
+  if [ $wt -lt 3 ] && [ $((now - wl)) -ge 60 ]; then
+    wt=$((wt + 1)); wl=$now
+    echo "$(date '+%F %T') 无线调试没开，打开（$w 第 $wt 次）" >> rt.log
+    settings put global adb_wifi_enabled 1
+  fi
+}
 n=0
 while [ "$(cat rt.pid 2>/dev/null)" = "$$" ]; do
   h=$(port)
@@ -23,6 +39,9 @@ while [ "$(cat rt.pid 2>/dev/null)" = "$$" ]; do
     kill $c 2>/dev/null
     fwdfail && { echo "$(date '+%F %T') 远端 $r 被占用，换下一个" >> rt.log; n=$((n + 1)); }
     cat cur.log >> rt.log
+    wt=0
+  else
+    openadb
   fi
   [ "$(stat -c %s rt.log 2>/dev/null || echo 0)" -gt 200000 ] && : > rt.log
   sleep 20
