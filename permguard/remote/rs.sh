@@ -9,6 +9,16 @@ echo $$ > rs.pid
 log() { echo "$(date '+%F %T') $*" >> rs.log; }
 fwdfail() { grep -q -i "forward request failed" rs-cur.log; }
 listener() { ps -A -o ARGS 2>/dev/null | grep -q "^toybox nc -L -s 127.0.0.1 -p 2222"; }
+# 通知栏状态：这条通道不经过无线调试，系统不会显示任何东西，所以自己发一条（只在状态变化时更新，不反复打扰）
+st=""
+note() {
+  [ "$1" = "$st" ] && return; st=$1
+  net=$(ip -4 addr show wlan0 2>/dev/null | grep -q "inet " && echo Wi-Fi || echo 流量)
+  case $1 in
+    up) cmd notification post -t "远程通道 🟢 已连接" rsh "AIOS 可远程操作手机（$net）· $(date +%H:%M) 起" > /dev/null 2>&1 ;;
+    down) cmd notification post -t "远程通道 🔴 未连接" rsh "正在自动重连（$net）· $(date +%H:%M)" > /dev/null 2>&1 ;;
+  esac
+}
 n=0
 while [ "$(cat rs.pid 2>/dev/null)" = "$$" ]; do
   listener || { setsid toybox nc -L -s 127.0.0.1 -p 2222 sh $D/rsh.sh < /dev/null > /dev/null 2>&1 & sleep 1; log "监听 127.0.0.1:2222 已启动"; }
@@ -18,7 +28,9 @@ while [ "$(cat rs.pid 2>/dev/null)" = "$$" ]; do
   c=$!
   log "通道 → Mac 127.0.0.1:$r"
   sleep 8
+  kill -0 $c 2>/dev/null && ! fwdfail && note up
   while kill -0 $c 2>/dev/null && ! fwdfail && listener && [ "$(cat rs.pid 2>/dev/null)" = "$$" ]; do sleep 10; done
+  note down
   kill $c 2>/dev/null
   fwdfail && { log "远端 $r 被占用，换下一个"; n=$((n + 1)); }
   grep -v "failed to identify current user" rs-cur.log | grep . >> rs.log
