@@ -36,11 +36,26 @@ pickhost() {
   done
   echo "tonytong.uk 50022"
 }
+# 掉线重连期间持唤醒锁（10-06）：折叠合盖久了 CPU 深睡，shell 的 sleep 跟着停，掉线后下一次重连要等几十分钟
+# （实测 00:15 掉线 → 01:28 才第二次尝试）。连着的时候不用管：Mac sshd 每 30 秒发保活包，网卡收包会唤醒 CPU。
+# wakehold.dex（app_process 以 shell 身份持 PARTIAL_WAKE_LOCK，标志文件 wh.flag 删掉即释放；源码 permguard/core WakeHold.java）。
+# 一次掉线最多连续持锁 30 分钟（没网时别把电耗光），之后每次自然醒来只持 2 分钟。
+whold_on() {
+  [ -f wh.flag ] && kill -0 "$(cat wh.pid 2>/dev/null)" 2>/dev/null && return
+  now=$(date +%s); [ -n "$ep0" ] || ep0=$now
+  secs=1800; [ $((now - ep0)) -ge 1800 ] && secs=120
+  touch wh.flag
+  setsid app_process -cp $D/wakehold.dex /system/bin uk.tonytong.permguard.WakeHold $secs $D/wh.flag < /dev/null > /dev/null 2>&1 &
+  echo $! > wh.pid; log "掉线重连，持唤醒锁 ${secs}s"
+}
+whold_off() { ep0=""; [ -f wh.flag ] || return; rm -f wh.flag; log "通道已稳，释放唤醒锁"; }
+ep0=""
 # dbclient 是静态编译的 musl 程序，不走安卓的 DNS（没有 /etc/resolv.conf），连域名会解析失败 → 用系统 ping 先解析成 IP 再交给它。
 # 10-05 11:44 实测：绕开 Clash 后 nc -z 已能连到 tonytong.uk:50022，但 dbclient 一个包都没发出去，就是卡在这里。
 resolve() { case $1 in *[a-z]*) ping -c 1 -W 2 $1 2>/dev/null | sed -n '1s/^PING [^(]*(\([0-9.]*\)).*/\1/p';; *) echo $1;; esac; }
 n=0
 while [ "$(cat rs.pid 2>/dev/null)" = "$$" ]; do
+  whold_on
   listener || { setsid toybox nc -L -s 127.0.0.1 -p 2222 sh $D/rsh.sh < /dev/null > /dev/null 2>&1 & sleep 1; log "监听 127.0.0.1:2222 已启动"; }
   r=$((15559 + n % 2))
   : > rs-cur.log
@@ -49,7 +64,12 @@ while [ "$(cat rs.pid 2>/dev/null)" = "$$" ]; do
   log "通道 → Mac($H) 127.0.0.1:$r"
   sleep 8
   note
-  while kill -0 $c 2>/dev/null && ! fwdfail && listener && [ "$(cat rs.pid 2>/dev/null)" = "$$" ]; do sleep 10; note; done
+  t0=$(date +%s)
+  while kill -0 $c 2>/dev/null && ! fwdfail && listener && [ "$(cat rs.pid 2>/dev/null)" = "$$" ]; do
+    # 隧道活过 60 秒且（家里心跳已到，或已过 3 分钟——go2 关机时心跳不会来，但通道本身是好的）→ 放锁
+    el=$(( $(date +%s) - t0 )); [ -f wh.flag ] && [ $el -ge 60 ] && { [ "${st%%/*}" = up ] || [ $el -ge 180 ]; } && whold_off
+    sleep 10; note
+  done
   note
   kill $c 2>/dev/null
   fwdfail && { log "远端 $r 被占用，换下一个"; n=$((n + 1)); }
