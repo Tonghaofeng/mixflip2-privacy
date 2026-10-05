@@ -84,4 +84,5 @@ zsh -lc 'for p in 15556 15557 15558; do adb connect 127.0.0.1:$p; done; adb devi
   `dbclient -R 15559:127.0.0.1:2222`（被占换 15560）映射到 Mac mini 本机。Mac authorized_keys 的 phone-shell-tunnel 已加 permitlisten 15559/15560。
 - **能力**：与 adb shell 同为 uid 2000/u:r:shell，`input`、`screencap`、`uiautomator`、`dumpsys`、`settings` 都可用（10-05 实测）；蜂窝网络下也通。
 - **仍依赖**：Shizuku 拉起的守护循环活着（重启后首次拉起 Shizuku 仍要 Wi-Fi + 无线调试，见守门员）。
+- **通知栏（端到端）**：AIOS（go2 phone-ping.timer）每分钟经本通道写 /data/local/tmp/rt/last_ping；rs.sh 每 10 秒按心跳新鲜度（≤150s）显示 🟢/🔴 并实时标注 Wi-Fi/流量，只在变化时重发。
 - **用法**：AIOS `bin/phone.sh` 优先走 rsh，不通再退回 adb。手工：`{ cat token; echo 'id'; echo exit; } | ssh macmini 'nc 127.0.0.1 15559'`。
