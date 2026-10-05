@@ -26,9 +26,18 @@ openadb() {
     settings put global adb_wifi_enabled 1
   fi
 }
-# 连哪台：shell 身份不走 Clash 时（Clash 访问控制里绕过 com.android.shell，10-05 起），在外直连家里公网 tonytong.uk:22，
-# 在家局域网直连 192.168.50.2。先用 nc -z 探测（4 秒），都不通就默认公网。仍走 Clash 时 TUN 会本地完成握手，探测恒通 → 用 192.168.50.2。
-pickhost() { for h in 192.168.50.2 tonytong.uk; do toybox nc -z -w 4 $h 22 > /dev/null 2>&1 && { echo $h; return; }; done; echo tonytong.uk; }
+# 连哪台（「主机 端口」）：shell 不走 Clash 时（Clash 访问控制绕过 com.android.shell + 锁定白名单 always_on_vpn_lockdown_whitelist，10-05 起）
+# 在家走局域网 192.168.50.2:22；在外走公网 tonytong.uk:50022（路由器转发 → Mac:22；酒店等网络常封出站 22，家宽封入站 443）；最后才试公网 22。
+# 先 nc -z 探测（4 秒）。仍走 Clash 时 TUN 本地完成握手、探测恒通 → 选 192.168.50.2:22，照旧经 WG 回家。
+pickhost() {
+  for hp in "192.168.50.2 22" "tonytong.uk 50022" "tonytong.uk 22"; do
+    toybox nc -z -w 4 $hp > /dev/null 2>&1 && { echo "$hp"; return; }
+  done
+  echo "tonytong.uk 50022"
+}
+# dbclient 是静态编译的 musl 程序，不走安卓的 DNS（没有 /etc/resolv.conf），连域名会解析失败 → 用系统 ping 先解析成 IP 再交给它。
+# 10-05 11:44 实测：绕开 Clash 后 nc -z 已能连到 tonytong.uk:50022，但 dbclient 一个包都没发出去，就是卡在这里。
+resolve() { case $1 in *[a-z]*) ping -c 1 -W 2 $1 2>/dev/null | sed -n '1s/^PING [^(]*(\([0-9.]*\)).*/\1/p';; *) echo $1;; esac; }
 n=0
 while [ "$(cat rt.pid 2>/dev/null)" = "$$" ]; do
   h=$(port)
@@ -36,7 +45,7 @@ while [ "$(cat rt.pid 2>/dev/null)" = "$$" ]; do
     p=$((0x$h)); r=$((15556 + n % 3))
     echo "$(date '+%F %T') tunnel $r → 127.0.0.1:$p via $H" >> rt.log
     : > cur.log
-    H=$(pickhost); ./db dbclient -i key -y -N -T -K 30 -R $r:127.0.0.1:$p tony@$H > cur.log 2>&1 &
+    set -- $(pickhost); H=$1:$2; ip=$(resolve $1); ./db dbclient -i key -y -N -T -K 30 -p $2 -R $r:127.0.0.1:$p tony@${ip:-$1} > cur.log 2>&1 &
     c=$!
     sleep 8
     while kill -0 $c 2>/dev/null && ! fwdfail && [ "$(port)" = "$h" ] && [ "$(cat rt.pid 2>/dev/null)" = "$$" ]; do sleep 10; done

@@ -26,6 +26,9 @@ restart() {
 }
 fail=0; tries=0; next=0; vd=0
 while [ "$(cat cw.pid 2>/dev/null)" = "$$" ]; do
+  # 暂停开关：维护脚本（如改 Clash 访问控制）写 pause_until=<epoch>，最长 10 分钟，期间不拉起/不重启 Clash
+  pu=$(cat pause_until 2>/dev/null || echo 0); now=$(date +%s)
+  if [ "$pu" -gt "$now" ] && [ $((pu - now)) -le 600 ]; then sleep 10; continue; fi
   # Clash 整个停了（被手动/误点停止、STOP 后没起来）：锁定模式下全机断网。常驻 VPN 设的就是 Clash，连续 2 轮（约 1 分钟）不在就拉起。
   # 10-05 09:38 实测：远程 STOP 后的「4 分钟保险」子进程随 rsh 会话一起被杀，Clash 一直停着，看门狗原逻辑见 VPN 不在就跳过。
   if ! vpn_up && [ "$(settings get secure always_on_vpn_app)" = "$PKG" ]; then

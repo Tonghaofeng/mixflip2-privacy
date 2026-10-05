@@ -86,3 +86,14 @@ zsh -lc 'for p in 15556 15557 15558; do adb connect 127.0.0.1:$p; done; adb devi
 - **仍依赖**：Shizuku 拉起的守护循环活着（重启后首次拉起 Shizuku 仍要 Wi-Fi + 无线调试，见守门员）。
 - **通知栏（端到端）**：AIOS（go2 phone-ping.timer）每分钟经本通道写 /data/local/tmp/rt/last_ping；rs.sh 每 10 秒按心跳新鲜度（≤150s）显示 🟢/🔴 并实时标注 Wi-Fi/流量，只在变化时重发。
 - **用法**：AIOS `bin/phone.sh` 优先走 rsh，不通再退回 adb。手工：`{ cat token; echo 'id'; echo exit; } | ssh macmini 'nc 127.0.0.1 15559'`。
+
+## 控制通道绕开 Clash（2026-10-05 上线）
+
+目标：Clash 卡住/停掉时 AIOS 仍能连进手机（可远程重启 Clash、排障）。现状：shell 身份（uid 2000，rs/rt/cw/PermGuard 守护都是它）不走 Clash，直连回家。
+- **锁定白名单**：`settings put secure always_on_vpn_lockdown_whitelist com.android.shell`，**重启后**生效（lockdown 规则去掉 uid 2000）。
+- **Clash 访问控制**：模式「不允许已选择的应用」+ 勾选 Shell（com.android.shell）。Clash 运行时改不了，用 `acx.sh on|off`（手机本地 UI 自动化：停 Clash→改→启动，失败必收尾；屏幕不可操作时不动）。
+  坑：「更多→过滤→系统应用」勾上=把系统应用过滤掉，看不到 Shell；Clash 主界面在外屏放不下「设置」要先下滑。
+- **连哪**：`pickhost` 局域网 192.168.50.2:22 → 公网 tonytong.uk:50022（路由器 ssh50022 转发→Mac:22；酒店常封出站 22，家宽封入站 443）→ 公网 22。
+- **dbclient 不能解析域名**（静态 musl，手机无 /etc/resolv.conf）→ `resolve()` 用系统 ping 先解析成 IP。
+- **Mac 侧**：默认路由是 Surge utun，外网连进 SSH 的回包会被 Surge 接管 → pf 锚点 `com.apple/260.aios-sshreply`（`/etc/pf.anchors/aios-sshreply`，reply-to bond0 192.168.50.1），LaunchDaemon `com.tony.pf-sshreply` 开机/每 10 分钟加载。
+- **自测**：`bt.sh` = acx on → 3 分钟内等家里心跳经直连写入 → 不成就 acx off 回退（屏幕不可操作就发通知、每 30 秒重试）。10-05 14:41 成功；14:50 停 Clash 40 秒期间 3 次远程探测全部成功。
