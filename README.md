@@ -17,17 +17,16 @@
   ├─ 系统 settings：体验计划/诊断上传/APK 云查杀/联网检测改 gstatic.cn …（持久）
   └─ Clash Meta for Android（mihomo）= 常驻 VPN，always-on + 锁定（非 VPN 连接一律禁止，含系统身份）
         策略 = tools/gen_clash_config.py 生成的 YAML：
-        ⓪ Mac mini 本机 192.168.50.2 → MACMINI 组：在家直连、出门自动走 WG（其余 192.168.x 直连）
+        ⓪ Mac mini 本机 192.168.50.2 → MACMINI 组：在家直连、出门自动走 HOME（其余 192.168.x 直连）
         ① 整个身份禁网：PROCESS-NAME（+UID 冗余）— 查找设备/主题/权限管理/相机/安全中心所在的 system(1000)…
         ② 域名族 REJECT：xiaomi/miui/mi.com/xmpush/迅雷 sandai/高德/百度&腾讯地图定位/qualcomm.cn/联通自注册…
         ③ 兜底：直连国内裸 IP（HTTPDNS/写死 IP）一律 REJECT —— 不依赖进程识别
         ④ 其余 → HOME 组回家 → 家里 Surge（规则/代理与在家一致）：
-             主力 ss-home = Shadowsocks 2022 over TCP（tonytong.uk:50388，UDP 同端口）；备用 wg-home = WireGuard（:51820/UDP）
-             （10-05 起：WG 出站在 Wi-Fi/蜂窝切换后留下多个套接字、握手卡死 → 断流，改 TCP 为主）
+             ss-home = Shadowsocks 2022 over TCP（tonytong.uk:50388，UDP 同端口）
+             （10-05 起 WireGuard 整体取消：换网后套接字残留、握手卡死 → 断流）
                                    │
 家里 Mac mini（mac-mini-autostart 仓库管理自启）
-  ├─ wg0（utun，10.77.0.1）+ 自愈守护 com.tony.wireguard.wg0：
-  │     pf NAT 把隧道流量变成 Surge TUN 源地址（否则 Surge 不理）；手机公网 endpoint 主机路由直走路由器（否则回包端口被 Surge 改掉）
+  ├─ （原 wg0 + com.tony.wireguard.wg0 已于 10-05 停用，plist 改名 .disabled-20261005，密钥留在 /opt/homebrew/etc/wireguard）
   ├─ ss-home（shadowsocks-rust ssserver，launchd com.tony.ss-home，~/apps/ss-home/config.json 口令 600 不入库）：
   │     pf 锚点 com.apple/260.aios-sshreply 让外网来的 50388 回包走 bond0（不进 Surge TUN），出站照常走 Surge
   ├─ 策略分发 com.tony.phone-config（~/bin/phone-config-server.py）：mixflip2.yaml 主策略 + mixflip2-travel.yaml 海外直连版
@@ -45,7 +44,7 @@
 | `debloat/restore.sh` | 恢复：`./restore.sh` 全部，`./restore.sh 包名…` 单个 |
 | `debloat/replace_with_google.sh` | 小米应用 → Google 原版替换（先确认 Google 版已装再卸） |
 | `debloat/bpf_block.sh` | 内核 BPF（OEM_DENY_3）按包禁网 —— **重启即失、UID<10000 内核豁免**，仅留作临时手段 |
-| `tools/gen_clash_config.py` | 生成手机策略（包名→UID/共享身份名实时从手机取，WG 密钥从 Mac mini 取，本机 mihomo 校验） |
+| `tools/gen_clash_config.py` | 生成手机策略（包名→UID/共享身份名实时从手机取，ss-home 口令从 Mac mini 取，本机 mihomo 校验） |
 | `tools/publish_config.sh` | 生成并推到 Mac mini 分发点；手机在家点 Clash「更新」 |
 | `tools/uid_domain_audit.py` | 取证：手机 /proc/net「端口→UID」× Surge「来源端口→域名/字节」→ 每个 UID 连了哪些域名 |
 | `tools/accept.py` | 验收：Clash 连接日志里「小米/国内/裸 IP 却未拦截」+ Surge 侧绕过 VPN 的直连（10-01 起不再清 logcat） |
@@ -76,8 +75,8 @@
 
 **实测踩坑（都已修）**
 1. CMFA 只把**包名**交给 mihomo，**UID 规则永远不匹配**（日志 `by 1000[com.android.systemui]` 却 `match Match`）→ 改 PROCESS-NAME；UID 1000 全部被报成 `com.android.systemui`，共享身份报 `android.uid.bluetooth` / `android.media` 等
-2. WG 端点域名：DoH 走 PROXY→要隧道→要解析端点 = **死锁**；明文 DNS 在家被 Surge 劫持成 fake-ip，**出门不可达** → 端点用按 IP 的 DoH 解析
-3. 同一把 WG 密钥开两个出站（lan/wan）→ 服务端 endpoint 漂移、两边都判死 → 只留一个
+2. 回家端点域名（原 WG，现 ss-home 同理）：DoH 走 PROXY→要隧道→要解析端点 = **死锁**；明文 DNS 在家被 Surge 劫持成 fake-ip，**出门不可达** → 端点用按 IP 的 DoH 解析
+3. （历史，WG 已取消）同一把 WG 密钥开两个出站（lan/wan）→ 服务端 endpoint 漂移、两边都判死 → 只留一个
 4. 服务端回包走默认路由进 Surge，源端口被改（55616≠51820）→ 蜂窝不通 → endpoint 主机路由直走路由器（2 秒跟随）
 5. MIUI 的 adb 安装依赖 `guardprovider`（USB 安装确认页调 `content://guard` parseApk，缺了就 `Invalid apk`）→ ~~保留、只断网~~ **10-01 晚整包卸载**（它是病毒扫描/云扫描/电诈防护引擎，持截获通话音频、全盘文件等特权），adb 装包用 `tools/adb_install.sh` 临时装回；手机端经 Chrome 下载安装不受影响（实测）
 6. `adb reverse` 在这台机器上 adb 服务重启后失效 → 改由 Mac mini 局域网分发点下发策略

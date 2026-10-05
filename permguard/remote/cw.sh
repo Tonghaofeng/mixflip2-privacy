@@ -2,7 +2,7 @@
 # Clash 断流看门狗（shell 身份，由 hooks.sh 保活，和 rt.sh 一样不受 MIUI 冻结影响）。
 # 现象：Clash 进程活着、VPN 也在，但流量全断，手动重启 Clash 才恢复（10-04 舟山酒店 Wi-Fi：
 # 双出口轮换导致 WG 端点在两个公网 IP 间来回跳，之后隧道卡死）。
-# 做法：每 30 秒经 TUN 真实发 HTTP 探测（三个不同站点，任一通即算通）；连续 3 轮不通 → STOP+START 重启 Clash。
+# 做法：每 30 秒经 TUN 真实发 HTTP 探测（三个不同站点，任一通即算通）；连续 3 轮不通 → force-stop+START 重启 Clash。
 # 重启后仍不通则退避（3、6、12…最长 30 分钟）再试，免得 Wi-Fi 本身没网时反复重启。每次出事存一份 logcat 取证。
 D=/data/local/tmp/cw; mkdir -p $D/inc; cd $D || exit 1
 echo $$ > cw.pid
@@ -18,8 +18,9 @@ restart() {
   logcat -d -v time 2>/dev/null | grep -E "ClashMeta|PermGuard" | tail -400 > inc/$(date +%m%d-%H%M%S).log
   ls -t inc/*.log 2>/dev/null | sed -n '21,$p' | xargs rm -f 2>/dev/null
   log "连续 $fail 轮不通，重启 Clash（第 $tries 次）"
-  am start -n $ACT -a $PKG.action.STOP_CLASH > /dev/null 2>&1
-  sleep 4
+  # 10-05：用 force-stop 而不是 STOP_CLASH —— STOP/START 不杀进程，mihomo 里残留的出站实例（如当年 WG 的多套接字）清不掉
+  am force-stop $PKG
+  sleep 2
   am start -n $ACT -a $PKG.action.START_CLASH > /dev/null 2>&1
   sleep 12
   vpn_up || { log "START 后 VPN 没起来，再拉一次"; am start -n $ACT -a $PKG.action.START_CLASH > /dev/null 2>&1; sleep 10; }

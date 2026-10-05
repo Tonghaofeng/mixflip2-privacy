@@ -11,7 +11,6 @@ import json, os, re, secrets, subprocess, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT_DIR = os.path.join(HERE, "..", "clash")
 OUT = os.path.join(OUT_DIR, "mixflip2.yaml")
-WG_DIR = "/opt/homebrew/etc/wireguard"
 HOME_WAN = "tonytong.uk"      # DDNS（cloudflare-ddns 容器维护）；路由器静态转发 UDP 51820 → 192.168.50.2
 HOME_LAN = "192.168.50.2"
 SS_PORT = 50388                # Mac mini ssserver（~/apps/ss-home/config.json，口令不入库）
@@ -77,14 +76,8 @@ def shared_user(pkg):
     return m.group(1) if m else None
 
 
-def wg_secret(name):
-    return sh(["ssh", "macserver", f"cat {WG_DIR}/{name}"]).strip()
-
-
 def build():
     uids = phone_uids()
-    phone_key, server_pub = wg_secret("phone.key"), wg_secret("server.pub")
-    assert phone_key and server_pub, "读不到 WireGuard 密钥"
     rule_uids, notes = {}, []
     for p, why in BLOCK_PKGS.items():
         if p in uids:
@@ -101,32 +94,28 @@ def build():
           "dns:", "  enable: true", "  ipv6: false", "  enhanced-mode: fake-ip", "  fake-ip-range: 28.0.0.1/8",
           "  fake-ip-filter: ['+.lan', '+.local', 'connectivitycheck.gstatic.cn', '+.pool.ntp.org']",
           "  default-nameserver: [223.5.5.5]",
-          "  # WG 端点 tonytong.uk 必须直连解析：否则 DoH 走 PROXY→要隧道→要解析端点，死锁（09-30 实测）；",
+          "  # 回家端点 tonytong.uk 必须直连解析：否则 DoH 走 PROXY→要隧道→要解析端点，死锁（09-30 实测）；",
           "  # 且必须用 DoH（按 IP）：家里局域网的明文 DNS 会被 Surge 劫持成 fake-ip(198.18.x)，换到蜂窝后这个地址不可达（09-30 实测）",
           "  proxy-server-nameserver: ['https://223.5.5.5/dns-query', 'https://1.12.12.12/dns-query']",
           "  nameserver: ['https://1.1.1.1/dns-query#PROXY']", ""]
-    wg = (f"type: wireguard, port: 51820, ip: 10.77.0.2, private-key: '{phone_key}', "
-          f"public-key: '{server_pub}', udp: true, mtu: 1280, persistent-keepalive: 25, remote-dns-resolve: true, dns: [198.18.0.2]")
-    # 只能有一个 WireGuard 出站：同一把密钥开两个（lan/wan）会让服务端 peer 的 endpoint 来回漂移，两边健康检查都失败。
-    # 在家也走 tonytong.uk（路由器 NAT 回环已验证）。
-    # 10-05 主力回家通道改为 Shadowsocks over TCP（Mac mini ss-home，launchd com.tony.ss-home，路由器转发 TCP+UDP 50388，
-    # pf 锚点 aios-sshreply 让回包走 bond0）。WG 出站在 Wi-Fi/蜂窝切换后会留下多个 UDP 套接字、一条握手序列永远发不到家，
-    # 隧道半死 → 断流，只能重启 Clash（10-05 实测：同一分钟 12 次握手家里只收到 2 次）。WG 保留为备用。
+    # 回家通道 = Shadowsocks 2022 over TCP（Mac mini ss-home，launchd com.tony.ss-home，路由器转发 TCP+UDP 50388，
+    # pf 锚点 aios-sshreply 让回包走 bond0）。原 WireGuard 出站 10-05 整体取消：换网后留下多个 UDP 套接字、
+    # 握手序列发不到家 → 隧道半死断流（同一分钟 12 次握手家里只收到 2 次），且热重载配置清不掉旧实例。
     ss_pw = json.loads(sh(["ssh", "macserver", "cat ~/apps/ss-home/config.json"]))["password"]
     L += ["proxies:",
           f"  - {{name: ss-home, type: ss, server: {HOME_WAN}, port: {SS_PORT}, cipher: 2022-blake3-aes-128-gcm, password: '{ss_pw}', udp: true}}",
-          f"  - {{name: wg-home, server: {HOME_WAN}, {wg}}}", "",
+          "",
           "proxy-groups:",
-          "  - {name: HOME, type: fallback, proxies: [ss-home, wg-home], url: 'http://connectivitycheck.gstatic.com/generate_204', interval: 120, timeout: 3000}",
+          "  - {name: HOME, type: fallback, proxies: [ss-home], url: 'http://connectivitycheck.gstatic.com/generate_204', interval: 120, timeout: 3000}",
           "  - {name: PROXY, type: fallback, proxies: [HOME, DIRECT], url: 'http://connectivitycheck.gstatic.com/generate_204', interval: 120, timeout: 3000}",
-          # Mac mini 本机：在家直连能通就直连；出门（蜂窝）直连不通 → 自动改走 WG（隧道进来的包目的地是 192.168.50.2，本机照收）。
+          # Mac mini 本机：在家直连能通就直连；出门（蜂窝）直连不通 → 自动改走 HOME（ss-home 就在 Mac 本机）。
           # 健康检查用点检面板 /health（200、不记日志）。10-01 加：否则出门打不开 192.168.50.2 上的点检面板等服务，也拉不到本配置的更新。
-          "  # Mac mini 本机（192.168.50.2）：在家局域网直连能通就直连，出门直连不通自动改走 WG 隧道（隧道进来的包目的地是 192.168.50.2 本机照收）",
+          "  # Mac mini 本机（192.168.50.2）：在家局域网直连能通就直连，出门直连不通自动改走 HOME（ss-home 在 Mac 本机，连 192.168.50.2 照通）",
           f"  - {{name: MACMINI, type: fallback, proxies: [DIRECT, HOME], url: 'http://{HOME_LAN}:8899/health', interval: 60, lazy: false, timeout: 3000}}", "",
           "rules:",
           "  # 0 局域网 / NTP",
           f"  - IP-CIDR,{HOME_LAN}/32,MACMINI,no-resolve",
-          "  - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve", "  - IP-CIDR,10.77.0.0/24,HOME,no-resolve",
+          "  - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve",
           "  - DST-PORT,123,DIRECT",
           "  # 1 系统更新（安全补丁）放行"] + [f"  - {r},PROXY" for r in OTA_ALLOW]
     # 2 整个身份禁网。实测（09-30）：CMFA 只把「包名」交给 mihomo，UID 规则永远匹配不上 → 以 PROCESS-NAME 为准，
