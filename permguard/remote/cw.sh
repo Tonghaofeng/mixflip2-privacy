@@ -24,8 +24,14 @@ restart() {
   sleep 12
   vpn_up || { log "START 后 VPN 没起来，再拉一次"; am start -n $ACT -a $PKG.action.START_CLASH > /dev/null 2>&1; sleep 10; }
 }
-fail=0; tries=0; next=0
+fail=0; tries=0; next=0; vd=0
 while [ "$(cat cw.pid 2>/dev/null)" = "$$" ]; do
+  # Clash 整个停了（被手动/误点停止、STOP 后没起来）：锁定模式下全机断网。常驻 VPN 设的就是 Clash，连续 2 轮（约 1 分钟）不在就拉起。
+  # 10-05 09:38 实测：远程 STOP 后的「4 分钟保险」子进程随 rsh 会话一起被杀，Clash 一直停着，看门狗原逻辑见 VPN 不在就跳过。
+  if ! vpn_up && [ "$(settings get secure always_on_vpn_app)" = "$PKG" ]; then
+    vd=$((vd + 1))
+    [ $vd -ge 2 ] && { log "Clash VPN 不在（$vd 轮），拉起"; am start -n $ACT -a $PKG.action.START_CLASH > /dev/null 2>&1; vd=0; sleep 15; }
+  else vd=0; fi
   if ! uplink || ! vpn_up; then
     fail=0
   elif probe; then

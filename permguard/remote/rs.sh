@@ -27,14 +27,17 @@ note() {
     cmd notification post -t "远程通道 🔴 未连接" rsh "AIOS 连不进来（$net）· 上次连通 $last · 自动重连中" > /dev/null 2>&1
   fi
 }
+# 连哪台：shell 身份不走 Clash 时（Clash 访问控制里绕过 com.android.shell，10-05 起），在外直连家里公网 tonytong.uk:22，
+# 在家局域网直连 192.168.50.2。先用 nc -z 探测（4 秒），都不通就默认公网。仍走 Clash 时 TUN 会本地完成握手，探测恒通 → 用 192.168.50.2。
+pickhost() { for h in 192.168.50.2 tonytong.uk; do toybox nc -z -w 4 $h 22 > /dev/null 2>&1 && { echo $h; return; }; done; echo tonytong.uk; }
 n=0
 while [ "$(cat rs.pid 2>/dev/null)" = "$$" ]; do
   listener || { setsid toybox nc -L -s 127.0.0.1 -p 2222 sh $D/rsh.sh < /dev/null > /dev/null 2>&1 & sleep 1; log "监听 127.0.0.1:2222 已启动"; }
   r=$((15559 + n % 2))
   : > rs-cur.log
-  ./db dbclient -i key -y -N -T -K 30 -R $r:127.0.0.1:2222 tony@192.168.50.2 > rs-cur.log 2>&1 &
+  H=$(pickhost); ./db dbclient -i key -y -N -T -K 30 -R $r:127.0.0.1:2222 tony@$H > rs-cur.log 2>&1 &
   c=$!
-  log "通道 → Mac 127.0.0.1:$r"
+  log "通道 → Mac($H) 127.0.0.1:$r"
   sleep 8
   note
   while kill -0 $c 2>/dev/null && ! fwdfail && listener && [ "$(cat rs.pid 2>/dev/null)" = "$$" ]; do sleep 10; note; done

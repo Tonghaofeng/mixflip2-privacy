@@ -5,7 +5,8 @@
 # Mac mini 上依次试 `adb connect 127.0.0.1:1555{6,7,8}`。端口变了（无线调试重开）就重建。
 D=/data/local/tmp/rt; export HOME=$D; cd $D || exit 1
 echo $$ > rt.pid
-port() { awk '$4=="0A" && $8==2000 {split($2,a,":"); print a[2]; exit}' /proc/net/tcp6 /proc/net/tcp 2>/dev/null; }
+# 排除 rsh 通道自己的监听口 2222（=0x08AE，10-05 rs.sh 上线后它也是 uid 2000 监听，曾被误当成无线调试端口）
+port() { awk '$4=="0A" && $8==2000 {split($2,a,":"); if (a[2] != "08AE") {print a[2]; exit}}' /proc/net/tcp6 /proc/net/tcp 2>/dev/null; }
 # 远端口被占时 dbclient 不退出，只打一行 "Remote TCP forward request failed"；连得慢时几秒后才出现，所以整个连接期间都要看。
 # toybox grep 的 BRE 不认 \|（10-03 实测），只用单一模式。
 fwdfail() { grep -q -i "forward request failed" cur.log; }
@@ -25,14 +26,17 @@ openadb() {
     settings put global adb_wifi_enabled 1
   fi
 }
+# 连哪台：shell 身份不走 Clash 时（Clash 访问控制里绕过 com.android.shell，10-05 起），在外直连家里公网 tonytong.uk:22，
+# 在家局域网直连 192.168.50.2。先用 nc -z 探测（4 秒），都不通就默认公网。仍走 Clash 时 TUN 会本地完成握手，探测恒通 → 用 192.168.50.2。
+pickhost() { for h in 192.168.50.2 tonytong.uk; do toybox nc -z -w 4 $h 22 > /dev/null 2>&1 && { echo $h; return; }; done; echo tonytong.uk; }
 n=0
 while [ "$(cat rt.pid 2>/dev/null)" = "$$" ]; do
   h=$(port)
   if [ -n "$h" ]; then
     p=$((0x$h)); r=$((15556 + n % 3))
-    echo "$(date '+%F %T') tunnel $r → 127.0.0.1:$p" >> rt.log
+    echo "$(date '+%F %T') tunnel $r → 127.0.0.1:$p via $H" >> rt.log
     : > cur.log
-    ./db dbclient -i key -y -N -T -K 30 -R $r:127.0.0.1:$p tony@192.168.50.2 > cur.log 2>&1 &
+    H=$(pickhost); ./db dbclient -i key -y -N -T -K 30 -R $r:127.0.0.1:$p tony@$H > cur.log 2>&1 &
     c=$!
     sleep 8
     while kill -0 $c 2>/dev/null && ! fwdfail && [ "$(port)" = "$h" ] && [ "$(cat rt.pid 2>/dev/null)" = "$$" ]; do sleep 10; done
