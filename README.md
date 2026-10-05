@@ -30,6 +30,8 @@
   │     pf NAT 把隧道流量变成 Surge TUN 源地址（否则 Surge 不理）；手机公网 endpoint 主机路由直走路由器（否则回包端口被 Surge 改掉）
   ├─ ss-home（shadowsocks-rust ssserver，launchd com.tony.ss-home，~/apps/ss-home/config.json 口令 600 不入库）：
   │     pf 锚点 com.apple/260.aios-sshreply 让外网来的 50388 回包走 bond0（不进 Surge TUN），出站照常走 Surge
+  ├─ 策略分发 com.tony.phone-config（~/bin/phone-config-server.py）：mixflip2.yaml 主策略 + mixflip2-travel.yaml 海外直连版
+  │     （tools/make_travel.py 由主策略派生：PROXY 改 select[DIRECT, HOME] 默认当地直连，拦截规则不变）
   ├─ 策略分发 com.tony.phone-config：仅局域网、token 路径，手机 Clash 点「更新」拉最新策略
   └─ 路由器 RT-AX89U 静态转发 51820/UDP、50388/TCP+UDP、50022/TCP(→22) → 192.168.50.2
 ```
