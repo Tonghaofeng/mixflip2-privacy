@@ -21,13 +21,17 @@
         ① 整个身份禁网：PROCESS-NAME（+UID 冗余）— 查找设备/主题/权限管理/相机/安全中心所在的 system(1000)…
         ② 域名族 REJECT：xiaomi/miui/mi.com/xmpush/迅雷 sandai/高德/百度&腾讯地图定位/qualcomm.cn/联通自注册…
         ③ 兜底：直连国内裸 IP（HTTPDNS/写死 IP）一律 REJECT —— 不依赖进程识别
-        ④ 其余 → WireGuard 回家（tonytong.uk:51820）→ 家里 Surge（规则/代理与在家一致）
+        ④ 其余 → HOME 组回家 → 家里 Surge（规则/代理与在家一致）：
+             主力 ss-home = Shadowsocks 2022 over TCP（tonytong.uk:50388，UDP 同端口）；备用 wg-home = WireGuard（:51820/UDP）
+             （10-05 起：WG 出站在 Wi-Fi/蜂窝切换后留下多个套接字、握手卡死 → 断流，改 TCP 为主）
                                    │
 家里 Mac mini（mac-mini-autostart 仓库管理自启）
   ├─ wg0（utun，10.77.0.1）+ 自愈守护 com.tony.wireguard.wg0：
   │     pf NAT 把隧道流量变成 Surge TUN 源地址（否则 Surge 不理）；手机公网 endpoint 主机路由直走路由器（否则回包端口被 Surge 改掉）
+  ├─ ss-home（shadowsocks-rust ssserver，launchd com.tony.ss-home，~/apps/ss-home/config.json 口令 600 不入库）：
+  │     pf 锚点 com.apple/260.aios-sshreply 让外网来的 50388 回包走 bond0（不进 Surge TUN），出站照常走 Surge
   ├─ 策略分发 com.tony.phone-config：仅局域网、token 路径，手机 Clash 点「更新」拉最新策略
-  └─ 路由器 RT-AX89U 静态转发 51820/UDP → 192.168.50.2
+  └─ 路由器 RT-AX89U 静态转发 51820/UDP、50388/TCP+UDP、50022/TCP(→22) → 192.168.50.2
 ```
 
 ## 目录

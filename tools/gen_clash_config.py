@@ -6,7 +6,7 @@
 - 输出 ../clash/mixflip2.yaml（600 权限），并用本机 mihomo -t 校验
 用法: gen_clash_config.py [--check-only]
 """
-import os, re, secrets, subprocess, sys
+import json, os, re, secrets, subprocess, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT_DIR = os.path.join(HERE, "..", "clash")
@@ -14,6 +14,7 @@ OUT = os.path.join(OUT_DIR, "mixflip2.yaml")
 WG_DIR = "/opt/homebrew/etc/wireguard"
 HOME_WAN = "tonytong.uk"      # DDNS（cloudflare-ddns 容器维护）；路由器静态转发 UDP 51820 → 192.168.50.2
 HOME_LAN = "192.168.50.2"
+SS_PORT = 50388                # Mac mini ssserver（~/apps/ss-home/config.json，口令不入库）
 
 # 整个 UID 禁网（系统身份 UID<10000 在这里拦得住：VPN 接管全部 UID）
 BLOCK_PKGS = {
@@ -108,9 +109,15 @@ def build():
           f"public-key: '{server_pub}', udp: true, mtu: 1280, persistent-keepalive: 25, remote-dns-resolve: true, dns: [198.18.0.2]")
     # 只能有一个 WireGuard 出站：同一把密钥开两个（lan/wan）会让服务端 peer 的 endpoint 来回漂移，两边健康检查都失败。
     # 在家也走 tonytong.uk（路由器 NAT 回环已验证）。
-    L += ["proxies:", f"  - {{name: wg-home, server: {HOME_WAN}, {wg}}}", "",
+    # 10-05 主力回家通道改为 Shadowsocks over TCP（Mac mini ss-home，launchd com.tony.ss-home，路由器转发 TCP+UDP 50388，
+    # pf 锚点 aios-sshreply 让回包走 bond0）。WG 出站在 Wi-Fi/蜂窝切换后会留下多个 UDP 套接字、一条握手序列永远发不到家，
+    # 隧道半死 → 断流，只能重启 Clash（10-05 实测：同一分钟 12 次握手家里只收到 2 次）。WG 保留为备用。
+    ss_pw = json.loads(sh(["ssh", "macserver", "cat ~/apps/ss-home/config.json"]))["password"]
+    L += ["proxies:",
+          f"  - {{name: ss-home, type: ss, server: {HOME_WAN}, port: {SS_PORT}, cipher: 2022-blake3-aes-128-gcm, password: '{ss_pw}', udp: true}}",
+          f"  - {{name: wg-home, server: {HOME_WAN}, {wg}}}", "",
           "proxy-groups:",
-          "  - {name: HOME, type: fallback, proxies: [wg-home], url: 'http://connectivitycheck.gstatic.com/generate_204', interval: 120, timeout: 3000}",
+          "  - {name: HOME, type: fallback, proxies: [ss-home, wg-home], url: 'http://connectivitycheck.gstatic.com/generate_204', interval: 120, timeout: 3000}",
           "  - {name: PROXY, type: fallback, proxies: [HOME, DIRECT], url: 'http://connectivitycheck.gstatic.com/generate_204', interval: 120, timeout: 3000}",
           # Mac mini 本机：在家直连能通就直连；出门（蜂窝）直连不通 → 自动改走 WG（隧道进来的包目的地是 192.168.50.2，本机照收）。
           # 健康检查用点检面板 /health（200、不记日志）。10-01 加：否则出门打不开 192.168.50.2 上的点检面板等服务，也拉不到本配置的更新。
