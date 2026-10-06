@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 远程装包流程（phone-install.sh）的测试包：无代码、无组件、无权限，装完即卸。 -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="uk.tonytong.installtest" android:versionCode="1" android:versionName="test">
+    <uses-sdk android:minSdkVersion="29" android:targetSdkVersion="36" />
+    <application android:hasCode="false" android:allowBackup="false" android:label="installtest" />
+</manifest>
