@@ -23,3 +23,6 @@ for p in com.github.metacubex.clash.meta moe.shizuku.privileged.api uk.tonytong.
   dumpsys deviceidle whitelist 2>/dev/null | grep -q ",$p," || { cmd deviceidle whitelist +$p > /dev/null 2>&1 && echo "$(date '+%F %T') deviceidle 白名单补回 $p" >> $EL; }
 done
 [ "$(stat -c %s $EL 2>/dev/null || echo 0)" -gt 100000 ] && : > $EL
+
+# 2026-10-06 AIOS App 周期自愈（millet 免冻结 + 无障碍/通知/卡片锁定/进程拉起 + 复原 agent 临时缩短的息屏超时）
+[ -f /data/local/tmp/aios/aios-setup.sh ] && sh /data/local/tmp/aios/aios-setup.sh heal >/dev/null 2>&1
