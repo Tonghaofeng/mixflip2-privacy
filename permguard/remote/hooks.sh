@@ -16,6 +16,9 @@ enf() { v=$(settings get $1 $2 2>/dev/null); [ "$v" = "$3" ] || { settings put $
 enf global upload_apk_enable 0
 enf global package_verifier_user_consent -1
 enf global package_verifier_enable 0
+# 10-06 Tony：息屏不许断网、至少保持一路连接 —— Wi-Fi 休眠策略「永不断开」+ 蜂窝数据常驻（连着 Wi-Fi 时蜂窝也保持在线，Wi-Fi 掉了秒切）
+enf global wifi_sleep_policy 2
+enf global mobile_data_always_on 1
 for p in com.github.metacubex.clash.meta moe.shizuku.privileged.api uk.tonytong.permguard; do
   dumpsys deviceidle whitelist 2>/dev/null | grep -q ",$p," || { cmd deviceidle whitelist +$p > /dev/null 2>&1 && echo "$(date '+%F %T') deviceidle 白名单补回 $p" >> $EL; }
 done
