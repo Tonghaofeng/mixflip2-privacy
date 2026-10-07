@@ -44,6 +44,10 @@ SYSTEM_UIDS = [1000]
 SYSTEM_ALLOW_SUFFIX = ["izatcloud.net", "gpsonextra.net", "supl.google.com", "connectivitycheck.gstatic.cn"]
 # 系统更新（安全补丁）放行
 OTA_ALLOW = ["DOMAIN,update.miui.com", "DOMAIN-SUFFIX,d.miui.com"]
+# 网络定位窄口子（10-07 Tony 选定）：国行 ROM 的 network provider 只认 metoknlp，它把附近 Wi-Fi/基站 ID 发给高德
+# aps.amap.com 换坐标；只放行「这个进程 × 这个域名」，其余 amap/小米流量照拦（第 4 段 amap.com REJECT 不变）。
+# 不放行时现象：室内 /v1/location 503，logcat「metoknlp --> aps.amap.com:443 match DomainSuffix(amap.com) using REJECT」
+NLP_ALLOW = ["AND,((PROCESS-NAME,com.xiaomi.metoknlp),(DOMAIN,aps.amap.com))"]
 # 任何 UID 都拦的域名族
 REJECT_KEYWORD = ["xiaomi", "miui", "xmpush", "sandai", "xunlei"]
 REJECT_SUFFIX = ["mi.com", "mi-img.com", "mi-fds.com", "mifile.cn", "mipay.com", "micloud.com",
@@ -117,7 +121,8 @@ def build():
           f"  - IP-CIDR,{HOME_LAN}/32,MACMINI,no-resolve",
           "  - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve",
           "  - DST-PORT,123,DIRECT",
-          "  # 1 系统更新（安全补丁）放行"] + [f"  - {r},PROXY" for r in OTA_ALLOW]
+          "  # 1 系统更新（安全补丁）放行"] + [f"  - {r},PROXY" for r in OTA_ALLOW] \
+         + ["  # 1b 网络定位：只放行 metoknlp → aps.amap.com"] + [f"  - {r},PROXY" for r in NLP_ALLOW]
     # 2 整个身份禁网。实测（09-30）：CMFA 只把「包名」交给 mihomo，UID 规则永远匹配不上 → 以 PROCESS-NAME 为准，
     #   UID 规则留作冗余。UID 1000 的所有流量被 CMFA 统一报成 com.android.systemui（实测 [PKG] ... by 1000[com.android.systemui]）。
     L += ["  # 2 整个身份禁网（PROCESS-NAME 为主，UID 冗余）"]

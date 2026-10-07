@@ -60,7 +60,6 @@ com.mobiletools.systemhelper
 com.miui.contentcatcher
 com.miui.wmsvc
 com.xiaomi.aiservice
-com.xiaomi.metoknlp
 com.qti.qcc
 com.milink.service
 com.miui.phrase
