@@ -89,3 +89,4 @@ com.miui.backup
 com.miui.audiomonitor
 com.xiaomi.account
 com.miui.guardprovider
+com.xiaomi.ugd

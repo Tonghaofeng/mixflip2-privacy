@@ -1,0 +1,112 @@
+# permguard plan（dry-run，未改任何东西）20261006-155526
+
+- 设备：`Xiaomi/bixi/bixi:16/BP2A.250605.031.A3/OS3.0.304.0.WOHCNXM:user/release-keys`；第三方 App 56 个；permguard 2026.10.03
+- 收回 0 项 / 0 个 App；推迟 0；保留（白名单/角色/豁免）93；只报告 5；系统固定 0
+
+## 只报告不改（5）
+
+| App | 组 | 权限 / appop | 当前 | 动作 | 理由 |
+|---|---|---|---|---|---|
+| com.android.chrome | CLIPBOARD | READ_CLIPBOARD 读剪贴板 | allow (最近使用 2d19h17m1s894ms 前) | — | 该组只报告 |
+| com.google.android.apps.maps | OTHER | com.google.android.gms.permission.CAR_SPEED | granted [USER_SET] | — | 该组只报告 |
+| com.google.android.inputmethod.latin | CLIPBOARD | READ_CLIPBOARD 读剪贴板 | allow (最近使用 2d18h38m1s747ms 前) | — | 该组只报告 |
+| com.miui.notes | CLIPBOARD | READ_CLIPBOARD 读剪贴板 | allow | — | 该组只报告 |
+| com.termux.boot | CLIPBOARD | READ_CLIPBOARD 读剪贴板 | allow (最近使用 2d18h59m2s836ms 前) | — | 该组只报告 |
+
+## 保留（93）
+
+| App | 组 | 权限 / appop | 当前 | 动作 | 理由 |
+|---|---|---|---|---|---|
+| com.android.soundrecorder | NEARBY | BLUETOOTH_CONNECT | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| com.android.soundrecorder | MEDIA | READ_EXTERNAL_STORAGE | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED\|RESTRICTION_INSTALLER_EXEMPT] | — | 白名单 |
+| com.android.soundrecorder | MEDIA | WRITE_EXTERNAL_STORAGE | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED\|RESTRICTION_INSTALLER_EXEMPT] | — | 白名单 |
+| com.android.soundrecorder | MICROPHONE | RECORD_AUDIO | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| com.bose.bosemusic | NEARBY | NEARBY_WIFI_DEVICES | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| com.bose.bosemusic | NEARBY | BLUETOOTH_CONNECT | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| com.bose.bosemusic | NEARBY | BLUETOOTH_SCAN | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| com.github.metacubex.clash.meta | AUTOSTART | 10008 OP_AUTO_START 自启动 | allow | — | 豁免 |
+| com.github.metacubex.clash.meta | INSTALLED_APPS | 10022 OP_GET_INSTALLED_APPS 获取应用列表 | foreground (最近使用 4m2s792ms 前) | — | 豁免 |
+| com.google.android.apps.adm | LOCATION | ACCESS_FINE_LOCATION | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED\|524288] | — | 白名单 |
+| com.google.android.apps.adm | LOCATION | ACCESS_COARSE_LOCATION | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| com.google.android.apps.maps | LOCATION | ACCESS_FINE_LOCATION | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED\|524288] | — | 白名单 |
+| com.google.android.apps.maps | LOCATION | ACCESS_COARSE_LOCATION | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| com.google.android.apps.messaging | SMS | READ_SMS | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED\|RESTRICTION_INSTALLER_EXEMPT\|RESTRICTION_SYSTEM_EXEMPT\|GRANTED_BY_ROLE] | — | 默认角色 [SMS] |
+| com.google.android.apps.messaging | SMS | RECEIVE_WAP_PUSH | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED\|RESTRICTION_INSTALLER_EXEMPT\|RESTRICTION_SYSTEM_EXEMPT\|GRANTED_BY_ROLE] | — | 默认角色 [SMS] |
+| com.google.android.apps.messaging | MEDIA | READ_MEDIA_VISUAL_USER_SELECTED | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED\|GRANTED_BY_ROLE] | — | 默认角色 [SMS] |
+| com.google.android.apps.messaging | SMS | RECEIVE_MMS | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED\|RESTRICTION_INSTALLER_EXEMPT\|RESTRICTION_SYSTEM_EXEMPT\|GRANTED_BY_ROLE] | — | 默认角色 [SMS] |
+| com.google.android.apps.messaging | SMS | RECEIVE_SMS | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED\|RESTRICTION_INSTALLER_EXEMPT\|RESTRICTION_SYSTEM_EXEMPT\|GRANTED_BY_ROLE] | — | 默认角色 [SMS] |
+| com.google.android.apps.messaging | MEDIA | READ_EXTERNAL_STORAGE | granted [REVOKE_WHEN_REQUESTED\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED\|RESTRICTION_INSTALLER_EXEMPT\|RESTRICTION_SYSTEM_EXEMPT\|GRANTED_BY_ROLE] | — | 默认角色 [SMS] |
+| com.google.android.apps.messaging | PHONE | READ_PHONE_STATE | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED\|GRANTED_BY_ROLE] | — | 默认角色 [SMS] |
+| com.google.android.apps.messaging | SMS | SEND_SMS | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED\|RESTRICTION_INSTALLER_EXEMPT\|RESTRICTION_SYSTEM_EXEMPT\|GRANTED_BY_ROLE] | — | 默认角色 [SMS] |
+| com.google.android.apps.messaging | PHONE | CALL_PHONE | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED\|GRANTED_BY_ROLE] | — | 默认角色 [SMS] |
+| com.google.android.apps.messaging | MEDIA | READ_MEDIA_IMAGES | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED\|GRANTED_BY_ROLE] | — | 默认角色 [SMS] |
+| com.google.android.apps.messaging | CONTACTS | WRITE_CONTACTS | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED\|GRANTED_BY_ROLE] | — | 默认角色 [SMS] |
+| com.google.android.apps.messaging | CAMERA | CAMERA | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED\|GRANTED_BY_ROLE] | — | 默认角色 [SMS] |
+| com.google.android.apps.messaging | MEDIA | READ_MEDIA_AUDIO | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED\|GRANTED_BY_ROLE] | — | 默认角色 [SMS] |
+| com.google.android.apps.messaging | MEDIA | READ_MEDIA_VIDEO | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED\|GRANTED_BY_ROLE] | — | 默认角色 [SMS] |
+| com.google.android.apps.messaging | SMS | READ_CELL_BROADCASTS | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED\|RESTRICTION_INSTALLER_EXEMPT\|RESTRICTION_SYSTEM_EXEMPT\|GRANTED_BY_ROLE] | — | 默认角色 [SMS] |
+| com.google.android.apps.messaging | MEDIA | WRITE_EXTERNAL_STORAGE | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED\|RESTRICTION_INSTALLER_EXEMPT\|RESTRICTION_SYSTEM_EXEMPT\|GRANTED_BY_ROLE] | — | 默认角色 [SMS] |
+| com.google.android.apps.messaging | MICROPHONE | RECORD_AUDIO | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED\|GRANTED_BY_ROLE] | — | 默认角色 [SMS] |
+| com.google.android.apps.messaging | CONTACTS | READ_CONTACTS | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED\|GRANTED_BY_ROLE] | — | 默认角色 [SMS] |
+| com.google.android.apps.nbu.files | ALL_FILES | MANAGE_EXTERNAL_STORAGE 所有文件访问（uid 模式） | allow (最近使用 2d19h13m34s692ms 前) | — | 白名单 |
+| com.google.android.apps.photos | MEDIA | READ_MEDIA_VISUAL_USER_SELECTED | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| com.google.android.apps.photos | MEDIA | READ_MEDIA_IMAGES | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| com.google.android.apps.photos | MEDIA | READ_MEDIA_VIDEO | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| com.google.android.apps.photos | MEDIA_LOCATION | ACCESS_MEDIA_LOCATION | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| com.google.android.apps.tachyon | PHONE | READ_PHONE_STATE | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| com.google.android.apps.tachyon | CONTACTS | WRITE_CONTACTS | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| com.google.android.apps.tachyon | CAMERA | CAMERA | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| com.google.android.apps.tachyon | CALL_LOG | WRITE_CALL_LOG | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED\|RESTRICTION_INSTALLER_EXEMPT] | — | 白名单 |
+| com.google.android.apps.tachyon | MICROPHONE | RECORD_AUDIO | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| com.google.android.apps.tachyon | CONTACTS | READ_CONTACTS | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| com.google.android.calendar | CALENDAR | READ_CALENDAR | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| com.google.android.calendar | CALENDAR | WRITE_CALENDAR | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| com.google.android.contacts | PHONE | READ_PHONE_NUMBERS | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| com.google.android.contacts | PHONE | READ_PHONE_STATE | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| com.google.android.contacts | PHONE | CALL_PHONE | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| com.google.android.contacts | CONTACTS | WRITE_CONTACTS | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| com.google.android.contacts | CONTACTS | GET_ACCOUNTS | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| com.google.android.contacts | CONTACTS | READ_CONTACTS | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| com.google.android.contacts | PHONE | 10032 OP_READ_PHONE_STATE_REAL | allow (最近使用 4d3h26m45s813ms 前) | — | 白名单 |
+| com.google.android.dialer | CALL_LOG | READ_CALL_LOG | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED\|RESTRICTION_INSTALLER_EXEMPT\|RESTRICTION_SYSTEM_EXEMPT\|GRANTED_BY_ROLE] | — | 默认角色 [DIALER] |
+| com.google.android.dialer | PHONE | READ_PHONE_NUMBERS | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| com.google.android.dialer | SMS | RECEIVE_SMS | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED\|RESTRICTION_INSTALLER_EXEMPT\|RESTRICTION_SYSTEM_EXEMPT\|GRANTED_BY_ROLE] | — | 默认角色 [DIALER] |
+| com.google.android.dialer | PHONE | READ_PHONE_STATE | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED\|GRANTED_BY_ROLE] | — | 默认角色 [DIALER] |
+| com.google.android.dialer | SMS | SEND_SMS | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED\|RESTRICTION_INSTALLER_EXEMPT\|RESTRICTION_SYSTEM_EXEMPT\|GRANTED_BY_ROLE] | — | 默认角色 [DIALER] |
+| com.google.android.dialer | PHONE | CALL_PHONE | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED\|GRANTED_BY_ROLE] | — | 默认角色 [DIALER] |
+| com.google.android.dialer | CONTACTS | WRITE_CONTACTS | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED\|GRANTED_BY_ROLE] | — | 默认角色 [DIALER] |
+| com.google.android.dialer | CAMERA | CAMERA | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED\|GRANTED_BY_ROLE] | — | 默认角色 [DIALER] |
+| com.google.android.dialer | CALL_LOG | WRITE_CALL_LOG | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED\|RESTRICTION_INSTALLER_EXEMPT\|RESTRICTION_SYSTEM_EXEMPT\|GRANTED_BY_ROLE] | — | 默认角色 [DIALER] |
+| com.google.android.dialer | CONTACTS | GET_ACCOUNTS | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED\|GRANTED_BY_ROLE] | — | 默认角色 [DIALER] |
+| com.google.android.dialer | MICROPHONE | RECORD_AUDIO | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED\|GRANTED_BY_ROLE] | — | 默认角色 [DIALER] |
+| com.google.android.dialer | CONTACTS | READ_CONTACTS | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED\|GRANTED_BY_ROLE] | — | 默认角色 [DIALER] |
+| com.google.android.dialer | PHONE | ADD_VOICEMAIL | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED\|GRANTED_BY_ROLE] | — | 默认角色 [DIALER] |
+| com.google.android.dialer | PHONE | 10032 OP_READ_PHONE_STATE_REAL | allow (最近使用 6h52m17s653ms 前) | — | 白名单 |
+| com.whatsapp | MEDIA | READ_MEDIA_VISUAL_USER_SELECTED | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| com.whatsapp | MEDIA | READ_MEDIA_IMAGES | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| com.whatsapp | CONTACTS | WRITE_CONTACTS | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| com.whatsapp | CAMERA | CAMERA | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| com.whatsapp | MEDIA | READ_MEDIA_VIDEO | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| com.whatsapp | CONTACTS | GET_ACCOUNTS | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| com.whatsapp | CONTACTS | READ_CONTACTS | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| me.estk.lpa | NEARBY | BLUETOOTH_CONNECT | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| me.estk.lpa | PHONE | READ_PHONE_STATE | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| me.estk.lpa | NEARBY | BLUETOOTH_SCAN | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| moe.shizuku.privileged.api | AUTOSTART | 10008 OP_AUTO_START 自启动 | allow (最近使用 1d6h19m27s63ms 前) | — | 豁免 |
+| org.telegram.messenger | MEDIA | READ_MEDIA_VISUAL_USER_SELECTED | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| org.telegram.messenger | MEDIA | READ_MEDIA_IMAGES | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| org.telegram.messenger | CONTACTS | WRITE_CONTACTS | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| org.telegram.messenger | CAMERA | CAMERA | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| org.telegram.messenger | MEDIA | READ_MEDIA_AUDIO | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| org.telegram.messenger | MEDIA | READ_MEDIA_VIDEO | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| org.telegram.messenger | CONTACTS | GET_ACCOUNTS | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| org.telegram.messenger | MICROPHONE | RECORD_AUDIO | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| org.telegram.messenger | CONTACTS | READ_CONTACTS | granted [USER_SET\|USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| uk.tonytong.aios | SMS | READ_SMS | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED\|RESTRICTION_INSTALLER_EXEMPT\|RESTRICTION_SYSTEM_EXEMPT\|GRANTED_BY_ROLE] | — | 默认角色 [ASSISTANT] |
+| uk.tonytong.aios | CALL_LOG | READ_CALL_LOG | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED\|RESTRICTION_INSTALLER_EXEMPT\|RESTRICTION_SYSTEM_EXEMPT\|GRANTED_BY_ROLE] | — | 默认角色 [ASSISTANT] |
+| uk.tonytong.aios | SMS | SEND_SMS | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED\|RESTRICTION_INSTALLER_EXEMPT\|RESTRICTION_SYSTEM_EXEMPT\|GRANTED_BY_ROLE] | — | 默认角色 [ASSISTANT] |
+| uk.tonytong.aios | MICROPHONE | RECORD_AUDIO | granted [USER_SENSITIVE_WHEN_GRANTED\|USER_SENSITIVE_WHEN_DENIED] | — | 白名单 |
+| uk.tonytong.aios | SCREEN | 10054 OP_AI_GET_SCREEN_CONTENT AI 读屏幕内容 | allow | — | 白名单 |
+| uk.tonytong.aios | SCREEN | 10055 OP_AI_CTL_SCREEN_APP AI 操控屏幕 | allow | — | 白名单 |
+| uk.tonytong.permguard | OTHER | moe.shizuku.manager.permission.API_V23 | granted [] | — | 豁免 |
+| uk.tonytong.permguard | AUTOSTART | 10008 OP_AUTO_START 自启动 | allow (最近使用 1d6h19m27s144ms 前) | — | 豁免 |
