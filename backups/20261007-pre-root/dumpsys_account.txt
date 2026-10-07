@@ -1,0 +1,115 @@
+User UserInfo{0:机主:4c13}:
+  Accounts: 3
+    Account {name=tonghaofe***gmail.com, type=com.google}
+    Account {name=Wha***pp, type=com.whatsapp}
+    Account {name=7062***608, type=org.telegram.messenger}
+  
+  AccountId, Action_Type, timestamp, UID, TableName, Key
+  Accounts History
+  -1,action_called_account_remove,2026-09-26 18:36:29,10307,accounts,58
+  -1,action_called_account_add,2026-09-26 18:56:17,10332,accounts,59
+  -1,action_called_account_remove,2026-09-26 18:58:47,10307,accounts,60
+  -1,action_called_account_remove,2026-09-26 18:58:47,10307,accounts,61
+  -1,action_called_account_remove,2026-09-26 18:58:47,10307,accounts,62
+  -1,action_called_account_remove,2026-09-26 19:34:15,10307,accounts,0
+  -1,action_called_account_remove,2026-09-26 19:34:15,10307,accounts,63
+  -1,action_called_account_add,2026-09-26 20:31:30,10332,accounts,1
+  -1,action_called_account_add,2026-09-26 21:37:19,10278,accounts,2
+  -1,action_called_account_add,2026-09-26 22:13:37,10278,accounts,3
+  -1,action_called_account_add,2026-09-26 22:13:57,10278,accounts,4
+  -1,action_called_account_add,2026-09-26 22:14:17,10278,accounts,5
+  -1,action_called_account_add,2026-09-26 22:14:52,10332,accounts,6
+  -1,action_called_account_add,2026-09-26 23:15:28,10332,accounts,7
+  -1,action_called_account_add,2026-09-27 06:59:13,10332,accounts,8
+  -1,action_called_account_add,2026-09-27 07:26:44,10293,accounts,9
+  -1,action_called_account_add,2026-09-27 08:58:43,10332,accounts,10
+  -1,action_called_account_remove,2026-09-27 11:18:50,10307,accounts,11
+  -1,action_called_account_remove,2026-09-27 11:18:50,10307,accounts,12
+  -1,action_called_account_remove,2026-09-27 11:25:19,10307,accounts,13
+  -1,action_called_account_remove,2026-09-27 11:25:19,10307,accounts,14
+  -1,action_called_account_remove,2026-09-27 11:25:19,10307,accounts,15
+  -1,action_called_account_remove,2026-09-27 11:25:56,10307,accounts,16
+  -1,action_called_account_remove,2026-09-27 11:25:56,10307,accounts,17
+  -1,action_called_account_remove,2026-09-27 11:25:57,10307,accounts,18
+  -1,action_called_account_remove,2026-09-27 11:29:05,10307,accounts,19
+  -1,action_called_account_remove,2026-09-27 11:29:05,10307,accounts,20
+  -1,action_called_account_remove,2026-09-27 12:00:18,10307,accounts,21
+  -1,action_called_account_remove,2026-09-27 12:00:18,10307,accounts,22
+  -1,action_called_account_remove,2026-09-27 12:04:22,10307,accounts,23
+  -1,action_called_account_remove,2026-09-27 12:04:40,10307,accounts,24
+  -1,action_called_account_remove,2026-09-27 12:10:57,10307,accounts,25
+  -1,action_called_account_remove,2026-09-27 12:10:57,10307,accounts,26
+  -1,action_called_account_remove,2026-09-27 12:20:14,10307,accounts,27
+  -1,action_called_account_remove,2026-09-27 12:20:14,10307,accounts,28
+  -1,action_called_account_remove,2026-09-27 12:28:50,10307,accounts,29
+  -1,action_called_account_remove,2026-09-27 12:28:50,10307,accounts,30
+  -1,action_called_account_remove,2026-09-27 12:28:50,10307,accounts,31
+  -1,action_called_account_remove,2026-09-27 12:38:41,10307,accounts,32
+  -1,action_called_account_remove,2026-09-27 12:38:41,10307,accounts,33
+  -1,action_called_account_add,2026-09-27 13:15:57,10332,accounts,34
+  -1,action_called_account_add,2026-09-27 19:17:31,10332,accounts,35
+  -1,action_called_account_add,2026-09-30 18:43:29,10126,accounts,36
+  25,action_account_add,2026-09-30 18:45:14,10134,accounts,37
+  25,action_clear_password,2026-09-30 18:45:14,10134,accounts,38
+  22,action_authenticator_remove,2026-09-30 18:47:36,1000,accounts,39
+  19,action_authenticator_remove,2026-09-30 18:48:23,1000,accounts,40
+  23,action_authenticator_remove,2026-09-30 19:02:06,1000,accounts,41
+  26,action_account_add,2026-09-30 19:30:02,10363,accounts,42
+  27,action_account_add,2026-09-30 19:33:13,10362,accounts,43
+  2,action_set_password,2026-09-30 19:53:08,10176,accounts,44
+  2,action_called_account_remove,2026-09-30 19:53:11,10176,accounts,45
+  2,action_account_remove,2026-09-30 19:53:11,10176,accounts,46
+  -1,action_called_account_add,2026-09-30 20:12:53,1000,accounts,47
+  -1,action_called_account_add,2026-09-30 20:13:10,1000,accounts,48
+  28,action_account_add,2026-09-30 20:13:49,10176,accounts,49
+  -1,action_called_account_remove,2026-09-30 20:41:44,10300,accounts,50
+  28,action_authenticator_remove,2026-10-01 07:19:27,1000,accounts,51
+  -1,action_called_account_add,2026-10-01 22:19:19,1000,accounts,52
+  -1,action_called_account_add,2026-10-01 22:45:24,1000,accounts,53
+  -1,action_called_account_add,2026-10-03 00:32:27,1000,accounts,54
+  -1,action_called_account_add,2026-10-03 08:33:52,1000,accounts,55
+  -1,action_called_account_add,2026-10-07 08:29:43,10316,accounts,56
+  -1,action_called_account_add,2026-10-07 08:30:12,10316,accounts,57
+  
+  Active Sessions: 0
+  
+  RegisteredServicesCache: 15 services
+    ServiceInfo: AuthenticatorDescription {type=com.whatsapp}, ComponentInfo{com.whatsapp/com.whatsapp.accountsync.AccountAuthenticatorService}, uid 10363, lastUpdateTime -1
+    ServiceInfo: AuthenticatorDescription {type=com.google.android.gm.pop3}, ComponentInfo{com.google.android.gm/com.android.email.service.Pop3AuthenticatorService}, uid 10278, lastUpdateTime -1
+    ServiceInfo: AuthenticatorDescription {type=com.google}, ComponentInfo{com.google.android.gms/com.google.android.gms.auth.account.authenticator.GoogleAccountAuthenticatorService}, uid 10134, lastUpdateTime -1
+    ServiceInfo: AuthenticatorDescription {type=com.google.android.apps.tachyon}, ComponentInfo{com.google.android.apps.tachyon/com.google.android.apps.tachyon.contacts.sync.DuoAccountService}, uid 10300, lastUpdateTime -1
+    ServiceInfo: AuthenticatorDescription {type=com.microsoft.workaccount.authapp}, ComponentInfo{com.azure.authenticator/com.microsoft.identity.broker.accountmanager.AccountManagerServiceForWorkAccounts}, uid 10365, lastUpdateTime -1
+    ServiceInfo: AuthenticatorDescription {type=com.microsoft.workaccount}, ComponentInfo{com.azure.authenticator/com.microsoft.workaccount.authenticatorservice.AuthenticatorService}, uid 10365, lastUpdateTime -1
+    ServiceInfo: AuthenticatorDescription {type=com.microsoft.office}, ComponentInfo{com.microsoft.office.onenote/com.microsoft.office.msohttp.keystore.OfficeAuthenticationService}, uid 10316, lastUpdateTime -1
+    ServiceInfo: AuthenticatorDescription {type=org.wikimedia}, ComponentInfo{org.wikipedia/org.wikipedia.auth.AuthenticatorService}, uid 10286, lastUpdateTime -1
+    ServiceInfo: AuthenticatorDescription {type=com.google.android.gm.exchange}, ComponentInfo{com.google.android.gm/com.android.email.service.EasAuthenticatorService}, uid 10278, lastUpdateTime -1
+    ServiceInfo: AuthenticatorDescription {type=com.microsoft.authapppassthroughbackup}, ComponentInfo{com.azure.authenticator/com.microsoft.identity.broker.activebrokerselection.backupipc.service.AccountManagerIpcServiceForRequestsTargetingSpecificBrokerApp}, uid 10365, lastUpdateTime -1
+    ServiceInfo: AuthenticatorDescription {type=com.microsoft.entra}, ComponentInfo{com.azure.authenticator/com.microsoft.workaccount.authenticatorservice.EntraAuthenticatorService}, uid 10365, lastUpdateTime -1
+    ServiceInfo: AuthenticatorDescription {type=com.microsoft.msa.authapp}, ComponentInfo{com.azure.authenticator/com.microsoft.identity.broker.accountmanager.AccountManagerServiceForPersonalAccounts}, uid 10365, lastUpdateTime -1
+    ServiceInfo: AuthenticatorDescription {type=clockwork.accounts}, ComponentInfo{com.google.android.gms/com.google.android.gms.people.sync.tcs.wearable.TcsAccountAuthenticatorService}, uid 10134, lastUpdateTime -1
+    ServiceInfo: AuthenticatorDescription {type=org.telegram.messenger}, ComponentInfo{org.telegram.messenger/org.telegram.messenger.AuthenticatorService}, uid 10362, lastUpdateTime -1
+    ServiceInfo: AuthenticatorDescription {type=com.google.android.gm.legacyimap}, ComponentInfo{com.google.android.gm/com.android.email.service.LegacyImapAuthenticatorService}, uid 10278, lastUpdateTime -1
+  
+  Account visibility:
+    ******
+      com.google.android.apps.maps, 2
+      com.google.android.apps.translate, 2
+      com.google.android.apps.tachyon, 2
+      com.google.android.keep, 2
+      com.google.android.apps.adm, 2
+      com.pccw.clubsim, 2
+      com.google.android.apps.messaging, 2
+      com.okinc.okex.gp, 2
+      com.google.android.googlequicksearchbox, 2
+      com.google.android.apps.photos, 2
+      com.google.android.dialer, 2
+      com.google.android.gm, 2
+      com.anthropic.claude, 2
+      com.google.android.apps.chromecast.app, 2
+      com.google.android.apps.docs, 2
+      com.google.android.apps.authenticator2, 2
+      com.google.android.apps.subscriptions.red, 2
+      com.saily.android, 2
+      com.google.android.apps.walletnfcrel, 2
+      com.google.android.calendar, 2
+  

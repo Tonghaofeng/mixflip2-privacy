@@ -1,0 +1,37 @@
+=== run7 wifi-stream Wed Oct  7 19:03:50 CST 2026 ===
+already connected to 192.168.50.184:5555
+start: DCIM 19:03:51
+tar ok: DCIM 7237162496 bytes
+start: Pictures 19:37:11
+tar ok: Pictures 86813696 bytes
+start: Download 19:37:42
+tar ok: Download 11205632 bytes
+start: Documents 19:37:45
+tar ok: Documents 3072 bytes
+start: Music 19:37:46
+tar ok: Music 3584 bytes
+start: Movies 19:37:46
+tar ok: Movies 3921920 bytes
+start: Recordings 19:37:47
+tar ok: Recordings 1536 bytes
+start: MIUI 19:37:48
+tar ok: MIUI 596992 bytes
+start: backups 19:37:48
+tar ok: backups 2560 bytes
+start: Podcasts 19:37:48
+tar ok: Podcasts 1536 bytes
+start: Audiobooks 19:37:48
+tar ok: Audiobooks 1536 bytes
+start: Android/media 19:37:49
+tar FAIL: Android/media
+apk ok: uk.tonytong.permguard
+apk ok: uk.tonytong.aios
+apk ok: com.termux
+apk ok: com.termux.boot
+apk ok: com.github.metacubex.clash.meta
+apk ok: com.openai.chatgpt
+apk ok: com.azure.authenticator
+apk ok: com.okinc.okex.gp
+apk ok: com.pccw.clubsim
+=== run7 DONE Wed Oct  7 19:39:13 CST 2026 ===
+7.4G	.
