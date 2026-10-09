@@ -8,6 +8,7 @@ keep() {  # $1=目录 $2=脚本 $3=pid 文件
 }
 [ -x /data/local/tmp/rt/db ] && keep /data/local/tmp/rt rt.sh rt.pid
 keep /data/local/tmp/cw cw.sh cw.pid
+keep /data/local/tmp/aios notif_cleaner.sh notif_cleaner.pid
 [ -x /data/local/tmp/rt/db ] && [ -f /data/local/tmp/rt/token ] && keep /data/local/tmp/rt rs.sh rs.pid
 
 # 被系统/App 改回去的开关，每轮纠正并记日志（10-04 体检：Play 商店把 Play 保护机制和「上传应用」改回开；Clash 掉出省电白名单）
