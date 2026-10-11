@@ -36,7 +36,9 @@ note() {
 HOME_SSID=THF
 lan_fail=0; lan_black=0
 athome() {
-  s=$(dumpsys wifi 2>/dev/null | grep -m1 -oE 'SSID: "[^"]*"' | sed 's/SSID: "//;s/"$//')
+  # review：dumpsys wifi 的第一条 SSID 不一定是当前连接。cmd wifi status 里当前连接是
+  # "Wifi is connected to \"SSID\""（Android 16 实测格式；^SSID: 行不存在，首版 sed 匹配空→门失效）
+  s=$(cmd wifi status 2>/dev/null | sed -n 's/^Wifi is connected to "\([^"]*\)".*/\1/p' | head -1)
   [ -z "$s" ] && return 0
   [ "$s" = "$HOME_SSID" ]
 }
@@ -78,9 +80,11 @@ while [ "$(cat rs.pid 2>/dev/null)" = "$$" ]; do
     for pid in $(pgrep -f "nc -L -s 127.0.0.1 -p 2222"); do kill $pid 2> /dev/null; done
     sleep 1
     setsid app_process -cp $D/rshd.dex /system/bin uk.tonytong.aios.shell.RshD < /dev/null >> rs-rshd.log 2>&1 &
-    sleep 2
+    # review：rshd 冷启动（dex 首载/开机高负载）>3 秒时固定 sleep 2 会让 nc 抢先顶班 → 抖动循环。
+    # 循环探测最多 12 秒，rshd 真起不来才退回 nc
+    w=0; while [ $w -lt 12 ] && ! listener; do sleep 1; w=$((w+1)); done
     listener || { setsid toybox nc -L -s 127.0.0.1 -p 2222 sh $D/rsh.sh < /dev/null > /dev/null 2>&1 & sleep 1; }
-    log "监听器矫正为 rshd";
+    log "监听器矫正为 rshd(等了${w}s)";
   fi
   r=$((15559 + n % 2))
   : > rs-cur.log
