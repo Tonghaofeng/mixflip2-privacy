@@ -30,8 +30,20 @@ note() {
 # 连哪台（「主机 端口」）：shell 不走 Clash 时（Clash 访问控制绕过 com.android.shell + 锁定白名单 always_on_vpn_lockdown_whitelist，10-05 起）
 # 在家走局域网 192.168.50.2:22；在外走公网 tonytong.uk:50022（路由器转发 → Mac:22；酒店等网络常封出站 22，家宽封入站 443）；最后才试公网 22。
 # 先 nc -z 探测（4 秒）。仍走 Clash 时 TUN 本地完成握手、探测恒通 → 选 192.168.50.2:22，照旧经 WG 回家。
+# 在家判定（2026-10-11，Tony 要求：准确分辨在家 + 局域网不通时域名兜底）：SSID==THF 才把局域网 IP 排第一，
+# 否则一律域名——外面的网络里 192.168.50.2 是别人家的机器，试它只会误连/空转。SSID 读不到时保守放行局域网候选，
+# 由 lan_fail/lan_black 兜底：局域网候选两次短命(<60s)就拉黑 10 分钟只走域名。
+HOME_SSID=THF
+lan_fail=0; lan_black=0
+athome() {
+  s=$(dumpsys wifi 2>/dev/null | grep -m1 -oE 'SSID: "[^"]*"' | sed 's/SSID: "//;s/"$//')
+  [ -z "$s" ] && return 0
+  [ "$s" = "$HOME_SSID" ]
+}
 pickhost() {
-  for hp in "192.168.50.2 22" "tonytong.uk 50022" "tonytong.uk 22"; do
+  now=$(date +%s); first=""
+  athome && [ "$now" -ge "$lan_black" ] && first="192.168.50.2 22"
+  for hp in $first "tonytong.uk 50022" "tonytong.uk 22"; do
     toybox nc -z -w 4 $hp > /dev/null 2>&1 && { echo "$hp"; return; }
   done
   echo "tonytong.uk 50022"
@@ -59,7 +71,17 @@ while [ "$(cat rs.pid 2>/dev/null)" = "$$" ]; do
   # 2026-10-11：优先并发 rshd（线程/连接；串行 nc 会被桥的 25 秒长轮询堵死其它调用），起不来退回老 nc
   listener || { setsid app_process -cp $D/rshd.dex /system/bin uk.tonytong.aios.shell.RshD < /dev/null >> rs-rshd.log 2>&1 & sleep 2;
     listener || { setsid toybox nc -L -s 127.0.0.1 -p 2222 sh $D/rsh.sh < /dev/null > /dev/null 2>&1 & sleep 1; }
-    log "监听 127.0.0.1:2222 已启动($(listener && echo rshd || echo nc))"; }
+    log "监听 127.0.0.1:2222 已启动"; }
+  # ★矫正：开机第一周期 rshd 没起来时 nc 会永久顶班（listener 判活只看端口不看进程）——
+  #   端口活着但 rshd 不在就换回 rshd。杀监听器用 pgrep+kill（pkill -f 会匹配到自己所在的命令行=自杀坑，踩过）
+  if listener && ! pgrep -f rshd.dex > /dev/null 2>&1; then
+    for pid in $(pgrep -f "nc -L -s 127.0.0.1 -p 2222"); do kill $pid 2> /dev/null; done
+    sleep 1
+    setsid app_process -cp $D/rshd.dex /system/bin uk.tonytong.aios.shell.RshD < /dev/null >> rs-rshd.log 2>&1 &
+    sleep 2
+    listener || { setsid toybox nc -L -s 127.0.0.1 -p 2222 sh $D/rsh.sh < /dev/null > /dev/null 2>&1 & sleep 1; }
+    log "监听器矫正为 rshd";
+  fi
   r=$((15559 + n % 2))
   : > rs-cur.log
   set -- $(pickhost); H=$1:$2; ip=$(resolve $1); ./db dbclient -i key -y -N -T -K 30 -p $2 -R $r:127.0.0.1:2222 tony@${ip:-$1} > rs-cur.log 2>&1 &
@@ -74,6 +96,16 @@ while [ "$(cat rs.pid 2>/dev/null)" = "$$" ]; do
     sleep 10; note
   done
   note
+  # 局域网候选的稳定性记账：短命说明连到的不是本机/链路坏，两连拉黑 10 分钟走域名（Tony 10-11 要求的兜底）
+  el2=$(( $(date +%s) - t0 ))
+  if [ "$H" = "192.168.50.2:22" ]; then
+    if [ $el2 -lt 60 ]; then
+      lan_fail=$((lan_fail + 1))
+      [ $lan_fail -ge 2 ] && { lan_black=$(( $(date +%s) + 600 )); lan_fail=0; log "局域网候选两次短命，拉黑 10 分钟只走域名"; }
+    else
+      lan_fail=0
+    fi
+  fi
   kill $c 2>/dev/null
   fwdfail && { log "远端 $r 被占用，换下一个"; n=$((n + 1)); }
   grep -v "failed to identify current user" rs-cur.log | grep . >> rs.log
