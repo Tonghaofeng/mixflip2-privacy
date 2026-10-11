@@ -27,3 +27,4 @@ done
 
 # 2026-10-06 AIOS App 周期自愈（millet 免冻结 + 无障碍/通知/卡片锁定/进程拉起 + 复原 agent 临时缩短的息屏超时）
 [ -f /data/local/tmp/aios/aios-setup.sh ] && sh /data/local/tmp/aios/aios-setup.sh heal >/dev/null 2>&1
+sh /data/local/tmp/permguard/bank_denylist.sh
