@@ -117,4 +117,5 @@ com.xiaomi.registration
 com.xiaomi.cameramind
 com.xiaomi.hypercomm
 com.xiaomi.otrpbroker
-com.sohu.inputmethod.sogou.xiaomi
+com.miui.securitymanager
+com.goodix.gftest
